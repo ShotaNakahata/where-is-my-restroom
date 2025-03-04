@@ -20,6 +20,7 @@
 .nav{
   display: none;
 }
+
 .navList{
   display: flex;
   gap: 6rem;
@@ -27,6 +28,10 @@
 }
 .navLink{
   text-decoration: none;
+}
+.nav.open{
+  display: block;
+  /* contempolary */
 }
 /**************************/
 /* ABOVE 590px (Tablets & above) */
@@ -41,7 +46,4 @@
   .nav{
     display: block;
   }
-  /* .navList{
-    
-  } */
 }
