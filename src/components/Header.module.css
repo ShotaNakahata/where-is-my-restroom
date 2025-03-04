@@ -1,0 +1,47 @@
+.header {
+  background-color: aquamarine;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.menuIcon{
+  display: block;
+}
+.icon {
+  display: block;
+  height: 7rem;
+}
+.logo {
+  display: block;
+  height: 7rem;
+}
+.nav{
+  display: none;
+}
+.navList{
+  display: flex;
+  gap: 6rem;
+  list-style: none;
+}
+.navLink{
+  text-decoration: none;
+}
+/**************************/
+/* ABOVE 590px (Tablets & above) */
+/**************************/
+@media (min-width: 59rem) {
+  .header{
+    padding: 0 6rem;
+  }
+  .menuIcon{
+    display: none;
+  }
+  .nav{
+    display: block;
+  }
+  /* .navList{
+    
+  } */
+}
