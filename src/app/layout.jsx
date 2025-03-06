@@ -3,11 +3,12 @@ import Header from "@/components/Header.jsx";
 
 import React from 'react'
 
-function RootLayout() {
+function RootLayout({children}) {
   return (
     <html>
       <body>
         <Header/>
+        {children}
       </body>
     </html>
   )

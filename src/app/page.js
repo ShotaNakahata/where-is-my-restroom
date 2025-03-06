@@ -1,10 +1,11 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Hero from "./sections/Hero.jsx";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      
-    </div>
+    <main className={styles.page}>
+      <Hero/>
+    </main>
   );
 }
