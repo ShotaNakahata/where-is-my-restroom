@@ -12,15 +12,39 @@
   padding: 0;
   margin: 0;
 }
-.link{
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #555;
+}
+.h1 {
+  font-size: 2.4rem;
+  font-size: var(--font-size-xl);
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+.link {
   font-size: var(--font-size-lg);
   font-weight: 700;
 }
-/* .body{
-  position: relative;
-} */
-
-.btn{
+.container {
+  /* 1140px */
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+.grid {
+  display: grid;
+  /* gapを追加する */
+}
+.grid1col {
+  grid-template-columns: 1fr;
+}
+.grid2cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -32,20 +56,37 @@
   transition: background-color 0.2s ease-in-out, opacity 0.2s;
   border: none;
 }
-
-.btn:hover{
-  
+.btnLg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s;
+  border: none;
+}
+.btn:hover,
+.btnLg:hover {
+  background-color: red;
 }
 
-.container{
-  
+.container {
 }
-.h1{
-  
+.h1 {
 }
-.h2{
-
+.h2 {
 }
-.h3{
-  
+.h3 {
+}
+/**************************/
+/* ABOVE 590px (Tablets & above) */
+/**************************/
+@media(min-width: 59rem) {
+  .gap {
+    column-gap: 6.4rem;
+    row-gap: 9.6rem;
+  }
 }
