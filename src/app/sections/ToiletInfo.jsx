@@ -60,6 +60,9 @@ function ToiletInfo() {
           )
         })}
       </div>
+      <div className={`container flexCenter`}>
+      <button className={`btnLg ${styles.toiletBtn}`}>Find nearby restrooms</button>
+      </div>
     </section>
   )
 }
