@@ -34,7 +34,7 @@ const steps = [
 ]
 export default function How() {
   return (
-    <section className={styles.sectionHow}>
+    <section className={`${styles.sectionHow} sectionP`}>
       <div className={`container`}>
         <span className="subheading">How it works</span>
         <h2 className="h2">

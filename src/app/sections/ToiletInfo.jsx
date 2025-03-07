@@ -22,7 +22,7 @@ const ToietInfoEx = [{
 
 function ToiletInfo() {
   return (
-    <section className={styles.sectionToileInfo}>
+    <section className={`${styles.sectionToileInfo} sectionP`}>
       <div className={`container centerText`}>
         <span className="subheading">RESTROOMS</span>
         <h2 className="h2">Find your favorite restroom in your city!</h2>
