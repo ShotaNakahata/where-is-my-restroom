@@ -1,0 +1,30 @@
+.sectionToileInfo{
+  padding: 9.6rem 0;
+  background:lightgreen;
+}
+.toilet{
+  background-color: #fff;
+  overflow: hidden;
+}
+.imgSrc{
+  width: 100%;
+}
+.toiletTextInfo{
+  padding:  2.4rem 3.2rem 3.2rem 3.2rem;
+}
+.toiletType{
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  margin-bottom:1.2rem ;
+  text-transform: uppercase;
+  color: #333;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.accessible{
+  background-color: #51cf66;
+}
+/* #ae3099 */
+.notAccessible{
+  background-color: #ffd43b;
+}
