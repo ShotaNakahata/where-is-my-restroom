@@ -1,6 +1,7 @@
 .sectionToileInfo{
   padding: 9.6rem 0;
   background:lightgreen;
+
 }
 .toilet{
   background-color: #fff;
@@ -10,7 +11,7 @@
   width: 100%;
 }
 .toiletTextInfo{
-  padding:  2.4rem 3.2rem 3.2rem 3.2rem;
+  padding:  2.4rem 1.5rem 3.2rem 1.5rem;
 }
 .toiletType{
   display: inline-block;
@@ -27,4 +28,23 @@
 /* #ae3099 */
 .notAccessible{
   background-color: #ffd43b;
+}
+.toiletName{
+  font-size: 2.2rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
+.toiletUl{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.toiletLi{
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  gap: 1.6rem;
 }
