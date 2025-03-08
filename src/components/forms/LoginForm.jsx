@@ -6,7 +6,7 @@ import Link from "next/link";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
 
-function LoginForm() {
+function LoginForm({ setIsSingUp }) {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
 
   // 後々ログイン機能を実装
@@ -14,6 +14,10 @@ function LoginForm() {
     await new Promise((resolve) => setTimeout(resolve, 2000)); // ✅ 2秒待機
     console.log("onSubmit", data);
   };
+
+  const handleIsSingUp = () => {
+    setIsSingUp(true)
+  }
 
   return (
     <div className={formStyles.formContainer}>
@@ -41,11 +45,11 @@ function LoginForm() {
           {/* LINKS */}
           <ul className={`${formStyles.ul}`}>
             <li className={`${formStyles.li}`}>
-              <Link className={formStyles.link} href="#">Create Account</Link>
+              <button className={formStyles.link} onClick={handleIsSingUp}>Create Account</button>
               {/* Need change href="#" */}
             </li>
             <li className={`${formStyles.li}`}>
-              <Link className={formStyles.link} href="#">Forget Password</Link>
+              <button className={formStyles.link} href="#">Forget Password</button>
               {/* Need change href="#" */}
             </li>
           </ul>

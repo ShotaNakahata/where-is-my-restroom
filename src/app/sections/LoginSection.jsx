@@ -1,14 +1,15 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import LoginForm from "@/components/forms/LoginForm";
 import styles from "@/app/sections/LoginSection.module.css";
 import SignupForm from "@/components/forms/SignupForm";
 
 function LoginSection() {
+  const [isSingUp, setIsSingUp] = useState(false);
   return (
     <section className={`${styles.LoginForm} sectionP`}>
       <div className={`container`}>
-        <SignupForm/>
-        <LoginForm />
+        {isSingUp ? <SignupForm setIsSingUp={setIsSingUp}/> : <LoginForm setIsSingUp={setIsSingUp}/>}
       </div>
     </section>
   )
