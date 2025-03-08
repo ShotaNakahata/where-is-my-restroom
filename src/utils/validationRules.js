@@ -1,4 +1,7 @@
 export const validationRules = {
+  name: {
+    required: "Name is required"
+  },
   email: {
     required: "Email is required",
     pattern: {
@@ -12,5 +15,9 @@ export const validationRules = {
       value: 6,
       message: "Password must be at least 6 characters"
     }
-  }
+  },
+  confirmPassword: (watch) => ({
+    required: "Confirm password is required",
+    validate: (value) => value === watch("password") || "Passwords do not match"
+  })
 };

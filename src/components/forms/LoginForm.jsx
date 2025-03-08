@@ -14,40 +14,44 @@ function LoginForm() {
     await new Promise((resolve) => setTimeout(resolve, 2000)); // ✅ 2秒待機
     console.log("onSubmit", data);
   };
-  
+
   return (
-    <form className={`${styles.loginForm} box`} onSubmit={handleSubmit(onSubmit)}>
-      <div className={`${styles.loginFormContents} `}>
-        <h2 className={`h2 ${styles.loginFormH2}`}>Login</h2>
-        <div className={`${styles.loginInput} grid grid1col`}>
-
-          <div className={styles.formContent}>
-            <label className={styles.label} htmlFor="email">Email</label>
-            <input className={styles.input} {...register("email", validationRules.email)} type="email" placeholder='me@example.com' />
-            {errors.email?<span className={styles.error}>{errors.email.message}</span>:<span className={styles.errorsDefo}>*must include @</span>}
+    <div className={formStyles.formContainer}>
+      <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
+        <div className={`${formStyles.formContents} `}>
+          <h2 className={`h2 ${formStyles.formH2}`}>Login</h2>
+          <div className={`${styles.loginArea} grid grid1col`}>
+            {/* EMAIL */}
+            <div className={formStyles.formContent}>
+              <label className={formStyles.label} htmlFor="email">Email</label>
+              <input className={formStyles.input} {...register("email", validationRules.email)} type="email" placeholder='me@example.com' />
+              {errors.email ? <span className={formStyles.error}>{errors.email.message}</span> : <span className={formStyles.errorsDefo}>*must include @</span>}
+            </div>
+            {/* PASSWORD */}
+            <div className={formStyles.formContent}>
+              <label className={formStyles.label} htmlFor="password">Password</label>
+              <input className={formStyles.input} {...register("password", validationRules.password)} type="password" placeholder='Password' />
+              {errors.password ? <span className={formStyles.error}>{errors.password.message}</span> : <span className={formStyles.errorsDefo}>*at least 6 characters</span>}
+            </div>
+            {/* LOGIN BUTTON */}
+            <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
+              {isSubmitting ? "Submitting..." : "Login"}
+            </button>
           </div>
-
-          <div className={styles.formContent}>
-            <label className={styles.label} htmlFor="password">Password</label>
-            <input className={styles.input} {...register("password", validationRules.password)} type="password" placeholder='Password (at least 6 characters)' />
-            {errors.password?<span className={styles.error}>{errors.password.message}</span>:<span className={styles.errorsDefo}>*at least 6 characters</span>}
-          </div>
-          <button type='submit' className={`btnLg ${styles.formBtn}`}>
-            {isSubmitting ? "Submitting..." : "Login"}
-          </button>
-        </div>
-          <ul className={`${styles.ul}`}>
-            <li className={`${styles.li}`}>
-              <Link className={styles.link} href="#">Create Account</Link>
+          {/* LINKS */}
+          <ul className={`${formStyles.ul}`}>
+            <li className={`${formStyles.li}`}>
+              <Link className={formStyles.link} href="#">Create Account</Link>
               {/* Need change href="#" */}
             </li>
-            <li className={`${styles.li}`}>
-              <Link className={styles.link} href="#">Forget Password</Link>
+            <li className={`${formStyles.li}`}>
+              <Link className={formStyles.link} href="#">Forget Password</Link>
               {/* Need change href="#" */}
             </li>
           </ul>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   )
 }
 

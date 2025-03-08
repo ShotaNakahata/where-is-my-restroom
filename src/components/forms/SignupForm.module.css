@@ -1,0 +1,11 @@
+.singupArea{
+  justify-items: center;
+  row-gap: 2.5rem !important;
+}
+.minusMb{
+  margin-bottom: -2rem;
+}
+.formBtn{
+  margin-top: 2rem;
+  width: 100% !important;
+}
