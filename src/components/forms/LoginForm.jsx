@@ -16,35 +16,36 @@ function LoginForm() {
   };
   
   return (
-    <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.loginFormContents}>
-        <h2 className={`h2`}>Login</h2>
+    <form className={`${styles.loginForm} box`} onSubmit={handleSubmit(onSubmit)}>
+      <div className={`${styles.loginFormContents} `}>
+        <h2 className={`h2 ${styles.loginFormH2}`}>Login</h2>
         <div className={`${styles.loginInput} grid grid1col`}>
-          <div className={formStyles.formContent}>
-            <label htmlFor="email">Email</label>
-            <input {...register("email", validationRules.email)} type="email" placeholder='Email' />
-            {errors.email&&<span className={formStyles.error}>{errors.email.message}</span>}
+
+          <div className={styles.formContent}>
+            <label className={styles.label} htmlFor="email">Email</label>
+            <input className={styles.input} {...register("email", validationRules.email)} type="email" placeholder='me@example.com' />
+            {errors.email?<span className={styles.error}>{errors.email.message}</span>:<span className={styles.errorsDefo}>*must include @</span>}
           </div>
-          <div className={formStyles.formContent}>
-            <label htmlFor="password">Password</label>
-            <input {...register("password", validationRules.password)} type="password" placeholder='Password' />
-            {errors.password&&<span className={formStyles.error}>{errors.password.message}</span>}
+
+          <div className={styles.formContent}>
+            <label className={styles.label} htmlFor="password">Password</label>
+            <input className={styles.input} {...register("password", validationRules.password)} type="password" placeholder='Password (at least 6 characters)' />
+            {errors.password?<span className={styles.error}>{errors.password.message}</span>:<span className={styles.errorsDefo}>*at least 6 characters</span>}
           </div>
-          <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
+          <button type='submit' className={`btnLg ${styles.formBtn}`}>
             {isSubmitting ? "Submitting..." : "Login"}
           </button>
-          <ul>
-            <li>
-              <Link href="#">Create Account</Link>
+        </div>
+          <ul className={`${styles.ul}`}>
+            <li className={`${styles.li}`}>
+              <Link className={styles.link} href="#">Create Account</Link>
               {/* Need change href="#" */}
             </li>
-            <li>
-              <Link href="#">Forget Password</Link>
+            <li className={`${styles.li}`}>
+              <Link className={styles.link} href="#">Forget Password</Link>
               {/* Need change href="#" */}
             </li>
           </ul>
-          <Link href="#">Return to Home</Link>
-        </div>
       </div>
     </form>
   )

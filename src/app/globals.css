@@ -17,7 +17,6 @@ body {
   font-family: "Rubik", sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: #555;
 }
 .container {
   /* 1140px */
@@ -78,6 +77,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.flexDC{
+  flex-direction: column;
 }
 /**************************/
 /* GRID */
