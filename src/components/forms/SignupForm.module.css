@@ -1,5 +1,6 @@
 .singupArea{
   justify-items: center;
+  grid-template-columns: 1fr;
   row-gap: 2.5rem !important;
 }
 .minusMb{

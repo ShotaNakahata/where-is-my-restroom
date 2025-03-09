@@ -61,33 +61,38 @@
 .mb{
   margin-bottom: 6rem;
 }
-
+.mb.container {
+  padding: 0 4rem;
+}
 /**************************/
 /* ABOVE 590px (small Tablets & above) */
 /**************************/
 @media (min-width: 700px){
   .toiletType{
-    font-size: 2rem;
+    font-size: 1.3rem;
     padding: 0.8rem 1.6rem;
     margin-bottom:3rem ;
     font-weight: 600;
   }
   .toiletName{
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .toiletUl{
     gap: 2rem;
   }
   .toiletLi{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     gap: 2rem;
   }
   .toiletTextInfo{
-    padding:  2.4rem 3rem 3.2rem 3rem;
+    padding:  2.4rem 2rem 3.6rem 2rem;
   }
   .toiletBtn{
     font-size: 3rem;
     padding: 1.6rem 2.5rem;
+  }
+  .sectionToileInfo .container{
+    padding: 0 4rem;
   }
 }
 

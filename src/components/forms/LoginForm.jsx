@@ -24,7 +24,7 @@ function LoginForm({ setIsSingUp }) {
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
           <h2 className={`h2 ${formStyles.formH2}`}>Login</h2>
-          <div className={`${styles.loginArea} grid grid1col`}>
+          <div className={`${styles.loginArea} grid `}>
             {/* EMAIL */}
             <div className={formStyles.formContent}>
               <label className={formStyles.label} htmlFor="email">Email</label>

@@ -134,7 +134,6 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, opacity 0.2s;
   border: none;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
 }
 .btn:hover,
 .btnLg:hover {
@@ -184,11 +183,20 @@ body {
     /* font-size: 3rem; */
     line-height: 1.2;
   }
-  .container{
-    padding: 0 6.4rem;
-  }
+  
   .icon{
     height: 3rem;
     width: 3rem;
+  }
+  .grid1col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/**************************/
+/* ABOVE 900px (small Tablets & above) */
+/**************************/
+@media (min-width: 900px){
+  .container{
+    padding: 0 5.4rem;
   }
 }

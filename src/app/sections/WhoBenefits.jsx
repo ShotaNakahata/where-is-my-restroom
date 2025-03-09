@@ -39,7 +39,7 @@ function WhoBenefits() {
       <div className={`container`}>
         <span className={`subheading`}>For everyone, everywhere</span>
         <h2 className={`h2`}>Who Can Benefit from This App?</h2>
-        <div className={`${styles.benefitsList} grid grid1col`}>
+        <div className={`${styles.benefitsList} grid`}>
           {benefits.map((benefit) => {
             return (
               <div key={benefit.id} className={styles.benefit}>

@@ -23,7 +23,7 @@ function SignupForm({setIsSingUp}) {
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
           <h2 className={`h2 ${formStyles.formH2}`}>Signup Form</h2>
-          <div className={`${styles.singupArea} grid grid1col`}>
+          <div className={`${styles.singupArea} grid`}>
             {/* USER NAME */}
             <div className={formStyles.formContent}>
               <label className={formStyles.label} htmlFor="name">UserName</label>

@@ -1,7 +1,9 @@
 .whoBenefits{
   background-color: antiquewhite;
 }
-
+.benefitsList{
+  grid-template-columns: 1fr;
+}
 .benefitsImgBox{
   display: flex;
   justify-content: center;

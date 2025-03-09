@@ -41,7 +41,7 @@ export default function How() {
           Your daily dose of health in 3 simple steps
         </h2>
       </div>
-      <div className={`container grid grid1col`}>
+      <div className={`container grid ${styles.howContent}`}>
         {steps.map((step) => {
           return (
             <div key={step.id} className={styles.stepContainer}>

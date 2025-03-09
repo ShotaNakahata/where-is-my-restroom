@@ -28,6 +28,9 @@
 .img{
   width: auto; height: auto;
 }
+.howContent{
+  grid-template-columns: repeat(1,1fr);
+}
 /**************************/
 /* ABOVE 590px (small Tablets & above) */
 /**************************/
@@ -37,10 +40,10 @@
   }
   .featureNum{
     font-size:9rem ;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   .featureTertiary{
-    font-size: 3.2rem;
+    font-size: 2.8rem;
     line-height: 1.2;
     margin-bottom: 3.2rem;
   }
@@ -48,13 +51,23 @@
     font-size: 2rem;
     line-height: 1.5;
   }
-  /* .img{
-    transform: scale(1.2);
-  } */
+  .stepContainer:nth-child(even) {
+    direction: rtl;
+  }
+  
+  .stepContainer:nth-child(even) > * {
+    direction: ltr;
+  }
+
+  
+  .stepContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
   .img {
     /* width: 120%;
     height: auto; */
-    width: 160px;
+    width: 120px;
     height: auto;
   }
 }
