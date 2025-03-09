@@ -45,3 +45,22 @@
     row-gap: 6.2rem;
   }
 }
+
+/**************************/
+/* ABOVE 1000px (small Tablets & above) */
+/* benefitsListのimgとtextを横並びにする */
+/**************************/
+
+@media (min-width: 1000px){
+  .benefit{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+  .benefitSubheading{
+    font-size: 2rem;
+  }
+  .blockquote{
+    font-size: 1.8rem;
+    line-height: 1.8;
+  }
+}
