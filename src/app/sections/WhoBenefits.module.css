@@ -1,16 +1,13 @@
 .whoBenefits{
   background-color: antiquewhite;
 }
-.benefitsList{
 
-}
 .benefitsImgBox{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .img{
-  
   border-radius: 100%;
   width: 80px;
   height: 80px;
@@ -24,4 +21,25 @@
   text-align: center;
   font-size: 1.8rem;
   line-height: 1.8;
+}
+/**************************/
+/* ABOVE 590px (small Tablets & above) */
+/**************************/
+@media (min-width: 700px){
+  .img{
+    width: 120px;
+    height: 120px;
+    margin-bottom: 4rem;
+  }
+  .benefitSubheading{
+    font-size: 3rem;
+  }
+  .blockquote{
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .benefitsList{
+    margin-top: 7rem;
+    row-gap: 6.2rem;
+  }
 }
