@@ -33,7 +33,7 @@
   font-weight: 600;
 }
 .accessible{
-  background-color: #51cf66;
+  background-color: #84d190;
 }
 /* #ae3099 */
 .notAccessible{
@@ -61,3 +61,47 @@
 .mb{
   margin-bottom: 6rem;
 }
+
+/**************************/
+/* ABOVE 590px (small Tablets & above) */
+/**************************/
+@media (min-width: 700px){
+  .toiletType{
+    font-size: 2rem;
+    padding: 0.8rem 1.6rem;
+    margin-bottom:3rem ;
+    font-weight: 600;
+  }
+  .toiletName{
+    font-size: 3rem;
+  }
+  .toiletUl{
+    gap: 2rem;
+  }
+  .toiletLi{
+    font-size: 2.5rem;
+    gap: 2rem;
+  }
+  .toiletTextInfo{
+    padding:  2.4rem 3rem 3.2rem 3rem;
+  }
+  .toiletBtn{
+    font-size: 3rem;
+    padding: 1.6rem 2.5rem;
+  }
+}
+
+/* .btnLg {
+  display: inline-flex;
+  background-color: #e67e22;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 570;
+  padding: 1.2rem 0.8rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s;
+  border: none;
+} */

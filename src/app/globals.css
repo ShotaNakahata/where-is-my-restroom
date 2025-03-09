@@ -134,6 +134,7 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, opacity 0.2s;
   border: none;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.09);
 }
 .btn:hover,
 .btnLg:hover {
@@ -185,5 +186,9 @@ body {
   }
   .container{
     padding: 0 6.4rem;
+  }
+  .icon{
+    height: 3rem;
+    width: 3rem;
   }
 }
