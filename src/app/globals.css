@@ -36,18 +36,19 @@ body {
 /* TEXT */
 /**************************/
 .h1,.h2,.h3{
-  font-weight: 700;
+  font-weight: 600;
   color: #333;
 }
 .h1 {
-  font-size: 4rem;
+  font-size: 3.8rem;
   line-height: 1.05;
   margin-bottom: 3.2rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 .h2{
   margin-bottom: 4.8rem;
   font-size: 3.6rem;
+  /* font-size: 3rem; */
   line-height: 1.2;
 }
 .subheading{
@@ -96,6 +97,9 @@ body {
 .grid2cols {
   grid-template-columns: repeat(2, 1fr);
 }
+.grid3cols{
+  grid-template-columns: repeat(3, 1fr);
+}
 .grid--center-v{
   align-items: center;
 }
@@ -121,7 +125,6 @@ body {
   color: #fff;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-md);
   font-size: 2rem;
   font-weight: 570;
   padding: 1.75rem 1rem;
@@ -132,7 +135,7 @@ body {
 }
 .btn:hover,
 .btnLg:hover {
-  background-color: red;
+  background-color: #cf711f;
 }
 /**************************/
 /* DECORATION */
