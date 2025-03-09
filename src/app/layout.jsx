@@ -12,7 +12,7 @@ const rubik = Rubik({
 
 function RootLayout({children}) {
   return (
-    <html lang="en" className={rubik.className}>
+    <html lang="en" className={rubik.className} >
       <body>
         <Header/>
         {children}

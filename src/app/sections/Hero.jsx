@@ -11,12 +11,12 @@ function Hero() {
             Enjoy a hassle-free toilet experience wherever you go!
           </h1>
           <p className={styles.heroDescription}>
-          This website helps you quickly find nearby restrooms and key details. Accessible options make it convenient for those needing special facilities.Ï
+          This website helps you quickly find nearby restrooms and key details. Accessible options make it convenient for those needing special facilities.
           </p>
-          <div className={styles.btnBox}>
-            <button className={`btnLg`}>View list</button>
-            <button className={`btnLg`}>View list</button>
-            <button className={`btnLg`}>View list</button>
+          <div className={`${styles.btnBox}  grid2cols`}>
+            <button className={`btnLg`}>Map</button>
+            <button className={`btnLg`}>List</button>
+            <button className={`btnLg`}>Login</button>
           </div>
         </div>
         <div className={styles.heroImgBox}>

@@ -27,12 +27,12 @@ function ToiletInfo() {
         <span className="subheading">RESTROOMS</span>
         <h2 className="h2">Find your favorite restroom in your city!</h2>
       </div>
-      <div className={`container grid grid1col`}>
+      <div className={`container grid grid1col ${styles.mb}`}>
         {ToietInfoEx.map((toiletEx) => {
           return (
             <div key={toiletEx.id} className={`${styles.toilet} box`}>
-              <div className={toiletEx.toiletImg}>
-                <Image src={toiletEx.imgSrc} alt={toiletEx.alt} width="350" height="233" />
+              <div className={styles.toiletImg}>
+                <Image className={styles.img} src={toiletEx.imgSrc} alt={toiletEx.alt} width="350" height="233"style={{ width: "100%", height: "auto" }} />
               </div>
               <div className={styles.toiletTextInfo}>
                 <span

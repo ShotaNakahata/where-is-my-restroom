@@ -37,7 +37,7 @@ export default function How() {
     <section className={`${styles.sectionHow} sectionP`}>
       <div className={`container`}>
         <span className="subheading">How it works</span>
-        <h2 className="h2">
+        <h2 className={`h2 ${styles.mr}`}>
           Your daily dose of health in 3 simple steps
         </h2>
       </div>
@@ -46,7 +46,7 @@ export default function How() {
           return (
             <div key={step.id} className={styles.stepContainer}>
               <div className={styles.featureImgBox}>
-                <Image src={step.imgSrc} width="100" height="200" alt={step.title} />
+                <Image className={styles.img} src={step.imgSrc} width="100" height="200" alt={step.title} />
               </div>
               <div className={styles.featureTextBox}>
                 <p className={styles.featureNum}>{`0${step.id}`}</p>

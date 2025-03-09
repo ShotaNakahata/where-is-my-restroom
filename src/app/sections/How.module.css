@@ -25,3 +25,36 @@
   font-size: 1.8rem;
   line-height: 1.8;
 }
+.img{
+  width: auto; height: auto;
+}
+/**************************/
+/* ABOVE 590px (small Tablets & above) */
+/**************************/
+@media (min-width: 700px){
+  .mr{
+    margin-right: 7rem;
+  }
+  .featureNum{
+    font-size:9rem ;
+    margin-bottom: 3rem;
+  }
+  .featureTertiary{
+    font-size: 3.2rem;
+    line-height: 1.2;
+    margin-bottom: 3.2rem;
+  }
+  .featureDesc{
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+  /* .img{
+    transform: scale(1.2);
+  } */
+  .img {
+    /* width: 120%;
+    height: auto; */
+    width: 160px;
+    height: auto;
+  }
+}
