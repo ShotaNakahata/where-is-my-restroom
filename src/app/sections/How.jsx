@@ -6,30 +6,34 @@ const steps = [
   {
     id: 1,
     imgSrc: "/app-screen-1.png",
-    title: "Tell us what you like (and what not)",
+    keyword:"Map",
+    title: " Find Restrooms Easily",
     description:
-      "Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no matter what diet you follow!",
+      "Share your location to quickly find nearby restrooms. Accessible restrooms are shown in blue, and regular restrooms in red, helping you efficiently locate the best restroom based on your needs.",
   },
   {
     id: 2,
     imgSrc: "/app-screen-1.png",
-    title: "Tell us what you like (and what not)",
+    keyword:"List",
+    title: " Filter & Find Restrooms Easily",
     description:
-      "Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no matter what diet you follow!",
+      "Search for restrooms in a list format. Use filters to find Accessible, Top Rated, or Nearby restrooms quickly and easily.",
   },
   {
     id: 3,
     imgSrc: "/app-screen-1.png",
-    title: "Tell us what you like (and what not)",
+    keyword:"Bookmark",
+    title: " Save & Access Your Favorite Toilets",
     description:
-      "Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no matter what diet you follow!",
+      "Save your favorite restrooms and manage them on My Page. With bookmarks, you can quickly find the toilets you like whenever you need them!",
   },
   {
     id: 4,
     imgSrc: "/app-screen-1.png",
-    title: "Tell us what you like (and what not)",
+    keyword:"Rate",
+    title: " Find the Best Restrooms with Reviews & Ratings",
     description:
-      "Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no matter what diet you follow!",
+      "Check ratings and share your experience to help others find the cleanest and best-equipped restrooms. See user comments for more reliability, making it easier to find a restroom that meets your needs!",
   },
 ]
 export default function How() {
@@ -41,7 +45,7 @@ export default function How() {
           Your daily dose of health in 3 simple steps
         </h2>
       </div>
-      <div className={`container grid ${styles.howContent}`}>
+      <div className={`container grid ${styles.howContents}`}>
         {steps.map((step) => {
           return (
             <div key={step.id} className={styles.stepContainer}>
@@ -50,6 +54,7 @@ export default function How() {
               </div>
               <div className={styles.featureTextBox}>
                 <p className={styles.featureNum}>{`0${step.id}`}</p>
+                <p className={styles.keyword}>{step.keyword}</p>
                 <h3 className={styles.featureTertiary}>{step.title}</h3>
                 <p className={styles.featureDesc}>{step.description}</p>
               </div>

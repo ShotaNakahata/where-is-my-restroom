@@ -18,11 +18,7 @@
   margin-bottom: 6rem;
   letter-spacing: 0.75px;
 }
-.loginSection{
-  display: grid;
-  gap: 5rem;
-  grid-template-columns:1fr 1.5fr;
-}
+
 .blockquote{
   font-size: 1.9rem;
   line-height: 1.5;
@@ -47,6 +43,11 @@
 /*　formをサイドに移動してtextを逆サイドに追加　*/
 /**************************/
 @media (min-width: 1200px){
+  .loginSection{
+    display: grid;
+    gap: 5rem;
+    grid-template-columns:1fr 1.5fr;
+  }
   .textBox{
     display: block;
     visibility: visible;

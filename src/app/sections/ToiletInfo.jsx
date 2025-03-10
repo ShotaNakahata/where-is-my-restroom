@@ -5,18 +5,18 @@ import Image from "next/image";
 const ToietInfoEx = [{
   id: 1,
   name: "梅田スカイビルトイレ",
-  imgSrc: "/meal-1.jpg",
+  imgSrc: "/UmedaSkyBuilding.webp",
   alt: "梅田スカイビルトイレ image",
   type: "Accessible",
-  place: "大阪府大阪市北区大深町1-1",
+  place: "1-1 Ofukacho, Kita Ward, Osaka City, Osaka Prefecture, Japan",
   rating: 5,
 }, {
   id: 2,
-  name: "梅田スカイビルトイレ",
-  imgSrc: "/meal-1.jpg",
-  alt: "梅田スカイビルトイレ image",
+  name: "Taipei Main Station Toilet",
+  imgSrc: "/taibeimetro-img.webp",
+  alt: "Taipei Main Station Toilet image",
   type: "NO Accessible",
-  place: "大阪府大阪市北区大深町1-1",
+  place: "No. 3, Beiping West Road, Zhongzheng District, Taipei Cit",
   rating: 5,
 }]
 

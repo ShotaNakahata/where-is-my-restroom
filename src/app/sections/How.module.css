@@ -21,6 +21,12 @@
   line-height: 1.2;
   margin-bottom: 3.2rem;
 }
+.keyword{
+  color: #cf711f;
+  margin-bottom: 0.7rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
 .featureDesc{
   font-size: 1.8rem;
   line-height: 1.8;
@@ -32,7 +38,7 @@
   grid-template-columns: repeat(1,1fr);
 }
 /**************************/
-/* ABOVE 590px (small Tablets & above) */
+/* ABOVE 700px (small Tablets & above) */
 /**************************/
 @media (min-width: 700px){
   .mr{
@@ -47,6 +53,9 @@
     line-height: 1.2;
     margin-bottom: 3.2rem;
   }
+  .keyword{
+    font-size: 2.4rem;
+  }
   .featureDesc{
     font-size: 2rem;
     line-height: 1.5;
@@ -54,20 +63,36 @@
   .stepContainer:nth-child(even) {
     direction: rtl;
   }
-  
   .stepContainer:nth-child(even) > * {
     direction: ltr;
   }
-
-  
   .stepContainer{
     display: grid;
     grid-template-columns: repeat(2,1fr);
   }
   .img {
-    /* width: 120%;
-    height: auto; */
     width: 120px;
     height: auto;
+  }
+}
+/**************************/
+/* ABOVE 1200px (small Tablets & above) */
+/* Font sizeを大きく調節する */
+/**************************/
+@media(min-width:1200px){
+  .featureNum{
+    font-size:12rem ;
+    margin-bottom: 3rem;
+  }
+  .featureTertiary{
+    font-size: 3.5rem;
+  }
+  .featureDesc{
+    font-size: 2.5rem;
+    line-height: 1.4;
+    font-weight:100;
+  }
+  .keyword{
+    font-size: 3rem;
   }
 }
