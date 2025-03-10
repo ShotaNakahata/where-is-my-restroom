@@ -21,7 +21,7 @@ body {
 }
 .container {
   /* 1140px */
-  max-width: 120rem;
+  max-width: 130rem;
   padding: 0 2.4rem;
   margin: 0 auto;
 }
@@ -198,5 +198,10 @@ body {
 @media (min-width: 900px){
   .container{
     padding: 0 5.4rem;
+  }
+}
+@media (min-width: 1000px){
+  .h1{
+    font-size: 4.5rem;
   }
 }

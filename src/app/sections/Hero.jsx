@@ -7,7 +7,7 @@ function Hero() {
     <section className={styles.heroSection}>
       <div className={`${styles.hero} grid`}>
         <div className={styles.heroTextBox}>
-          <h1 className={`h1`}>
+          <h1 className={`h1 ${styles.heroH1}`}>
             Enjoy a hassle-free toilet experience wherever you go!
           </h1>
           <p className={styles.heroDescription}>

@@ -54,3 +54,73 @@
     margin: 0;
   }
 }
+/**************************/
+/* ABOVE 1000px (small Tablets & above) */
+/*　heroのtextとimgを横並びにする　*/
+/**************************/
+@media (min-width: 1000px){
+  .hero{
+    grid-template-columns: repeat(2,2fr);
+  }
+  .heroDescription{
+    font-size: 2rem;
+  }
+  .heroTextBox{
+    text-align:unset;
+  }
+  .heroSection{
+    padding: 8.5rem 0 7.6rem 0;
+  }
+  .heroImgBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .heroImg{
+    width: 100%;
+    height: auto;
+  }
+  .btnBox{
+    padding: 0;
+  }
+}
+/**************************/
+/* ABOVE 1200px  */
+/*　左右paddingを減らす font size調整　*/
+/**************************/
+@media (min-width: 1200px){
+  .heroSection{
+    padding: 11.5rem 0 7.6rem 0;
+  }
+  .hero{
+    padding: 0 3.2rem;
+  }
+  .heroH1 {
+    font-size: 5rem; 
+    
+  }
+  .heroDescription{
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-bottom: 9rem;
+  }
+}
+
+/**************************/
+/* ABOVE 1400px  */
+/*　font sizeを調整　*/
+/**************************/
+@media (min-width: 1200px){
+  .hero{
+    max-width: 140rem;
+    margin: 0 auto;
+    gap: 5rem;
+  }
+  /* .heroSection{
+    margin: 0 auto;
+  } */
+  .heroH1 {
+    font-size: 5.5rem; 
+    margin-bottom: 5.2rem;
+  }
+}

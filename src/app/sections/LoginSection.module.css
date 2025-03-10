@@ -1,3 +1,59 @@
-.LoginForm{
-  
+.textBox{
+  display: none;
+  visibility: hidden;
+}
+.h2{
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  /* font-size: 3rem; */
+  line-height: 1.2;
+}
+.subheading{
+  display: block;
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  letter-spacing: 0.75px;
+}
+.loginSection{
+  display: grid;
+  gap: 5rem;
+  grid-template-columns:1fr 1.5fr;
+}
+.blockquote{
+  font-size: 1.9rem;
+  line-height: 1.5;
+}
+.loginFeatures{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.fetureText{
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.loginFeature{
+  /* margin-bottom: 4rem; */
+}
+/**************************/
+/* ABOVE 1200px  */
+/*　formをサイドに移動してtextを逆サイドに追加　*/
+/**************************/
+@media (min-width: 1200px){
+  .textBox{
+    display: block;
+    visibility: visible;
+    /* padding-left: 3rem; */
+  }
+  .LoginForm{
+    display: flex;
+    justify-content: center;
+  }
 }

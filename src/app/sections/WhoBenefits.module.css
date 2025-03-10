@@ -25,7 +25,8 @@
   line-height: 1.8;
 }
 /**************************/
-/* ABOVE 590px (small Tablets & above) */
+/* ABOVE 700px (small Tablets & above) */
+/* font size等を調整 */
 /**************************/
 @media (min-width: 700px){
   .img{
@@ -50,7 +51,6 @@
 /* ABOVE 1000px (small Tablets & above) */
 /* benefitsListのimgとtextを横並びにする */
 /**************************/
-
 @media (min-width: 1000px){
   .benefit{
     display: grid;
@@ -62,5 +62,15 @@
   .blockquote{
     font-size: 1.8rem;
     line-height: 1.8;
+  }
+}
+
+/**************************/
+/* ABOVE 1400px  */
+/*　font sizeを調整　*/
+/**************************/
+@media (min-width: 1200px){
+  .benefitSubheading{
+    font-size: 2.5rem;
   }
 }
