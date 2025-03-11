@@ -1,22 +1,82 @@
-.contactPage{
-  background-color: rgb(231, 245, 171);
+.contactPage {
+  /* background-color: rgb(231, 245, 171); */
   padding: 7rem 0;
 }
-.textBox{
-  margin-bottom: 4rem;
+.contactContainer {
+  max-width: 130rem;
+  padding: 0 3rem;
+  margin: 0 auto;
 }
-.textBox{
+.textBox {
+  max-width: 130rem;
+  padding: 0 3rem;
+  margin: 0 auto;
+  margin-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.contactH2{
+.contactH2 {
+  text-align: center;
   font-size: 3.6rem;
   margin-bottom: 2rem;
 }
-.description{
+.description {
   font-size: 1.6rem;
   line-height: 1.5;
   text-align: center;
 }
-/* 1.6rem */
+.imgBox{
+  display: none;
+  visibility: hidden;
+}
+
+@media (min-width: 900px) {
+  .contactPage {
+    padding: 8rem 0;
+  }
+  .contactH2 {
+    font-size: 4.6rem;
+    margin-bottom: 3.5rem;
+  }
+  .description {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .contactContainer {
+    padding: 0 6rem;
+  }
+}
+@media (min-width: 1000px) {
+  .contactPage {
+    padding: 9rem 0;
+  }
+  .contactH2{
+    margin-bottom: 5rem;
+  }
+  .contactContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+  .textBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2.5rem;
+  }
+  .description{
+    font-size: 2.7rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+  .imgBox{
+    display: flex;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+  }
+  .contactImg{
+    width: 100%;
+  }
+}

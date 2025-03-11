@@ -4,6 +4,7 @@ import styles from "@/app/contact/contact.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 
 function ContactPage() {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
@@ -13,10 +14,13 @@ function ContactPage() {
   };
   return (
     <main className={`${styles.contactPage}`}>
-      <div className='container'>
-        <div className={styles.textBox}>
-          <h2 className={styles.contactH2}>Contact</h2>
-          <p className={styles.description}>We’d love to hear from you! Please fill out the form below to get in touch with us. Whether you have a question, feedback, or just want to say hi, we’re here to help.</p>
+      <div className={styles.textBox}>
+        <h2 className={styles.contactH2}>Contact</h2>
+        <p className={styles.description}>We’d love to hear from you! Please fill out the form below to get in touch with us. Whether you have a question, feedback, or just want to say hi, we’re here to help.</p>
+      </div>
+      <div className={styles.contactContainer}>
+        <div className={styles.imgBox}>
+          <Image src="/hero.png" className={styles.contactImg} alt='contact img' width="290" height="286" />
         </div>
         <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
           <div className={`${formStyles.formContents} `}>
