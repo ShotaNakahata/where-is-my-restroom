@@ -3,16 +3,15 @@ import React, { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
-import { useSelector } from 'react-redux';
+import { useRefContext } from '@/context/RefContext';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const loginRef = useSelector((state) => state.ref.loginRef)
+  const { loginRef } = useRefContext()
 
   const scrollToLogin = (e) => {
     e.preventDefault();
-    console.log("scrollToLogin")
-    console.log(loginRef.current)
+    console.log("scrollToLogin", loginRef.current);
     if (loginRef.current) {
       loginRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
     }

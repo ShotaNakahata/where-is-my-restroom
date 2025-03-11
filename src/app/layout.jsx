@@ -7,6 +7,7 @@ import React, { useRef } from 'react'
 import Footer from "@/components/Footer";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
+import { RefProvider } from "@/context/RefContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -17,13 +18,15 @@ const rubik = Rubik({
 function RootLayout({ children }) {
   return (
     <Provider store={store}>
-      <html lang="en" className={rubik.className} >
-        <body>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </html>
+      <RefProvider>
+        <html lang="en" className={rubik.className} >
+          <body>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </html>
+      </RefProvider>
     </Provider>
   )
 }
