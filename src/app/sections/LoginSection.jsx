@@ -1,13 +1,22 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LoginForm from "@/components/forms/LoginForm";
 import styles from "@/app/sections/LoginSection.module.css";
 import SignupForm from "@/components/forms/SignupForm";
+import { useDispatch } from 'react-redux';
+import { setRef } from "@/redux/slices/refSlice";
 
 function LoginSection() {
-  const [isSingUp, setIsSingUp] = useState(false);
+  const dispatch = useDispatch()
+  const [isSingUp, setIsSingUp] = useState(null);
+  const loginRef = useRef(null)
+
+  useEffect(() => {
+    dispatch(setRef({ key: "loginRef", ref: loginRef }))
+  }, [dispatch])
+
   return (
-    <section className={`container `}>
+    <section ref={loginRef} id='login' className={`container `}>
       <div className={`${styles.loginSection} sectionP`}>
         <div className={styles.LoginForm}>
           {isSingUp ? <SignupForm setIsSingUp={setIsSingUp} /> : <LoginForm setIsSingUp={setIsSingUp} />}
@@ -42,3 +51,6 @@ function LoginSection() {
 }
 
 export default LoginSection
+
+
+
