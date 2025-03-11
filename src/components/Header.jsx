@@ -33,6 +33,7 @@ function Header() {
         <ul className={`${styles.navList} link`}>
           {/* stateとlogin機能を準備したらWelcome Guestを書き換える "Rewrite 'Welcome Guest' after preparing state and login functionality."*/}
           <li className={`${styles.Welcome}`}><Link href="/#" className={`${styles.navLink} ${styles.Welcome}`}>Welcome Guest</Link></li>{/* ！！！！！ */}
+          <li><Link href="/" className={styles.navLink}>Home</Link></li>
           <li><Link href="/map" className={styles.navLink}>Map</Link></li>
           <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           <li><Link href="/mypage" className={styles.navLink}>MyPage</Link></li>

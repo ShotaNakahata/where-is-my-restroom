@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "@/app/contact/contact.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
@@ -7,10 +7,27 @@ import { useForm } from "react-hook-form";
 import Image from "next/image";
 
 function ContactPage() {
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
+  const [status, setStatus] = useState("");
   const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // ✅ 2秒待機
-    console.log("onSubmit", data);
+    console.log("form row data", data)
+    setStatus("Form now sending...")
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      if (response.ok) {
+        setStatus("succece!");
+        reset()
+      } else {
+        setStatus("error occured");
+      }
+    } catch (error) {
+      console.log("error occured", error);
+      setStatus("error occured")
+    }
   };
   return (
     <main className={`${styles.contactPage}`}>
@@ -48,6 +65,7 @@ function ContactPage() {
               <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
                 {isSubmitting ? "Submitting..." : "Send"}
               </button>
+              {status && <p>{status}</p>}
             </div>
           </div>
         </form>

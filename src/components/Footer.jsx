@@ -30,7 +30,7 @@ function Footer() {
         <div className={styles.contact}>
           <p className={styles.footerHeading}>Contact us</p>
           <div className={styles.contactContents}>
-            <Link className={styles.footerLink} href="#">to contact page</Link>{/* Contct us page 完成したらhref変更 */}
+            <Link className={styles.footerLink} href="/contact">to contact page</Link>{/* Contct us page 完成したらhref変更 */}
             <p className={styles.footerLink} href="example@gmail.com">example@gmail.com</p>{/* Adressを決めたらhref変更 */}
           </div>
         </div>

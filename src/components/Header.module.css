@@ -98,10 +98,14 @@
 
 /**************************/
 /* ABOVE 1000px (small Tablets & above) */
-/* menu を表示 */
+/* menu を表示  hederを上部に固定　bgをなくす*/
 /**************************/
 
 @media (min-width: 1000px) {
+  .header{
+    position: fixed;
+    background: none;
+  }
   .nav {
     display: flex;
     flex-direction: column;
