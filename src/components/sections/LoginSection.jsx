@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import LoginForm from "@/components/forms/LoginForm";
-import styles from "@/app/sections/LoginSection.module.css";
+import styles from "@/components/sections/LoginSection.module.css";
 import SignupForm from "@/components/forms/SignupForm";
 import { useRefContext } from "@/context/RefContext";
 
