@@ -1,8 +1,11 @@
 import React from 'react'
 import Image from "next/image";
 import styles from "./Hero.module.css";
+import { scrollToRef } from "@/utils/scrollUtils";
+import { useRefContext } from '@/context/RefContext';
 
 function Hero() {
+  const { loginRef } = useRefContext()
   return (
     <section className={styles.heroSection}>
       <div className={`${styles.hero} grid`}>
@@ -11,12 +14,12 @@ function Hero() {
             Enjoy a hassle-free toilet experience wherever you go!
           </h1>
           <p className={styles.heroDescription}>
-          This website helps you quickly find nearby restrooms and key details. Accessible options make it convenient for those needing special facilities.
+            This website helps you quickly find nearby restrooms and key details. Accessible options make it convenient for those needing special facilities.
           </p>
           <div className={`${styles.btnBox}  grid2cols`}>
             <button className={`btnLg`}>Map</button>
             <button className={`btnLg`}>List</button>
-            <button className={`btnLg`}>Login</button>
+            <button onClick={() => scrollToRef(loginRef)} className={`btnLg`}>Login</button>
           </div>
         </div>
         <div className={styles.heroImgBox}>

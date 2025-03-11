@@ -4,18 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
 import { useRefContext } from '@/context/RefContext';
+import { scrollToRef } from "@/utils/scrollUtils";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const { loginRef } = useRefContext()
 
-  const scrollToLogin = (e) => {
-    e.preventDefault();
-    console.log("scrollToLogin", loginRef.current);
-    if (loginRef.current) {
-      loginRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
-    }
-  }
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
@@ -42,7 +36,7 @@ function Header() {
           <li><Link href="/map" className={styles.navLink}>Map</Link></li>
           <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           <li><Link href="/mypage" className={styles.navLink}>MyPage</Link></li>
-          <li><a onClick={scrollToLogin} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a></li>
+          <li><a onClick={()=>scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a></li>
         </ul>
       </nav>
     </header>

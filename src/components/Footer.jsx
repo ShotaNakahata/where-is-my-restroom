@@ -2,8 +2,11 @@ import React from 'react'
 import styles from "@/components/Footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { scrollToRef } from "@/utils/scrollUtils";
+import { useRefContext } from '@/context/RefContext';
 
 function Footer() {
+  const { loginRef } = useRefContext()
   return (
     <footer className={styles.footer}>
       <div className={`container grid grid3cols ${styles.gridgap}`}>
@@ -16,10 +19,10 @@ function Footer() {
           <p className={styles.footerHeading}>Account</p>
           <ul className={styles.footerNav}>
             <li>
-              <Link className={styles.footerLink} href="#">Login</Link>
+              <a onClick={() => scrollToRef(loginRef)} className={styles.footerLink}>Login</a>
             </li>
             <li>
-              <Link className={styles.footerLink} href="#">Singup</Link>
+              <a onClick={() => scrollToRef(loginRef)} className={styles.footerLink}>Singup</a>
             </li>
           </ul>
         </div>
@@ -27,8 +30,8 @@ function Footer() {
         <div className={styles.contact}>
           <p className={styles.footerHeading}>Contact us</p>
           <div className={styles.contactContents}>
-              <Link className={styles.footerLink} href="#">to contact page</Link>{/* Contct us page 完成したらhref変更 */}
-              <p className={styles.footerLink} href="example@gmail.com">example@gmail.com</p>{/* Adressを決めたらhref変更 */}
+            <Link className={styles.footerLink} href="#">to contact page</Link>{/* Contct us page 完成したらhref変更 */}
+            <p className={styles.footerLink} href="example@gmail.com">example@gmail.com</p>{/* Adressを決めたらhref変更 */}
           </div>
         </div>
       </div>
