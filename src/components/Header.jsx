@@ -36,7 +36,7 @@ function Header() {
           <li><Link href="/map" className={styles.navLink}>Map</Link></li>
           <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           <li><Link href="/mypage" className={styles.navLink}>MyPage</Link></li>
-          <li><a onClick={()=>scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a></li>
+          <li><a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a></li>
         </ul>
       </nav>
     </header>

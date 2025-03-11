@@ -19,5 +19,7 @@ export const validationRules = {
   confirmPassword: (watch) => ({
     required: "Confirm password is required",
     validate: (value) => value === watch("password") || "Passwords do not match"
-  })
+  }),
+  requiredField: { required: "Please enter something" } 
 };
+
