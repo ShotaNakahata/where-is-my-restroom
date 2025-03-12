@@ -5,13 +5,27 @@ import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
+import Modal from "@/components/common/Modal";
+
+const modalConfig = {
+  success: {
+    message: "success!",
+    description: "Thank you for sending the message.\nI will check it as soon as possible\nand reply if necessary.",
+    btnMessage: "close",
+  },
+  error: {
+    message: "Faild",
+    description: "Failed to send. Please wait a moment and try again.",
+    btnMessage: "close",
+  }
+}
 
 function ContactPage() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
-  const [status, setStatus] = useState("");
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
   const onSubmit = async (data) => {
     console.log("form row data", data)
-    setStatus("Form now sending...")
     try {
       const response = await fetch("/api/send-email", {
         method: "POST",
@@ -19,18 +33,19 @@ function ContactPage() {
         body: JSON.stringify(data)
       })
       if (response.ok) {
-        setStatus("succece!");
+        setModalData(modalConfig.success);Ï
         reset()
       } else {
-        setStatus("error occured");
+        setModalData(modalConfig.error);Ï
       }
     } catch (error) {
-      console.log("error occured", error);
-      setStatus("error occured")
+      setModalData(modalConfig.error);
     }
+    setisModalOpen(true);
   };
   return (
     <main className={`${styles.contactPage}`}>
+      {isModalOpen && modalData && <Modal {...modalData} onClose={()=>setisModalOpen(false)} />}
       <div className={styles.textBox}>
         <h2 className={styles.contactH2}>Contact</h2>
         <p className={styles.description}>We’d love to hear from you! Please fill out the form below to get in touch with us. Whether you have a question, feedback, or just want to say hi, we’re here to help.</p>
@@ -65,7 +80,6 @@ function ContactPage() {
               <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
                 {isSubmitting ? "Submitting..." : "Send"}
               </button>
-              {status && <p>{status}</p>}
             </div>
           </div>
         </form>

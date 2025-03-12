@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./Header.module.css";
+import styles from "@/components/layout/Header.module.css";
 import { useRefContext } from '@/context/RefContext';
 import { scrollToRef } from "@/utils/scrollUtils";
 

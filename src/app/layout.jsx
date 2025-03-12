@@ -1,10 +1,10 @@
 "use client"
 
 import "./globals.css";
-import Header from "@/components/Header.jsx";
+import Header from "@/components/layout/Header.jsx";
 import { Rubik } from "next/font/google";
 import React, { useRef } from 'react'
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
 import { RefProvider } from "@/context/RefContext";

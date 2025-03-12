@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "@/components/Footer.module.css";
+import styles from "@/components/layout/Footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { scrollToRef } from "@/utils/scrollUtils";
