@@ -41,4 +41,3 @@ function Hero() {
 }
 
 export default Hero
-// localStorage.removeItem("user");
