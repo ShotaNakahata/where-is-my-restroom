@@ -10,6 +10,10 @@ function Hero() {
   const { loginRef } = useRefContext()
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth)
+  function handleLogout() {
+    dispatch(logout());
+    localStorage.removeItem("user");
+  }
   return (
     <section className={styles.heroSection}>
       <div className={`${styles.hero} grid`}>
@@ -25,7 +29,7 @@ function Hero() {
             <button className={`btnLg`}>List</button>
             {!isAuthenticated ?
               <button onClick={() => scrollToRef(loginRef)} className={`btnLg`}>Login</button>
-              : <button onClick={() => dispatch(logout())} className={`btnLg`}>Logout</button>}
+              : <button onClick={handleLogout} className={`btnLg`}>Logout</button>}
           </div>
         </div>
         <div className={styles.heroImgBox}>
@@ -37,3 +41,4 @@ function Hero() {
 }
 
 export default Hero
+// localStorage.removeItem("user");

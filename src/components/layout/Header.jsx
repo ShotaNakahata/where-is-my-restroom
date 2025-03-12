@@ -16,6 +16,7 @@ function Header() {
 
   function handleLogout() {
     dispatch(logout())
+    localStorage.removeItem("user");
   }
 
   return (

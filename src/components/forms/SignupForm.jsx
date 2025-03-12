@@ -20,6 +20,7 @@ function SignupForm({ setIsSingUp }) {
       password: data.password
     }
     dispatch(singup(newUser));
+    localStorage.setItem("user", JSON.stringify(newUser));
     console.log("User signed up:", newUser);
     reset();
   };

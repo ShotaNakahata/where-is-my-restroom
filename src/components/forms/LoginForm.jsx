@@ -19,6 +19,7 @@ function LoginForm({ setIsSingUp }) {
       email: data.email,
     };
     dispatch(login(userData));
+    localStorage.setItem("user", JSON.stringify(userData));
     console.log("User logged in:", userData);
     reset()
   };
