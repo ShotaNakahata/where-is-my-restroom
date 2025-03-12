@@ -4,14 +4,24 @@ import styles from "@/components/forms/SignupForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { singup } from "@/redux/slices/authSlice";
 
-function SignupForm({setIsSingUp}) {
-  const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
+function SignupForm({ setIsSingUp }) {
+  const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
+  const dispatch = useDispatch();
 
   // 後々ログイン機能を実装
   const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // ✅ 2秒待機
-    console.log("onSubmit", data);
+    const newUser = {
+      id: Date.now(),
+      name: data.name,
+      email: data.email,
+      password: data.password
+    }
+    dispatch(singup(newUser));
+    console.log("User signed up:", newUser);
+    reset();
   };
   const handleIsSingUp = () => {
     setIsSingUp(false)
@@ -26,7 +36,7 @@ function SignupForm({setIsSingUp}) {
             {/* USER NAME */}
             <div className={formStyles.formContent}>
               <label className={formStyles.label} htmlFor="name">UserName</label>
-              <input className={formStyles.input} {...register("name", validationRules.email)} type="email" placeholder='John' />
+              <input className={formStyles.input} {...register("name", validationRules.name)} type="text" placeholder='John' />
               {errors.name ? <span className={`${formStyles.error} ${styles.minusMb}`}>{errors.name.message}</span> : <span className={`${formStyles.errorsDefo} ${styles.minusMb}`}>-</span>}
             </div>
             {/* EMAIL */}
@@ -60,12 +70,11 @@ function SignupForm({setIsSingUp}) {
           {/* LINKS */}
           <ul className={`${formStyles.ul}`}>
             <li className={`${formStyles.li}`}>
-              <button onClick={handleIsSingUp} className={formStyles.link} href="#">Login</button>
+              <button onClick={handleIsSingUp} className={formStyles.link}>Login</button>
               {/* Need change href="#" */}
             </li>
             <li className={`${formStyles.li}`}>
-              <button className={formStyles.link} href="#">Forget Password</button>
-              {/* Need change href="#" */}
+              <button className={formStyles.link} href="#">Forget Password</button>{/* Need made this feature */}
             </li>
           </ul>
         </div>
@@ -73,5 +82,5 @@ function SignupForm({setIsSingUp}) {
     </div>
   )
 }
-// confirm
+
 export default SignupForm
