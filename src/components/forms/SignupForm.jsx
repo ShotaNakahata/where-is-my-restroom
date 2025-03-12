@@ -2,7 +2,6 @@
 import React from 'react'
 import styles from "@/components/forms/SignupForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
-import Link from "next/link";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
 

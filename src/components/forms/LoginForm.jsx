@@ -1,17 +1,26 @@
 "use client";
 import React from 'react'
+import { useDispatch } from "react-redux";
+import { login } from "@/redux/slices/authSlice";
 import styles from "@/components/forms/LoginForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
 
 function LoginForm({ setIsSingUp }) {
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
+  const dispatch = useDispatch();
 
-  // 後々ログイン機能を実装
   const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // ✅ 2秒待機
-    console.log("onSubmit", data);
+    // 🔹 仮のユーザー情報（本番ではバックエンドと連携）
+    const userData = {
+      id: 1,
+      name: "John Doe",
+      email: data.email,
+    };
+    dispatch(login(userData));
+    console.log("User logged in:", userData);
+    reset()
   };
 
   const handleIsSingUp = () => {
@@ -41,6 +50,7 @@ function LoginForm({ setIsSingUp }) {
               {isSubmitting ? "Submitting..." : "Login"}
             </button>
           </div>
+
           {/* LINKS */}
           <ul className={`${formStyles.ul}`}>
             <li className={`${formStyles.li}`}>

@@ -5,10 +5,18 @@ import Image from "next/image";
 import styles from "@/components/layout/Header.module.css";
 import { useRefContext } from '@/context/RefContext';
 import { scrollToRef } from "@/utils/scrollUtils";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "@/redux/slices/authSlice";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const { loginRef } = useRefContext()
+  const [isOpen, setIsOpen] = useState(false);
+  const { loginRef } = useRefContext();
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    dispatch(logout())
+  }
 
   return (
     <header className={styles.header}>
@@ -32,12 +40,19 @@ function Header() {
       <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
         <ul className={`${styles.navList} link`}>
           {/* stateとlogin機能を準備したらWelcome Guestを書き換える "Rewrite 'Welcome Guest' after preparing state and login functionality."*/}
-          <li className={`${styles.Welcome}`}><Link href="/#" className={`${styles.navLink} ${styles.Welcome}`}>Welcome Guest</Link></li>{/* ！！！！！ */}
+          <li className={`${styles.Welcome}`}>
+            <Link href="/#" className={`${styles.navLink} ${styles.Welcome}`}>Welcome {!isAuthenticated ? "Guest" : user.name}</Link>
+          </li>
           <li><Link href="/" className={styles.navLink}>Home</Link></li>
           <li><Link href="/map" className={styles.navLink}>Map</Link></li>
           <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           <li><Link href="/mypage" className={styles.navLink}>MyPage</Link></li>
-          <li><a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a></li>
+          <li>
+            {/* <a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> */}
+            {!isAuthenticated ? 
+            <a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> 
+            : <a onClick={handleLogout} className={`${styles.navLink} btnLg ${styles.login}`}>Logout</a>}
+          </li>
         </ul>
       </nav>
     </header>

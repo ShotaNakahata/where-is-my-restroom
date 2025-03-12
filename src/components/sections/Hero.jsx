@@ -3,9 +3,13 @@ import Image from "next/image";
 import styles from "./Hero.module.css";
 import { scrollToRef } from "@/utils/scrollUtils";
 import { useRefContext } from '@/context/RefContext';
+import { useSelector,useDispatch} from "react-redux";
+import { logout } from "@/redux/slices/authSlice";
 
 function Hero() {
   const { loginRef } = useRefContext()
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth)
   return (
     <section className={styles.heroSection}>
       <div className={`${styles.hero} grid`}>
@@ -19,7 +23,9 @@ function Hero() {
           <div className={`${styles.btnBox}  grid2cols`}>
             <button className={`btnLg`}>Map</button>
             <button className={`btnLg`}>List</button>
-            <button onClick={() => scrollToRef(loginRef)} className={`btnLg`}>Login</button>
+            {!isAuthenticated ?
+              <button onClick={() => scrollToRef(loginRef)} className={`btnLg`}>Login</button>
+              : <button onClick={() => dispatch(logout())} className={`btnLg`}>Logout</button>}
           </div>
         </div>
         <div className={styles.heroImgBox}>
