@@ -20,6 +20,7 @@ export async function POST(req) {
     }
 
     const { password: _, ...userWithoutPassword } = user.toObject();
+    console.log("from route userWithoutPassword :",userWithoutPassword)
     return NextResponse.json({ message: "Login successful!", user: userWithoutPassword }, { status: 200 });
   } catch (error) {
     console.error("Login error:", error);

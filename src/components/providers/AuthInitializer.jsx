@@ -9,7 +9,7 @@ export default function AuthInitializer() {
   useEffect(() => {
     if (typeof window !== "undefined") {  // ✅ クライアントサイドでのみ実行
       const storedUser = localStorage.getItem("user");
-      if (storedUser) {
+      if (storedUser && !storedUser === undefined) {
         dispatch(login(JSON.parse(storedUser)));  // ✅ Redux に `localStorage` のデータを適用
       }
     }
