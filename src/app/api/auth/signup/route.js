@@ -23,7 +23,8 @@ export async function POST(req) {
       email,
       password: hashedPassword,
     });
-
+    
+    console.log("db登録成功")
     return NextResponse.json({ message: "User registered successfully!", user: newUser }, { status: 201 });
   } catch (error) {
     console.error("Signup error:", error);

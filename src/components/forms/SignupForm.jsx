@@ -1,29 +1,56 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "@/components/forms/SignupForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { singup } from "@/redux/slices/authSlice";
+import { signup } from "@/redux/slices/authSlice";
 
 function SignupForm({ setIsSingUp }) {
   const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
 
   // 後々ログイン機能を実装
+  // const onSubmit = async (data) => {
+  //   const newUser = {
+  //     id: Date.now(),
+  //     name: data.name,
+  //     email: data.email,
+  //     password: data.password
+  //   }
+  //   dispatch(singup(newUser));
+  //   localStorage.setItem("user", JSON.stringify(newUser));
+  //   console.log("User signed up:", newUser);
+  //   reset();
+  // };
   const onSubmit = async (data) => {
-    const newUser = {
-      id: Date.now(),
-      name: data.name,
-      email: data.email,
-      password: data.password
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          password: data.password
+        })
+      });
+      if (response.ok) {
+        const result = await response.json();
+        console.log("result: ", result);
+        dispatch(signup(result.user));
+        localStorage.setItem("user", JSON.stringify(result.user));
+        reset()
+        setIsSingUp(false)
+      } else {
+        const errorResult = await result.json().catch(() => ({ error: "Something went wrong" }));
+        setErrorMessage(errorResult);
+      }
+    } catch (error) {
+      setErrorMessage("Something went wrong. Please try again.");
     }
-    dispatch(singup(newUser));
-    localStorage.setItem("user", JSON.stringify(newUser));
-    console.log("User signed up:", newUser);
-    reset();
-  };
+  }
   const handleIsSingUp = () => {
     setIsSingUp(false)
   }
@@ -67,6 +94,7 @@ function SignupForm({ setIsSingUp }) {
             <button type='submit' className={`btnLg ${styles.formBtn}`}>
               {isSubmitting ? "Submitting..." : "Signup"}
             </button>
+            {errorMessage && <p className={formStyles.error}>{errorMessage}</p>}
           </div>
           {/* LINKS */}
           <ul className={`${formStyles.ul}`}>
