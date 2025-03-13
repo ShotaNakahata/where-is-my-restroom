@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from 'react'
-// import { useDispatch } from "react-redux";
-// import { login } from "@/redux/slices/authSlice";
 import styles from "@/components/forms/LoginForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
@@ -22,26 +20,37 @@ const modalConfig = {
   },
 };
 
-function ToiletForm({ setIsSingUp }) {
-  const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting }, setValue } = useForm({ mode: 'onBlur' })
+function ToiletForm() {
+  const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting }, setValue } = useForm({ mode: 'onBlur' });
+  const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setisModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
   const onSubmit = async (data) => {
     try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("address", data.address);
+      formData.append("rating", data.rating);
+      formData.append("comments", data.comments?.trim() || "");  // ✅ 未入力時は空文字
+      formData.append("isUniversal", data.isUniversal === "true");
+  
+      if (selectedImage) {
+        formData.append("image", selectedImage);
+      }
+  
+      console.log("🟢 [INFO] Sending request to /api/toilets with formData:", formData);
+  
       const response = await fetch("/api/toilets", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name,
-          address: data.address,
-          rating: data.rating,
-          comments: data.comments,
-          isUniversal: data.isUniversal === "true",
-          image: data.image,
-        })
+        body: formData,  // ✅ `headers` は不要（`FormData` は `multipart/form-data` を自動設定）
       });
+  
+      console.log("🟢 [INFO] Received response:", response);
+  
       const result = await response.json();
+      console.log("🟢 [INFO] Response JSON:", result);
+  
       if (response.ok) {
         setModalData(modalConfig.success);
         reset();
@@ -49,10 +58,15 @@ function ToiletForm({ setIsSingUp }) {
         setModalData({ ...modalConfig.error, description: result.error || "Failed to add toilet." });
       }
     } catch (error) {
+      console.error("🔴 [ERROR] Fetch failed:", error);
       setModalData({ ...modalConfig.error, description: "Something went wrong. Please try again." });
     }
+  
+    setSelectedImage(null);
     setisModalOpen(true);
   };
+  
+  
 
   return (
     <div className={formStyles.formContainer}>
@@ -81,7 +95,7 @@ function ToiletForm({ setIsSingUp }) {
             {/* Comment */}
             <div className={formStyles.formContent}>
               <label className={formStyles.label} htmlFor="comment">Comment</label>
-              <textarea className={formStyles.input} {...register("comment", validationRules.requiredField)} placeholder="Enter your comment here..." />
+              <textarea className={formStyles.input} {...register("comment")} placeholder="Enter your comment here..." />
               {errors.name ? <span className={formStyles.error}>{errors.name.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>
             {/* Universal Toilet */}
@@ -91,6 +105,12 @@ function ToiletForm({ setIsSingUp }) {
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </select>
+            </div>
+            {/* Image */}
+            <div className={formStyles.formContent}>
+              <label className={formStyles.label} htmlFor="image">Upload Image</label>
+              <input className={formStyles.input} type="file" accept="image/*" onChange={(e) => setSelectedImage(e.target.files[0])}/>
+              {errors.name ? <span className={formStyles.error}>{errors.name.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>
             {/* Submit BUTTON */}
             <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
