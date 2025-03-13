@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react'
-import { useDispatch } from "react-redux";
-import { login } from "@/redux/slices/authSlice";
+// import { useDispatch } from "react-redux";
+// import { login } from "@/redux/slices/authSlice";
 import styles from "@/components/forms/LoginForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
@@ -11,54 +11,48 @@ import StarRating from './rating/StarRating';
 
 const modalConfig = {
   success: {
-    message: "Login Success!",
-    description: "You're in! Start exploring now.",
-    btnMessage: "close",
+    message: "Toilet Added Successfully!",
+    description: "Thank you for contributing to our community!",
+    btnMessage: "Close",
   },
   error: {
-    message: "Login Faild",
-    description: null,
-    btnMessage: "close",
-  }
-}
+    message: "Failed to Register",
+    description: "Something went wrong. Please try again later.",
+    btnMessage: "Close",
+  },
+};
 
 function ToiletForm({ setIsSingUp }) {
   const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting }, setValue } = useForm({ mode: 'onBlur' })
-  const dispatch = useDispatch();
   const [isModalOpen, setisModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/toilets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: data.email,
-          password: data.password
+          name: data.name,
+          address: data.address,
+          rating: data.rating,
+          comments: data.comments,
+          isUniversal: data.isUniversal === "true",
+          image: data.image,
         })
       });
+      const result = await response.json();
       if (response.ok) {
-        const result = await response.json();
-        dispatch(login(result.user));
-        localStorage.setItem("user", JSON.stringify(result.user));
         setModalData(modalConfig.success);
         reset();
       } else {
-        setErrorMessage(result.error || "Login failed");
-        modalConfig.error.description = result.error || "Login failed"
-        setModalData(modalConfig.error);
+        setModalData({ ...modalConfig.error, description: result.error || "Failed to add toilet." });
       }
     } catch (error) {
-      modalConfig.error.description = "Something went wrong. Please try again."
-      setModalData(modalConfig.error);
+      setModalData({ ...modalConfig.error, description: "Something went wrong. Please try again." });
     }
     setisModalOpen(true);
   };
-
-  const handleIsSingUp = () => {
-    setIsSingUp(true)
-  }
 
   return (
     <div className={formStyles.formContainer}>
@@ -79,8 +73,8 @@ function ToiletForm({ setIsSingUp }) {
               {errors.address ? <span className={formStyles.error}>{errors.address.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>
             {/* Rating: */}
-            <div className="form-content">
-              <label className="form-label" htmlFor="rating">Rating</label>
+            <div className={formStyles.formContent}>
+              <label className={formStyles.label} htmlFor="rating">Rating</label>
               <StarRating value={watch("rating") || 0} onChange={(rating) => setValue("rating", rating)} />
               {errors.rating && <span className="error">{errors.rating.message}</span>}
             </div>
@@ -90,7 +84,15 @@ function ToiletForm({ setIsSingUp }) {
               <textarea className={formStyles.input} {...register("comment", validationRules.requiredField)} placeholder="Enter your comment here..." />
               {errors.name ? <span className={formStyles.error}>{errors.name.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>
-            {/* LOGIN BUTTON */}
+            {/* Universal Toilet */}
+            <div className={formStyles.formContent}>
+              <label className={formStyles.label} htmlFor="isUniversal">Is it a universal toilet?</label>
+              <select {...register("isUniversal")} className={formStyles.input}>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+            {/* Submit BUTTON */}
             <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
