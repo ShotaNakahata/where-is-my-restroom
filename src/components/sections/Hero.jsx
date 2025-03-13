@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 import { scrollToRef } from "@/utils/scrollUtils";
@@ -24,9 +25,10 @@ function Hero() {
           <p className={styles.heroDescription}>
             This website helps you quickly find nearby restrooms and key details. Accessible options make it convenient for those needing special facilities.
           </p>
-          <div className={`${styles.btnBox}  grid2cols`}>
+          <div className={`${styles.btnBox}  grid3cols`}>
             <button className={`btnLg`}>Map</button>
             <button className={`btnLg`}>List</button>
+            <Link href="/toilet/add" className={`btnLg`} role="button">Post</Link>
             {!isAuthenticated ?
               <button onClick={() => scrollToRef(loginRef)} className={`btnLg`}>Login</button>
               : <button onClick={handleLogout} className={`btnLg`}>Logout</button>}

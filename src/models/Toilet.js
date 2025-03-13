@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const ToiletSchema = new mongoose.Schema({
-  name: { type: String, required: true },     
-  location: { type: String, required: true },
-  latitude: { type: Number, required: true }, 
-  longitude: { type: Number, required: true }, 
-  accessibility: { type: Boolean, default: false }, 
-  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
+  name: { type: String, required: true }, 
+  address: { type: String, required: true }, 
+  rating: { type: Number, required: true, min: 1, max: 5 },  
+  comments: { type: String }, 
+  isUniversal: { type: Boolean, default: false }, 
+  image: { type: String }, 
 }, { timestamps: true });
 
 export default mongoose.models.Toilet || mongoose.model("Toilet", ToiletSchema);
+

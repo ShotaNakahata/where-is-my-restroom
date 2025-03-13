@@ -30,8 +30,12 @@
   font-size: 0.5rem;
 }
 .btnBox button:last-child{
-  grid-column: 1/3;
-  margin: 0 4rem;
+  grid-column: 1/4;
+  margin: 0 8rem;
+}
+.link{
+  text-decoration: none;
+  font-weight: 570;
 }
 /**************************/
 /* ABOVE 590px (small Tablets & above) */
@@ -52,6 +56,10 @@
   .btnBox button:last-child{
     grid-column:auto;
     margin: 0;
+  }
+  .btnBox button:last-child{
+    grid-column: 1/4;
+    margin: 0 12rem;
   }
 }
 /**************************/

@@ -1,8 +1,7 @@
-.contactPage {
-  /* background-color: rgb(231, 245, 171); */
+.addPage{
   padding: 7.5rem 0;
 }
-.contactContainer {
+.addContainer {
   max-width: 130rem;
   padding: 0 3rem;
   margin: 0 auto;
@@ -16,7 +15,7 @@
   flex-direction: column;
   align-items: center;
 }
-.contactH2 {
+.addH2 {
   text-align: center;
   font-size: 3.6rem;
   margin-bottom: 2rem;
@@ -32,10 +31,10 @@
 }
 
 @media (min-width: 900px) {
-  .contactPage {
+  .addPage {
     padding: 8rem 0;
   }
-  .contactH2 {
+  .addH2 {
     font-size: 4.6rem;
     margin-bottom: 3.5rem;
   }
@@ -43,18 +42,18 @@
     font-size: 2rem;
     line-height: 1.2;
   }
-  .contactContainer {
+  .addContainer {
     padding: 0 6rem;
   }
 }
 @media (min-width: 1000px) {
-  .contactPage {
+  .addPage {
     padding:14rem 0 9rem 0;
   }
-  .contactH2{
+  .addH2{
     margin-bottom: 5rem;
   }
-  .contactContainer {
+  .addContainer {
     max-width: 170rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -66,6 +65,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 0 2.5rem;
+    margin-bottom: 7rem;
   }
   .description{
     font-size: 2.7rem;
