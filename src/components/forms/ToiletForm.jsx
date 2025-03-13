@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import styles from "@/components/forms/LoginForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
+import tFormStyles from "@/components/forms/ToiletForm.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
 import Modal from "@/components/common/Modal";
@@ -34,23 +35,23 @@ function ToiletForm() {
       formData.append("rating", data.rating);
       formData.append("comments", data.comments?.trim() || "");  // ✅ 未入力時は空文字
       formData.append("isUniversal", data.isUniversal === "true");
-  
+
       if (selectedImage) {
         formData.append("image", selectedImage);
       }
-  
+
       console.log("🟢 [INFO] Sending request to /api/toilets with formData:", formData);
-  
+
       const response = await fetch("/api/toilets", {
         method: "POST",
         body: formData,  // ✅ `headers` は不要（`FormData` は `multipart/form-data` を自動設定）
       });
-  
+
       console.log("🟢 [INFO] Received response:", response);
-  
+
       const result = await response.json();
       console.log("🟢 [INFO] Response JSON:", result);
-  
+
       if (response.ok) {
         setModalData(modalConfig.success);
         reset();
@@ -61,12 +62,12 @@ function ToiletForm() {
       console.error("🔴 [ERROR] Fetch failed:", error);
       setModalData({ ...modalConfig.error, description: "Something went wrong. Please try again." });
     }
-  
+
     setSelectedImage(null);
     setisModalOpen(true);
   };
-  
-  
+
+
 
   return (
     <div className={formStyles.formContainer}>
@@ -109,7 +110,11 @@ function ToiletForm() {
             {/* Image */}
             <div className={formStyles.formContent}>
               <label className={formStyles.label} htmlFor="image">Upload Image</label>
-              <input className={formStyles.input} type="file" accept="image/*" onChange={(e) => setSelectedImage(e.target.files[0])}/>
+              <input className={tFormStyles.hiddenInput} id="image" type="file" accept="image/*" onChange={(e) => setSelectedImage(e.target.files[0])} />
+              <div className={tFormStyles.imgInput}>
+                <label htmlFor="image" className={tFormStyles.customFileButton}>Choose File</label>
+                <span className={tFormStyles.fileName}>{selectedImage ? selectedImage.name : "No file chosen"}</span>
+              </div>
               {errors.name ? <span className={formStyles.error}>{errors.name.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>
             {/* Submit BUTTON */}

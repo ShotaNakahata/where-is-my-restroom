@@ -1,0 +1,33 @@
+.hiddenInput{
+  display: none;
+}
+.customFileButton {
+  width: 50%;
+  display: inline-block;
+  background-color: #e67e22;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+.customFileButton:hover {
+  background-color: #cf711f;
+}
+.imgInput{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+/* ✅ 選択したファイル名の表示 */
+.fileName {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  color: #555;
+  display: block;
+}
