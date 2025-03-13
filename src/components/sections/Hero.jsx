@@ -27,7 +27,7 @@ function Hero() {
           </p>
           <div className={`${styles.btnBox}  grid3cols`}>
             <button className={`btnLg`}>Map</button>
-            <button className={`btnLg`}>List</button>
+            <Link href="/toilet/list" className={`btnLg`} role="button">List</Link>
             <Link href="/toilet/add" className={`btnLg`} role="button">Post</Link>
             {!isAuthenticated ?
               <button onClick={() => scrollToRef(loginRef)} className={`btnLg`}>Login</button>
