@@ -6,24 +6,26 @@ import styles from "@/components/forms/LoginForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { validationRules } from "@/utils/validationRules";
 import { useForm } from "react-hook-form";
+import Modal from "@/components/common/Modal";
+
+const modalConfig = {
+  success: {
+    message: "Login Success!",
+    description: "You're in! Start exploring now.",
+    btnMessage: "close",
+  },
+  error: {
+    message: "Login Faild",
+    description: null,
+    btnMessage: "close",
+  }
+}
 
 function LoginForm({ setIsSingUp }) {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
   const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState("");
-
-  // const onSubmit = async (data) => {
-  //   // 🔹 仮のユーザー情報（本番ではバックエンドと連携）
-  //   const userData = {
-  //     id: 1,
-  //     name: "John Doe",
-  //     email: data.email,
-  //   };
-  //   dispatch(login(userData));
-  //   localStorage.setItem("user", JSON.stringify(userData));
-  //   console.log("User logged in:", userData);
-  //   reset()
-  // };
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   const onSubmit = async (data) => {
     try {
@@ -36,18 +38,21 @@ function LoginForm({ setIsSingUp }) {
         })
       });
       if (response.ok) {
-        const result =await response.json();
-        console.log("form loginForm result: ",result);
-        console.log("form loginForm result.user: ",result.user)
+        const result = await response.json();
         dispatch(login(result.user));
         localStorage.setItem("user", JSON.stringify(result.user));
+        setModalData(modalConfig.success);
         reset();
       } else {
         setErrorMessage(result.error || "Login failed");
+        modalConfig.error.description = result.error || "Login failed"
+        setModalData(modalConfig.error);
       }
     } catch (error) {
-      setErrorMessage("Something went wrong. Please try again.");
+      modalConfig.error.description = "Something went wrong. Please try again."
+      setModalData(modalConfig.error);
     }
+    setisModalOpen(true);
   };
 
   const handleIsSingUp = () => {
@@ -56,6 +61,7 @@ function LoginForm({ setIsSingUp }) {
 
   return (
     <div className={formStyles.formContainer}>
+      {isModalOpen && modalData && <Modal {...modalData} onClose={() => setisModalOpen(false)} />}
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
           <h2 className={`h2 ${formStyles.formH2}`}>Login</h2>
