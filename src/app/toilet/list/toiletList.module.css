@@ -1,13 +1,19 @@
 /**************************/
 /* コピーしない！！！ */
 .cardBox {
-  padding: 0 1rem;
+  max-width: 150em;
+  margin: 0 auto;
+  font-size: 10px;
+  padding: 0 1em;
   display: grid;
-  gap: 1em;
+  column-gap: 1em;
+  row-gap: 3em;
   grid-template-columns: repeat(2, 1fr);
 }
 /**************************/
-
+.toilet {
+  overflow: hidden;
+}
 .card {
   background-color: antiquewhite;
 }
@@ -17,22 +23,31 @@
 .cardUl {
   list-style: none;
 }
+.mainTileBox {
+  min-height: 9.4em;
+  padding: 2em 1em 0 1em;
+}
 .img {
   width: 100%;
+  object-fit: cover;
 }
 .toiletName {
-  font-size: 2rem;
-  font-weight: 500;
-  margin-bottom: 2em;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: 600;
+}
+.toiletTextInfo {
+  min-height: 19em;
 }
 .cardUl {
   display: flex;
   flex-direction: column;
+  padding: 0.5em;
   gap: 1em;
 }
 .li {
   font-size: 1.6em;
-} 
+}
 .toiletType {
   display: inline-block;
   padding: 0.4em 0.8em;
@@ -48,14 +63,69 @@
 .notAccessible {
   background-color: #ffd43b;
 }
-.carli {
+.cardli {
   display: flex;
   align-items: center;
-  font-size: 1.8em;
-  gap: 1.6em;
+}
+.span {
+  font-size: 1.2em;
+}
+/**************************/
+/* 576px */
+/**************************/
+@media (min-width: 576px) {
+  .toiletName {
+    font-size: 1.7em;
+  }
+  .span{
+    font-size: 1.6em;
+  }
+  .cardli {
+    gap: 1em;
+  }
+  .cardUl{
+    gap: 1.5em;
+  }
+}
+/**************************/
+/* 768px */
+/**************************/
+@media (min-width: 768px) {
+  .cardBox {
+    font-size: 10px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .toiletName {
+    font-size: 1.5em;
+  }
+  .span {
+    font-size: 1.2em;
+  }
+}
+/**************************/
+/* 900px */
+/**************************/
+@media (min-width: 900px) {
+  .cardBox {
+    font-size: 10px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/**************************/
+/* 1200px */
+/**************************/
+@media (min-width: 1200px) {
+  .toiletName {
+    font-size: 2em;
+  }
+  .span{
+    font-size: 1.7em;
+  }
+  .cardUl{
+    padding-bottom: 3em;
+  }
 }
 /* 
-
 .sectionToileInfo {
   padding: 9.6rem 0;
   background: lightgreen;

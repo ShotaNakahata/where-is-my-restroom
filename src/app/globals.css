@@ -134,6 +134,7 @@ body {
 /* DECORATION */
 /**************************/
 .icon{
+  min-width: 3.4rem;
   height: 2.4rem;
   width: 2.4rem;
   color: #e67e22;
