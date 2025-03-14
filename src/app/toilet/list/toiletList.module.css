@@ -11,81 +11,11 @@
   grid-template-columns: repeat(2, 1fr);
 }
 /**************************/
-.toilet {
-  overflow: hidden;
-}
-.card {
-  background-color: antiquewhite;
-}
-.textContent {
-  padding: 1em;
-}
-.cardUl {
-  list-style: none;
-}
-.mainTileBox {
-  min-height: 9.4em;
-  padding: 2em 1em 0 1em;
-}
-.img {
-  width: 100%;
-  object-fit: cover;
-}
-.toiletName {
-  font-size: 1.2em;
-  color: #333;
-  font-weight: 600;
-}
-.toiletTextInfo {
-  min-height: 19em;
-}
-.cardUl {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5em;
-  gap: 1em;
-}
-.li {
-  font-size: 1.6em;
-}
-.toiletType {
-  display: inline-block;
-  padding: 0.4em 0.8em;
-  margin-bottom: 1.2em;
-  text-transform: uppercase;
-  color: #333;
-  border-radius: 100px;
-  font-weight: 600;
-}
-.accessible {
-  background-color: #84d190;
-}
-.notAccessible {
-  background-color: #ffd43b;
-}
-.cardli {
-  display: flex;
-  align-items: center;
-}
-.span {
-  font-size: 1.2em;
-}
+
 /**************************/
 /* 576px */
 /**************************/
 @media (min-width: 576px) {
-  .toiletName {
-    font-size: 1.7em;
-  }
-  .span{
-    font-size: 1.6em;
-  }
-  .cardli {
-    gap: 1em;
-  }
-  .cardUl{
-    gap: 1.5em;
-  }
 }
 /**************************/
 /* 768px */
@@ -94,12 +24,6 @@
   .cardBox {
     font-size: 10px;
     grid-template-columns: repeat(3, 1fr);
-  }
-  .toiletName {
-    font-size: 1.5em;
-  }
-  .span {
-    font-size: 1.2em;
   }
 }
 /**************************/
@@ -115,130 +39,4 @@
 /* 1200px */
 /**************************/
 @media (min-width: 1200px) {
-  .toiletName {
-    font-size: 2em;
-  }
-  .span{
-    font-size: 1.7em;
-  }
-  .cardUl{
-    padding-bottom: 3em;
-  }
 }
-/* 
-.sectionToileInfo {
-  padding: 9.6rem 0;
-  background: lightgreen;
-}
-.card {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  overflow: hidden;
-  justify-content: center;
-}
-.toiletImg {
-  width: 100%;
-  height: auto;
-}
-
-.imgSrc {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.toiletTextInfo {
-  padding: 2.4rem 1.5rem 3.2rem 1.5rem;
-}
-.toiletType {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  margin-bottom: 1.2rem;
-  text-transform: uppercase;
-  color: #333;
-  border-radius: 100px;
-  font-weight: 600;
-}
-.accessible {
-  background-color: #84d190;
-}
-.notAccessible {
-  background-color: #ffd43b;
-}
-.toiletName {
-  font-size: 2.2rem;
-  color: #333;
-  font-weight: 600;
-  margin-bottom: 3.2rem;
-}
-.toiletUl {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-}
-.toiletLi {
-  display: flex;
-  align-items: center;
-  font-size: 1.8rem;
-  gap: 1.6rem;
-}
-.mb {
-  margin-bottom: 6rem;
-}
-.mb.container {
-  padding: 0 4rem;
-}
-*/
-/**************************/
-/* ABOVE 590px (small Tablets & above) */
-/**************************/
-/* @media (min-width: 700px) {
-  .toiletType {
-    font-size: 1.3rem;
-    padding: 0.8rem 1.6rem;
-    margin-bottom: 3rem;
-    font-weight: 600;
-  }
-  .toiletName {
-    font-size: 2rem;
-  }
-  .toiletUl {
-    gap: 2rem;
-  }
-  .toiletLi {
-    font-size: 1.5rem;
-    gap: 2rem;
-  }
-  .toiletTextInfo {
-    padding: 2.4rem 2rem 3.6rem 2rem;
-  }
-  .toiletBtn {
-    font-size: 3rem;
-    padding: 1.6rem 2.5rem;
-  }
-  .sectionToileInfo .container {
-    padding: 0 4rem;
-  }
-} */
-/**************************/
-/* ABOVE 1200px  */
-/*　font拡大　*/
-/**************************/
-/* @media (min-width: 1200px) {
-  .toiletType {
-    font-size: 1.5rem;
-  }
-  .toiletName {
-    font-size: 3rem;
-  }
-  .toiletUl {
-    gap: 2.5rem;
-  }
-  .toiletLi {
-    font-size: 2rem;
-    gap: 2rem;
-  }
-} */
