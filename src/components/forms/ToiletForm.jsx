@@ -28,12 +28,14 @@ function ToiletForm() {
   const [modalData, setModalData] = useState(null);
 
   const onSubmit = async (data) => {
+    console.log("ToiletForm :data",data)
+    console.log("ToiletForm :comment",data.comment)
     try {
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("address", data.address);
       formData.append("rating", data.rating);
-      formData.append("comments", data.comments?.trim() || "");  // ✅ 未入力時は空文字
+      formData.append("comments", data.comment?.trim() || "");  // ✅ 未入力時は空文字
       formData.append("isUniversal", data.isUniversal === "true");
 
       if (selectedImage) {
