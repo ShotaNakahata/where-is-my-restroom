@@ -7,8 +7,8 @@
 .toiletType {
   position: absolute;
   font-size: 1.1rem;
-  top: -3.5rem;
-  left: 2rem;
+  top: 22rem;
+  left: 2.3rem;
   display: inline-block;
   padding: 0.6em 0.8em;
   margin-bottom: 1.2em;
@@ -50,6 +50,7 @@
   background-color: #cf711f;
 }
 .toiletName {
+  padding-top: 4rem;
   text-align: center;
 }
 .li {

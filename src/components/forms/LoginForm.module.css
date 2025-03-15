@@ -1,5 +1,5 @@
 .loginArea{
   justify-items: center;
   grid-template-columns: 1fr;
-  row-gap: 3.3rem !important;
+  row-gap: 1.3rem !important;
 }

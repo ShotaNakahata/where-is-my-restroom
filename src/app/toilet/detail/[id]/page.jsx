@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import styles from "./ToiletDetail.module.css";
 import { getToilets } from "@/lib/getToilet";
@@ -12,6 +13,9 @@ async function ToiletDetail({ params }) {
   return (
     <main className={`page ${styles.detailPage}`}>
       <div className={`pageTextBox ${styles.detailTextBox}`}>
+        {/* <div className={`${styles.imgBox}pageTextBox`}> */}
+        <Image className={styles.img} src={toilet.image} alt="toilet image" width="100" height="100" style={{ width: "100%", height: "auto" }} />
+        {/* </div> */}
         <h2 className={`h2 ${styles.toiletName}`}>{toilet.name}</h2>
         <span className={`${styles.toiletType} ${toilet.isUniversal ? styles.accessible : styles.notAccessible}`}>
           {toilet.isUniversal ? "accessible" : "NOT accessible"}

@@ -90,7 +90,7 @@ body {
 .grid {
   display: grid;
   /* gapを追加する */
-  row-gap: 4.8rem;
+  row-gap: 3.8rem;
   column-gap: 4.8rem;
 }
 .grid1col {

@@ -4,6 +4,7 @@ import styles from "@/components/forms/AddRatingForm.module.css";
 import formStyles from "@/components/forms/formStyles.module.css";
 import { useForm } from 'react-hook-form';
 import { validationRules } from "@/utils/validationRules";
+import StarRating from "@/components/forms/rating/StarRating";
 // import { useDispatch } from 'react-redux';
 
 function AddRatingForm() {
@@ -44,41 +45,27 @@ function AddRatingForm() {
     setIsSingUp(true)
   }
   return (
-    <div className={formStyles.formContainer}>
+    <div className={`${formStyles.formContainer}`}>
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setisModalOpen(false)} />}
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
-          <h2 className={`h2 ${formStyles.formH2}`}>Login</h2>
-          <div className={`${styles.loginArea} grid `}>
-            {/* EMAIL */}
+          <h2 className={`h2 ${formStyles.formH2}`}>Add Rating</h2>
+          <div className={`${styles.inputArea} grid `}>
+            {/* Rsting */}
             <div className={formStyles.formContent}>
-              <label className={formStyles.label} htmlFor="email">Email</label>
-              <input className={formStyles.input} {...register("email", validationRules.email)} type="email" placeholder='me@example.com' />
-              {errors.email ? <span className={formStyles.error}>{errors.email.message}</span> : <span className={formStyles.errorsDefo}>*must include @</span>}
+              <StarRating />
             </div>
-            {/* PASSWORD */}
+            {/* Comment */}
             <div className={formStyles.formContent}>
-              <label className={formStyles.label} htmlFor="password">Password</label>
-              <input className={formStyles.input} {...register("password", validationRules.password)} type="password" placeholder='Password' />
-              {errors.password ? <span className={formStyles.error}>{errors.password.message}</span> : <span className={formStyles.errorsDefo}>*at least 6 characters</span>}
+              <label className={formStyles.label} htmlFor="comment">Comment</label>
+              <textarea className={formStyles.input} {...register("comment")} placeholder="Enter your comment here..." />
+              {errors.name ? <span className={formStyles.error}>{errors.name.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>
             {/* LOGIN BUTTON */}
             <button type='submit' className={`btnLg ${formStyles.formBtn}`}>
               {isSubmitting ? "Submitting..." : "Login"}
             </button>
           </div>
-
-          {/* LINKS */}
-          <ul className={`${formStyles.ul}`}>
-            <li className={`${formStyles.li}`}>
-              <button className={formStyles.link} onClick={handleIsSingUp}>Create Account</button>
-              {/* Need change href="#" */}
-            </li>
-            <li className={`${formStyles.li}`}>
-              <button className={formStyles.link} href="#">Forget Password</button>
-              {/* Need change href="#" */}
-            </li>
-          </ul>
         </div>
       </form>
     </div>
