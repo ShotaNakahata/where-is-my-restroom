@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import LoginForm from "@/components/forms/LoginForm";
 import styles from "@/components/sections/LoginSection.module.css";
 import SignupForm from "@/components/forms/SignupForm";
-import { useRefContext } from "@/context/RefContext";
+import { useRefContext } from "@/providers/RefContext";
 
 function LoginSection() {
   const [isSingUp, setIsSingUp] = useState(null);

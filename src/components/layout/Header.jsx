@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/components/layout/Header.module.css";
-import { useRefContext } from '@/context/RefContext';
+import { useRefContext } from '@/providers/RefContext';
 import { scrollToRef } from "@/utils/scrollUtils";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/redux/slices/authSlice";

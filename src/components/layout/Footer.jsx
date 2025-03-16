@@ -3,7 +3,7 @@ import styles from "@/components/layout/Footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { scrollToRef } from "@/utils/scrollUtils";
-import { useRefContext } from '@/context/RefContext';
+import { useRefContext } from '@/providers/RefContext';
 
 function Footer() {
   const { loginRef } = useRefContext()

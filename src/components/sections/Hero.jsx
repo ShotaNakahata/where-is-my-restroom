@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 import { scrollToRef } from "@/utils/scrollUtils";
-import { useRefContext } from '@/context/RefContext';
+import { useRefContext } from '@/providers/RefContext';
 import { useSelector,useDispatch} from "react-redux";
 import { logout } from "@/redux/slices/authSlice";
 
