@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import upload from "@/lib/multer";
+import { getLocationData } from "@/utils/getLocationData";
 import Toilet from "@/models/Toilet";
 import { connectToDatabase } from "@/lib/mongodb";
 
@@ -31,6 +31,9 @@ export async function POST(req) {
       return NextResponse.json({ error: "Rating must be between 1 and 5" }, { status: 400 });
     }
 
+    //国、緯度経度を取得
+    const { country, latitude, longitude } = await getLocationData(address)
+
     // ✅ `comments` は `Array` に格納（空文字なら空の配列）
     const comments = comment ? [comment] : [];
 
@@ -38,6 +41,9 @@ export async function POST(req) {
     const newToilet = await Toilet.create({
       name,
       address,
+      country,
+      latitude,
+      longitude,
       ratings: [rating], // ✅ `ratings` は配列として保存
       averageRating: rating, // ✅ `averageRating` は最初の `rating`
       comments, // ✅ `comments` は配列として保存
