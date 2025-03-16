@@ -49,15 +49,16 @@ function AddRatingForm() {
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setisModalOpen(false)} />}
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
-          <h2 className={`h2 ${formStyles.formH2}`}>Add Rating</h2>
+          <h2 className={`h2 ${formStyles.formH2} ${styles.title}`}>Add Rating</h2>
           <div className={`${styles.inputArea} grid `}>
             {/* Rsting */}
             <div className={formStyles.formContent}>
+              <label className={styles.label} htmlFor="rating">Rating</label>
               <StarRating />
             </div>
             {/* Comment */}
             <div className={formStyles.formContent}>
-              <label className={formStyles.label} htmlFor="comment">Comment</label>
+              <label className={styles.label} htmlFor="comment">Comment</label>
               <textarea className={formStyles.input} {...register("comment")} placeholder="Enter your comment here..." />
               {errors.name ? <span className={formStyles.error}>{errors.name.message}</span> : <span className={formStyles.errorsDefo}>-</span>}
             </div>

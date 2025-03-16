@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from "./ToiletInfo.module.css";
 import Image from "next/image";
+import Link  from "next/link";
 
 const ToietInfoEx = [{
-  id: 1,
+  id: "67d6ea4f1747c5842a9dff34",
   name: "梅田スカイビルトイレ",
   imgSrc: "/UmedaSkyBuilding.webp",
   alt: "梅田スカイビルトイレ image",
@@ -11,7 +12,7 @@ const ToietInfoEx = [{
   place: "1-1 Ofukacho, Kita Ward, Osaka City, Osaka Prefecture, Japan",
   rating: 5,
 }, {
-  id: 2,
+  id: "67d6ead51747c5842a9dff3a",
   name: "Taipei Main Station Toilet",
   imgSrc: "/taibeimetro-img.webp",
   alt: "Taipei Main Station Toilet image",
@@ -30,7 +31,7 @@ function ToiletInfo() {
       <div className={`container grid grid1col ${styles.mb}`}>
         {ToietInfoEx.map((toiletEx) => {
           return (
-            <div key={toiletEx.id} className={`${styles.toilet} box`}>
+            <Link href={`/toilet/detail/${toiletEx.id}`} key={toiletEx.id} className={`${styles.toilet} box`}>
               <div className={styles.toiletImg}>
                 <Image className={styles.img} src={toiletEx.imgSrc} alt={toiletEx.alt} width="350" height="233"style={{ width: "100%", height: "auto" }} />
               </div>
@@ -56,7 +57,7 @@ function ToiletInfo() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </Link>
           )
         })}
       </div>

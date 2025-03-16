@@ -4,10 +4,15 @@
 }
 .toilet{
   display: flex; /* ✅ 画像とテキストを横並びにする */
+  text-decoration: none;
+  color: #555;
   flex-direction: column;
   background-color: #fff;
   overflow: hidden;
   justify-content: center;
+}
+.toilet:hover{
+  transform: translateY(-1em);
 }
 .toiletImg {
   width: 100%;
