@@ -33,6 +33,7 @@ export async function POST(req) {
 
     //国、緯度経度を取得
     const { country, latitude, longitude } = await getLocationData(address)
+    console.log("国、緯度経度を表示", country, latitude, longitude)
 
     // ✅ `comments` は `Array` に格納（空文字なら空の配列）
     const comments = comment ? [comment] : [];

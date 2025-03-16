@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link  from "next/link";
 
 const ToietInfoEx = [{
-  id: "67d6ea4f1747c5842a9dff34",
+  id: "67d710af1f8cb3bade4d1f81",
   name: "梅田スカイビルトイレ",
   imgSrc: "/UmedaSkyBuilding.webp",
   alt: "梅田スカイビルトイレ image",
@@ -12,7 +12,7 @@ const ToietInfoEx = [{
   place: "1-1 Ofukacho, Kita Ward, Osaka City, Osaka Prefecture, Japan",
   rating: 5,
 }, {
-  id: "67d6ead51747c5842a9dff3a",
+  id: "67d710ca1f8cb3bade4d1f83",
   name: "Taipei Main Station Toilet",
   imgSrc: "/taibeimetro-img.webp",
   alt: "Taipei Main Station Toilet image",
