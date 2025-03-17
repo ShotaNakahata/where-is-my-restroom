@@ -2,7 +2,7 @@ import React from 'react'
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import styles from "./ToiletDetail.module.css";
-import { getToilets } from "@/lib/getToilet";
+import { getToilets } from "@/lib/fetchToilets";
 import AddRatingForm from "@/components/forms/AddRatingForm";
 
 async function ToiletDetail({ params }) {

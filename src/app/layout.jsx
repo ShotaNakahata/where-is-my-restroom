@@ -4,11 +4,6 @@ import { Rubik } from "next/font/google";
 import React from 'react'
 import Footer from "@/components/layout/Footer";
 import Providers from "@/providers/Providers";
-// import { Provider } from "react-redux";
-// import store from "@/redux/store";
-// import { RefProvider } from "@/providers/RefContext";
-// import AuthInitializer from "@/providers/AuthInitializer";
-// import QueryProvider from "@/providers/QueryProvider";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -17,20 +12,13 @@ const rubik = Rubik({
 });
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={rubik.className}>
       <body>
-        {/* <Provider store={store}> */}
-        {/* <RefProvider> */}
-        {/* <AuthInitializer /> */}
-        {/* <QueryProvider> */}
         <Providers>
           <Header />
           {children}
           <Footer />
         </Providers>
-        {/* </QueryProvider> */}
-        {/* </RefProvider> */}
-        {/* </Provider> */}
       </body>
     </html>
   );

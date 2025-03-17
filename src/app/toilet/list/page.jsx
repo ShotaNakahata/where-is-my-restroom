@@ -1,29 +1,42 @@
-import React from 'react'
-import ToiletCard from "@/components/card/ToiletCard";
-import styles from "@/app/toilet/list/toiletList.module.css";
-import { getToilets } from "@/lib/getToilet";
+// import React from 'react'
+// import { fetchToilets } from "@/lib/fetchToilets";
+// import ListPageClient from "@/components/toilet/ListPageClient";
+// import { HydrationBoundary, dehydrate, QueryClient } from "@tanstack/react-query";
+
+// async function ToiletListPage() {
+//   const queryClient = new QueryClient();
+//   await queryClient.prefetchQuery({
+//     queryKey: ["toilets"], 
+//     queryFn: fetchToilets, 
+//   });
+//   return (
+//     <HydrationBoundary state={dehydrate(queryClient)}>
+//       <ListPageClient/>
+//     </HydrationBoundary>
+//   )
+// }
+
+// export default ToiletListPage
+
+import { fetchToilets } from "@/lib/fetchToilets";
+import ListPageClient from "@/components/toilet/ListPageClient";
+import { HydrationBoundary, dehydrate, QueryClient } from "@tanstack/react-query";
 
 async function ToiletListPage() {
-  const toilets = await getToilets();
-  return (
-    <main className={`page`}>
-      <div className={`pageTextBox`}>
-        <h2 className="h2">Restroom List</h2>
-        <p className={`pageDescription`}>Find restrooms based on country, rating, and accessibility to suit your needs.</p>
-      </div>
+  const queryClient = new QueryClient();
 
-      {/* -----------------------------------------
-      filter項目を追加する 項目：国・評価・アクセシビリティ 
-      -----------------------------------------*/}
-      <div className={styles.cardBox}>
-        {toilets.map((toilet) => {
-          return (
-            <ToiletCard key={toilet._id} toilet={toilet} />
-          )
-        })}
-      </div>
-    </main>
-  )
+  await queryClient.prefetchQuery({
+    queryKey: ["toilets"],
+    queryFn: ()=>fetchToilets(),
+  });
+
+  console.log("🟢 [Server] Prefetched Toilets:", queryClient.getQueryData(["toilets"])); // ✅ キャッシュデータをログ出力
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ListPageClient />
+    </HydrationBoundary>
+  );
 }
 
-export default ToiletListPage
+export default ToiletListPage;
