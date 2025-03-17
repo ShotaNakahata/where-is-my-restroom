@@ -58,19 +58,6 @@ export async function POST(req) {
     return NextResponse.json({ error: "Failed to register toilet" }, { status: 500 });
   }
 }
-// ---------------------------
-
-// export async function GET() {
-//   try {
-//     console.log("🟢 [API] /api/toilets - GET request received");
-//     await connectToDatabase();
-//     const toilets = await Toilet.find().sort({ createdAt: -1 });
-//     return NextResponse.json(toilets, { status: 200 });
-//   } catch (error) {
-//     console.error("🔴 [ERROR] Fetching toilets failed:", error);
-//     return NextResponse.json({ error: "Failed to fetch toilets" }, { status: 500 });
-//   }
-// }
 
 export async function GET() {
   try {

@@ -1,23 +1,3 @@
-// import React from 'react'
-// import { fetchToilets } from "@/lib/fetchToilets";
-// import ListPageClient from "@/components/toilet/ListPageClient";
-// import { HydrationBoundary, dehydrate, QueryClient } from "@tanstack/react-query";
-
-// async function ToiletListPage() {
-//   const queryClient = new QueryClient();
-//   await queryClient.prefetchQuery({
-//     queryKey: ["toilets"], 
-//     queryFn: fetchToilets, 
-//   });
-//   return (
-//     <HydrationBoundary state={dehydrate(queryClient)}>
-//       <ListPageClient/>
-//     </HydrationBoundary>
-//   )
-// }
-
-// export default ToiletListPage
-
 import { fetchToilets } from "@/lib/fetchToilets";
 import ListPageClient from "@/components/toilet/ListPageClient";
 import { HydrationBoundary, dehydrate, QueryClient } from "@tanstack/react-query";

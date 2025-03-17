@@ -1,0 +1,9 @@
+.filterContainer{
+  background-color: antiquewhite;
+}
+.filter{
+  font-size: 2rem;
+}
+.options{
+  display: none;
+}

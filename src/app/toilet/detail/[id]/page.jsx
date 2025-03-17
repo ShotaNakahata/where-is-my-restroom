@@ -2,15 +2,12 @@ import React from 'react'
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import styles from "./ToiletDetail.module.css";
-import { getToilets } from "@/lib/fetchToilets";
+import { fetchToilets } from "@/lib/fetchToilets";
 import AddRatingForm from "@/components/forms/AddRatingForm";
 
 async function ToiletDetail({ params }) {
-  console.log(params.id)
-  const toilet = await getToilets(params.id);
+  const toilet = await fetchToilets(params.id);
   if (!toilet) return notFound()
-  console.log("from ToiletDetail toilet :", toilet);
-  console.log("from ToiletDetail toilet.comments:", toilet.comments);
   return (
     <main className={`page`}>
       <h2 className={`h2 ${styles.pageTitle}`}>Toilet Detail</h2>
