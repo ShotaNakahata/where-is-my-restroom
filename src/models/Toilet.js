@@ -16,7 +16,7 @@ const ToiletSchema = new mongoose.Schema({
 // ✅ `ratings` の平均値を計算するメソッド（必ず `rating` は存在する前提）
 ToiletSchema.methods.updateAverageRating = async function () {
   const total = this.ratings.reduce((sum, rating) => sum + rating, 0);
-  this.averageRating = total / this.ratings.length;
+  this.averageRating = parseFloat((total / this.ratings.length).toFixed(1));
   await this.save();
 };
 

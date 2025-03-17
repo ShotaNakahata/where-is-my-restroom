@@ -1,0 +1,193 @@
+
+.detailPage {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  background-color: antiquewhite;
+  font-size: 10px;
+}
+.positon {
+  position: relative;
+}
+.toiletType {
+  position: absolute;
+  font-size: 1.1rem;
+  top: 1rem;
+  left: 0rem;
+  display: inline-block;
+  padding: 0.6em 0.8em;
+  margin-bottom: 1.2em;
+  text-transform: uppercase;
+  color: #333;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.accessible {
+  background-color: #84d190;
+}
+.notAccessible {
+  background-color: #ffd43b;
+}
+.btnBox {
+  margin-top: -3rem;
+  margin-bottom: 4rem;
+  display: flex;
+  gap: 2rem;
+}
+.addRatingFrom {
+  background-color: #fff;
+}
+.btn {
+  display: inline-flex;
+  background-color: #e67e22;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s;
+  border: none;
+  text-align: center;
+  line-height: normal;
+}
+.btn:hover {
+  background-color: #cf711f;
+}
+.title {
+  padding-top: 4rem;
+  text-align: center;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem 3rem 2rem;
+  gap: 2rem;
+  line-height: 1.3;
+}
+.info {
+  font-weight: 400;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.span {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.commentsContainer h2 {
+  text-align: center;
+}
+.commentsContainer {
+  margin-top: 3rem;
+}
+.detailTextBox {
+  max-width: 60rem;
+  background-color: #fff;
+  padding: 0;
+  margin: 0 3rem;
+  overflow: hidden;
+  /* border: ; */
+}
+.comment {
+  font-size: 2rem;
+}
+.commentsBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.commentBox {
+  font-size: 1rem;
+  margin: 0 auto;
+  border: 0.07rem solid #555;
+  line-height: 1.4;
+  border-radius: 1rem;
+  padding: 4rem 4rem;
+  /* border-radius: ; */
+}
+
+/**************************/
+/* 576px */
+/**************************/
+@media (min-width: 576px) {
+  .toiletType {
+    top: 1rem;
+    left: -2rem;
+  }
+}
+/**************************/
+/* 700px */
+/**************************/
+@media (min-width: 700px) {
+  .detailTextBox {
+    grid-column: 1/3;
+    margin: 0 auto;
+  }
+  .addRatingForm {
+    min-width: 370px;
+    /* grid-column: 1/3; */
+  }
+  .commentsContainer {
+    /* grid-row: 1;
+    grid-column: 2/3; */
+    padding: 0 3rem;
+  }
+  .toiletType {
+    top: 1.2rem;
+    left: 1rem;
+  }
+  .detailPage {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3rem;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .toiletType {
+    top: 1.2rem;
+    left: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .detailTextBox {
+    grid-column: 1/2;
+    margin-left: 3rem;
+  }
+  .addRatingForm {
+    grid-row: 1;
+    grid-column: 2/3;
+    margin: auto 0;
+    /* grid-column: 1/3; */
+  }
+  .commentsContainer {
+    grid-column: 1/3;
+    padding: 0 3rem;
+  }
+  .toiletType {
+    top: 1.2rem;
+    left: 0rem;
+  }
+}
+@media (min-width: 900px) {
+  .toiletType {
+    top: 1.2rem;
+    left: -4rem;
+  }
+}
+@media (min-width: 1200px) {
+  .detailTextBox {
+    margin: 0 auto;
+  }
+  .addRatingForm {
+    width: 90%;
+    height: 80%;
+    margin: auto;
+  }
+  .commentsContainer {
+    padding: 0 3rem;
+  }
+}
