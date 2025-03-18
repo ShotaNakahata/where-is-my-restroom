@@ -10,6 +10,7 @@
     "delete-toilets": "node src/scripts/deleteAllToilets.mjs"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.6",
     "@reduxjs/toolkit": "^2.6.1",
     "@tanstack/react-query": "^5.68.0",
     "@tanstack/react-query-devtools": "^5.68.0",
