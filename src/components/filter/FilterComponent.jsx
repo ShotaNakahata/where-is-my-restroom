@@ -19,24 +19,30 @@ function FilterComponent() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>
-          <div >
-
+          <div>
             <div className={`${styles.optionTextContents}`}>
-              <h2 className={`h2`}>Option</h2>
+              <h2 className={`h2 ${styles.h2}`}>Option</h2>
             </div>
             <div className={styles.optionContents}>
               {/* ✅ `Top Rating` チェックボックス */}
               <div className={styles.option}>
-                <label className={`${styles.label}`} htmlFor="topRating">Top Rating:</label>
-                <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
+                <label className={`${styles.label}`} htmlFor="topRating">
+                  Top Rating:
+                  <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
+                </label>
+                <div className={`${styles.box}`}></div>
               </div>
               {/* ✅ `Accessible` チェックボックス */}
               <div className={styles.option}>
-                <label className={`${styles.label}`} htmlFor="topRating">Accessible:</label>
-                <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
+                <label className={`${styles.label}`} htmlFor="topRating">
+                  Accessible:
+                  <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
+                </label>
+                <div className={`${styles.box}`}></div>
               </div>
               {/* ✅ `Country` を `select` に変更 */}
               <div className={styles.option}>
+                <label className={`${styles.label}`} htmlFor="topRating">Country:</label>
                 <select className={`${styles.selectBox}`} name="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
                   <option value="">Select Country</option>
                   <option value="Japan">Japan</option>

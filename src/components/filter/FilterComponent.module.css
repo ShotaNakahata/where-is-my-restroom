@@ -1,28 +1,35 @@
-.filterContainer{
+.filterContainer {
   background-color: antiquewhite;
 }
-.filter{
+.filter {
   font-size: 2rem;
 }
 .icon {
   display: block;
   height: 4.3rem;
 }
-
+.checkBox{
+  display: none;
+}
+.box {
+  border: 0.13rem solid #000;
+  width: 1rem;
+  height: 1rem;
+}
 /**************************/
 /* OPTION DEFAULT*/
 /**************************/
-.options{
+.options {
   display: none;
 }
-.label{
+.label {
   font-size: 1.4rem;
   margin-right: 1rem;
 }
 /**************************/
 /* OPTION OPEN*/
 /**************************/
-.options.open{
+.options.open {
   position: fixed;
   top: 0;
   left: 0;
@@ -34,35 +41,138 @@
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
 }
-.optionContainer{
+.open .optionContainer {
   position: relative;
   background: white;
+  max-width: 419px !important;
   padding: 24px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 500px;
   width: 90%;
-  animation: fadeIn 0.3s ease-in-out; 
+  animation: fadeIn 0.3s ease-in-out;
 }
-.optionContents{
+.optionContents {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  align-items: center;
   margin-bottom: 3rem;
 }
-.closeBtn{
+.closeBtn {
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
-.optionTextContents{
-  
+.selectBox {
+  font-size: 1rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  background-color: #e67e22;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s;
+  border: none;
+  text-align: center;
+  line-height: normal;
+  margin-bottom: 3rem;
+}
+/**************************/
+/* 575px */
+/**************************/
+@media (min-width: 575px) {
+  /* .optionContainer{
+    display: none;
+  } */
+  /* .open .optionContainer{
+    display: none;
+  } */
+  .closeBtn {
+    display: none;
+  }
+  .checkBox {
+    display: none;
+  }
+  .filterContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .btnContainer {
+    display: none;
+  }
+  .options {
+    display: flex;
+  }
+  .option {
+    align-items: center;
+  }
+  .h2 {
+    display: none;
+  }
+  .label {
+    font-size: 2.4rem;
+    margin-right: 1rem;
+  }
+  .box {
+    border: 0.13rem solid #000;
+    width: 1.6rem;
+    height: 1.6rem;
+    /* width: 80%; */
+  }
+  .optionContents {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .selectBox {
+    font-size: 2rem;
+  }
+}
+
+/**************************/
+/* 575px */
+/**************************/
+@media (min-width: 768px) {
+  .optionContents {
+    gap: 3rem;
+  }
+}
+/**************************/
+/* 1000px */
+/**************************/
+@media (min-width: 1000px) {
+  .label {
+    font-size: 3rem;
+    margin-right: 1rem;
+  }
+  .optionContents {
+    gap: 5rem;
+  }
 }
 /**************************/
 /* MODAL*/
 /**************************/
-.modalOverlay{
+/* .modalOverlay{
   position: fixed;
   top: 0;
   left: 0;
@@ -83,7 +193,7 @@
   text-align: center;
   max-width: 500px;
   width: 90%;
-  animation: fadeIn 0.3s ease-in-out; /* フェードインアニメーション */
+  animation: fadeIn 0.3s ease-in-out; 
 }
 .modalH2{
   font-weight: 600;
@@ -97,12 +207,7 @@
   line-height: 1.5;
   text-align: center;
   margin-bottom: 4rem;
-}
-/**************************/
-/* */
-/**************************/
-
-
+} */
 
 /* .options{
   display: none;
@@ -116,55 +221,4 @@
   background-color: rgba(255, 255, 255, 0.91);
   width: 100%;
   height: 100vh;
-} */
-.option{
-  display: flex;
-  align-items: center;
-  
-}
-.checkBox{
-  height: 100%;
-}
-/* .closeBtn {
-  position: relative;
-  background: none;
-  z-index: 100;
-  border: none;
-} */
-.btnContainer{
-  display: flex;
-  justify-content: center;
-}
-.btn {
-  display: inline-flex;
-  background-color: #e67e22;
-  color: #fff;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 0.8rem 0.9rem;
-  border-radius: 0.7rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, opacity 0.2s;
-  border: none;
-  text-align: center;
-  line-height: normal;
-  margin-bottom: 3rem;
-}
-/* .hidden{
-  display: none;
-}
-.visible{
-  display: flex;
-}
-.options{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.91);
 } */
