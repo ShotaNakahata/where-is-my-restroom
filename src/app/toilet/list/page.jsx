@@ -7,7 +7,7 @@ async function ToiletListPage() {
 
   await queryClient.prefetchQuery({
     queryKey: ["toilets"],
-    queryFn: ()=>fetchToilets(),
+    queryFn: () => fetchToilets(),
   });
 
   console.log("🟢 [Server] Prefetched Toilets:", queryClient.getQueryData(["toilets"])); // ✅ キャッシュデータをログ出力

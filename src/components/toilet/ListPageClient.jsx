@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import ToiletCard from "@/components/card/ToiletCard";
 import styles from "@/app/toilet/list/toiletList.module.css";
 import { fetchToilets } from "@/lib/fetchToilets";
@@ -13,6 +13,23 @@ function ListPageClient() {
     staleTime: 300000, // 5分キャッシュ
   });
 
+  const [filters, setFilters] = useState({
+    topRating: false,
+    accessible: false,
+    country: "",
+  })
+
+  const filteredToilets = toilets.filter((toilet) => {
+    if (filters.topRating && toilet.averageRating < 5) return false;
+    if (filters.accessible && !toilet.isUniversal) return false;
+    if (filters.country && toilet.country !== filters.country) return false;
+    return true;
+  });
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  }
+
   if (isLoading) return <p>Loading toilets...</p>; // ✅ `isLoading` の間は `.map()` を実行しない
   if (error) return <p>Error loading toilets</p>;
 
@@ -22,11 +39,15 @@ function ListPageClient() {
         <h2 className="h2">Restroom List</h2>
         <p className={`pageDescription`}>Find restrooms based on country, rating, and accessibility to suit your needs.</p>
       </div>
-      <FilterComponent />
+      <FilterComponent filters={filters} onFilterChange={handleFilterChange} />
       <div className={styles.cardBox}>
-        {toilets?.map((toilet) => (
-          <ToiletCard key={toilet._id} toilet={toilet} />
-        ))}
+        {filteredToilets.length > 0 ? (
+          filteredToilets.map((toilet) => (
+            <ToiletCard key={toilet._id} toilet={toilet} />
+          ))
+        ) : (
+          <p>No results found.</p>
+        )}
       </div>
     </main>
   );
