@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import styles from "@/components/filter/FilterComponent.module.css";
+import { useDisableScroll } from "@/utils/useDisableScroll";
 
 function FilterComponent() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("");
+  useDisableScroll(isOpen);
   return (
     <div className={styles.filterContainer}>
       {/* Country Filter */}
@@ -19,21 +22,27 @@ function FilterComponent() {
           <div >
 
             <div className={`${styles.optionTextContents}`}>
-              <h2 className='h2'>Option</h2>
+              <h2 className={`h2`}>Option</h2>
             </div>
-
             <div className={styles.optionContents}>
+              {/* ✅ `Top Rating` チェックボックス */}
               <div className={styles.option}>
-                <label htmlFor="topRating">Top Rating:</label>
+                <label className={`${styles.label}`} htmlFor="topRating">Top Rating:</label>
                 <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
               </div>
+              {/* ✅ `Accessible` チェックボックス */}
               <div className={styles.option}>
-                <label htmlFor="topRating">Top Rating:</label>
+                <label className={`${styles.label}`} htmlFor="topRating">Accessible:</label>
                 <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
               </div>
+              {/* ✅ `Country` を `select` に変更 */}
               <div className={styles.option}>
-                <label htmlFor="topRating">Top Rating:</label>
-                <input className={`${styles.checkBox}`} name='topRating' type="checkbox" />
+                <select className={`${styles.selectBox}`} name="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
+                  <option value="">Select Country</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Taiwan">Taiwan</option>
+                  <option value="USA">USA</option>
+                </select>
               </div>
             </div>
 

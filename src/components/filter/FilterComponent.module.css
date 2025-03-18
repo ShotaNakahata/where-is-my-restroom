@@ -8,18 +8,20 @@
   display: block;
   height: 4.3rem;
 }
+
 /**************************/
 /* OPTION DEFAULT*/
 /**************************/
 .options{
   display: none;
 }
+.label{
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
 /**************************/
 /* OPTION OPEN*/
 /**************************/
-/* .btnContainer.open{
-  display: none;
-} */
 .options.open{
   position: fixed;
   top: 0;
@@ -47,11 +49,12 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 .closeBtn{
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1rem;
+  right: 1rem;
 }
 .optionTextContents{
   
