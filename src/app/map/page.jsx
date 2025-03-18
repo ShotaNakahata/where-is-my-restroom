@@ -10,7 +10,7 @@ async function MapPage() {
   // serverでpreFetch
   await queryClient.prefetchQuery({
     queryKey: ["toilets"],
-    queryFn: fetchToilets
+    queryFn: ()=>fetchToilets(),
   });
   // ✅ キャッシュデータをログ出力
   console.log("🟢 [Server] Prefetched Toilets:", queryClient.getQueryData(["toilets"]));

@@ -5,8 +5,8 @@ import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { fetchToilets } from "@/lib/fetchToilets";
 
 const mapContainerStyle = {
-  width: "100%",
-  height: "100vh",
+  width: "50%",
+  height: "50vh",
 };
 // デフォルトの中心座標（Osaka）
 const defaultCenter = {
@@ -20,16 +20,27 @@ function MapComponent() {
 
   const { data: toilets } = useQuery({
     queryKey: ["toilets"],
-    queryFn: fetchToilets,
+    queryFn: () => fetchToilets(),
     staleTime: 1000 * 60 * 5,
   });
+
+  console.log("🟢From MapComponent [toilets]", toilets)
 
   const memoizedMap = useMemo(() => {
     if (!isLoaded) return null
     return (
       <GoogleMap mapContainerStyle={mapContainerStyle} zoom={14} center={defaultCenter}>
         {toilets.map((toilet) => {
-          <Marker key={toilet._id} position={{ lat: toilet.lat, lng: toilet.lng }} />
+          // 🛠 `lat` / `lng` を `parseFloat()` で数値型に変換
+          const lat = parseFloat(toilet.latitude);
+          const lng = parseFloat(toilet.longitude);
+
+          // 🛠 `lat` / `lng` が有効な数値かチェック
+          if (isNaN(lat) || isNaN(lng)) {
+            console.error(`❌ 無効な緯度経度:`, toilet);
+            return null; // 無効なデータはスキップ
+          }
+          return <Marker key={toilet._id} position={{ lat, lng }} />
         })}
       </GoogleMap>
     )
