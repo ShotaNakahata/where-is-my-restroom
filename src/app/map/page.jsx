@@ -2,7 +2,8 @@ import React from 'react'
 import styles from "@/app/map/MapPage.module.css";
 import { fetchToilets } from "@/lib/fetchToilets";
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
-import MapComponent from "@/components/MapComponent/MapComponent";
+// import MapComponent from "@/components/MapComponent/MapComponent";
+import MapPageUI from "@/components/MapComponent/MapPageUI";
 
 async function MapPage() {
   const queryClient = new QueryClient()
@@ -17,7 +18,8 @@ async function MapPage() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <MapComponent />
+      {/* <MapComponent /> */}
+      <MapPageUI/>
     </HydrationBoundary>
   )
 }
