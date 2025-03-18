@@ -17,7 +17,7 @@ function ListPageClient() {
   if (error) return <p>Error loading toilets</p>;
 
   return (
-    <main className={`page`}>
+    <main className={`page ${styles.relative}`}>
       <div className={`pageTextBox`}>
         <h2 className="h2">Restroom List</h2>
         <p className={`pageDescription`}>Find restrooms based on country, rating, and accessibility to suit your needs.</p>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "@/components/common/Modal.module.css";
 
-function Modal({ message, description, btnMessage, onClose }) {
+function Modal({ message, description, btnMessage, onClose}) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
