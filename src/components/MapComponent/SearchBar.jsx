@@ -11,7 +11,7 @@ export default function SearchBar({ onPlaceSelected }) {
   // ✅ Google Maps API のロードを待つ
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    libraries, // ✅ 修正: 配列を固定
+    libraries, 
   });
 
   useEffect(() => {
