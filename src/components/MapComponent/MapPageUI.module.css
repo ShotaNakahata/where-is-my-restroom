@@ -1,3 +1,12 @@
 .textContainer{
-  
+  align-items: center;
+}
+.h2{
+  text-align: center;
+}
+@media(min-width:565px){
+  /* .description{
+    font-size: 2rem;
+    line-height: 1.2;
+  } */
 }

@@ -26,7 +26,7 @@ function Hero() {
             This website helps you quickly find nearby restrooms and key details. Accessible options make it convenient for those needing special facilities.
           </p>
           <div className={`${styles.btnBox}  grid3cols`}>
-            <button className={`btnLg`}>Map</button>
+            <Link href="/map" className={`btnLg`}>Map</Link>
             <Link href="/toilet/list" className={`btnLg`} role="button">List</Link>
             <Link href="/toilet/add" className={`btnLg`} role="button">Post</Link>
             {!isAuthenticated ?
