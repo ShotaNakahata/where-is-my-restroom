@@ -5,7 +5,8 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useGoogleMaps } from "@/providers/MapLoader";
 import styles from "@/components/MapComponent/MapComponent.module.css";
 import SearchBar from "@/components/MapComponent/SearchBar";
-import ToiletMarker  from "@/components/MapComponent/ToiletMarker";
+import ToiletMarker from "@/components/MapComponent/ToiletMarker";
+import ToiletModal from "@/components/common/ToiletModal";
 
 const mapContainerStyle = {
   width: "100%",
@@ -19,12 +20,13 @@ const defaultCenter = {
 
 function MapComponent() {
   const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
+  const [selectedToilet, setSelectedToilet] = useState(null)
   const { isLoaded, loadError } = useGoogleMaps(); // ✅ `Google Maps API` のロード状態を取得
 
   // ✅ `server-side prefetch` した `toilets` を `useQuery` で取得（再 fetch しない）
   const { data: toilets } = useQuery({
     queryKey: ["toilets"],
-    queryFn: ()=>fetchToilets(),
+    queryFn: () => fetchToilets(),
     staleTime: 1000 * 60 * 5, // キャッシュを5分間保持
   });
 
@@ -39,7 +41,7 @@ function MapComponent() {
           const lat = parseFloat(toilet.latitude);
           const lng = parseFloat(toilet.longitude);
           if (isNaN(lat) || isNaN(lng)) return null;
-          return <ToiletMarker key={toilet._id} toilet={toilet}/>;
+          return <ToiletMarker key={toilet._id} toilet={toilet} onClick={() => setSelectedToilet(toilet)}/>;
         })}
       </GoogleMap>
     );
@@ -51,6 +53,7 @@ function MapComponent() {
     <div className={`${styles.mapWrapper}`}>
       <SearchBar onPlaceSelected={setSelectedLocation} />
       {isLoaded ? memoizedMap : <p>Loading map...</p>}
+      {selectedToilet && <ToiletModal toilet={selectedToilet} btnMessage="close" onClose={() => setSelectedToilet(null)}/>}
     </div>
   );
 }

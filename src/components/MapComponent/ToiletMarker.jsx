@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import { Marker } from "@react-google-maps/api";
 
-export default function ToiletMarker({ toilet }) {
+export default function ToiletMarker({ toilet ,onClick}) {
   const markerIcon = useMemo(() => {
     const color = toilet.isUniversal ? "#001eff" : "#f60b0b"; // 緑 or 青
     return {
@@ -21,5 +21,5 @@ export default function ToiletMarker({ toilet }) {
   const lng = parseFloat(toilet.longitude);
   if (isNaN(lat) || isNaN(lng)) return null;
 
-  return <Marker position={{ lat, lng }} icon={markerIcon} />;
+  return <Marker position={{ lat, lng }} icon={markerIcon} onClick={onClick}/>;
 }
