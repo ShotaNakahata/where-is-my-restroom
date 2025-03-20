@@ -1,0 +1,40 @@
+.relative{
+  position: relative
+}
+.name {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+.mb {
+  margin-bottom: 3rem;
+}
+.detail {
+  font-size: 3.2em;
+}
+.modalIcon {
+  font-size: 4.4rem;
+  margin-right: 2rem;
+}
+.cardUI{
+  margin-bottom: 2.3rem;
+}
+.ModalBtn{
+  font-size: 1.6rem;
+  padding: 0.8rem 0.8rem;
+}
+.pt{
+  padding-top: 5rem;
+}
+.icon {
+  height: 4.3rem;
+}
+.closeIcon{
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.btnBox {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

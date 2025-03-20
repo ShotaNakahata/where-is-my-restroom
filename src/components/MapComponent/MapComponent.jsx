@@ -7,6 +7,7 @@ import styles from "@/components/MapComponent/MapComponent.module.css";
 import SearchBar from "@/components/MapComponent/SearchBar";
 import ToiletMarker from "@/components/MapComponent/ToiletMarker";
 import ToiletModal from "@/components/common/ToiletModal";
+import { useDisableScroll } from "@/utils/useDisableScroll";
 
 const mapContainerStyle = {
   width: "100%",
@@ -20,7 +21,8 @@ const defaultCenter = {
 
 function MapComponent() {
   const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
-  const [selectedToilet, setSelectedToilet] = useState(null)
+  const [selectedToilet, setSelectedToilet] = useState(null);
+  useDisableScroll(selectedToilet);
   const { isLoaded, loadError } = useGoogleMaps(); // ✅ `Google Maps API` のロード状態を取得
 
   // ✅ `server-side prefetch` した `toilets` を `useQuery` で取得（再 fetch しない）
