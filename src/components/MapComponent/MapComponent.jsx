@@ -5,6 +5,7 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useGoogleMaps } from "@/providers/MapLoader";
 import styles from "@/components/MapComponent/MapComponent.module.css";
 import SearchBar from "@/components/MapComponent/SearchBar";
+import ToiletMarker  from "@/components/MapComponent/ToiletMarker";
 
 const mapContainerStyle = {
   width: "100%",
@@ -38,7 +39,7 @@ function MapComponent() {
           const lat = parseFloat(toilet.latitude);
           const lng = parseFloat(toilet.longitude);
           if (isNaN(lat) || isNaN(lng)) return null;
-          return <Marker key={toilet._id} position={{ lat, lng }} />;
+          return <ToiletMarker key={toilet._id} toilet={toilet}/>;
         })}
       </GoogleMap>
     );
