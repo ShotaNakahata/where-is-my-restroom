@@ -1,11 +1,10 @@
-
 "use client";
 import React, { useState, useMemo } from "react";
-import { useQuery, QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { fetchToilets } from "@/lib/fetchToilets";
-import SearchBar from "@/components/MapComponent/SearchBar";
+import { useQuery } from "@tanstack/react-query";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import { useGoogleMaps } from "@/providers/MapLoader";
 import styles from "@/components/MapComponent/MapComponent.module.css";
+import SearchBar from "@/components/MapComponent/SearchBar";
 
 const mapContainerStyle = {
   width: "100%",
@@ -17,35 +16,15 @@ const defaultCenter = {
   lng: 135.5023,
 };
 
-const libraries = ["places"]; // ✅ `libraries` を固定化
-
-export async function getServerSideProps() {
-  const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
-    queryKey: ["toilets"], 
-    queryFn: ()=>fetchToilets(),
-  });
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
-
 function MapComponent() {
-  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
   const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
+  const { isLoaded, loadError } = useGoogleMaps(); // ✅ `Google Maps API` のロード状態を取得
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey,
-    libraries, // ✅ 修正: `libraries` を固定
-  });
-
+  // ✅ `server-side prefetch` した `toilets` を `useQuery` で取得（再 fetch しない）
   const { data: toilets } = useQuery({
     queryKey: ["toilets"],
-    queryFn: fetchToilets,
-    staleTime: 1000 * 60 * 5,
+    queryFn: ()=>fetchToilets(),
+    staleTime: 1000 * 60 * 5, // キャッシュを5分間保持
   });
 
   console.log("🟢 From MapComponent - Toilets:", toilets);
@@ -54,7 +33,7 @@ function MapComponent() {
   const memoizedMap = useMemo(() => {
     if (!isLoaded) return null;
     return (
-      <GoogleMap mapContainerStyle={mapContainerStyle} zoom={14} center={selectedLocation}>
+      <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={selectedLocation}>
         {toilets?.map((toilet) => {
           const lat = parseFloat(toilet.latitude);
           const lng = parseFloat(toilet.longitude);
@@ -69,16 +48,14 @@ function MapComponent() {
 
   return (
     <div className={`${styles.mapWrapper}`}>
-      <SearchBar onPlaceSelected={(location) => {
-        console.log("🟢 Updating Center to:", location);
-        setSelectedLocation(location);
-      }} />
+      <SearchBar onPlaceSelected={setSelectedLocation} />
       {isLoaded ? memoizedMap : <p>Loading map...</p>}
     </div>
   );
 }
 
 export default MapComponent;
+
 
 
 

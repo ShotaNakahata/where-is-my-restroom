@@ -1,27 +1,23 @@
-import React from 'react'
-import styles from "@/app/map/MapPage.module.css";
+import React from "react";
 import { fetchToilets } from "@/lib/fetchToilets";
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
-// import MapComponent from "@/components/MapComponent/MapComponent";
 import MapPageUI from "@/components/MapComponent/MapPageUI";
 
-async function MapPage() {
-  const queryClient = new QueryClient()
+// ✅ `server-side fetching` を `getServerSideProps` なしで実装
+export default async function MapPage() {
+  const queryClient = new QueryClient();
 
-  // serverでpreFetch
+  // ✅ `server-side` で `fetchToilets()` を直接実行してデータを取得
   await queryClient.prefetchQuery({
     queryKey: ["toilets"],
     queryFn: ()=>fetchToilets(),
   });
-  // ✅ キャッシュデータをログ出力
-  console.log("🟢 [Server] Prefetched Toilets:", queryClient.getQueryData(["toilets"]));
+
+  const dehydratedState = dehydrate(queryClient); // ✅ `client-side` に渡すキャッシュデータ
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      {/* <MapComponent /> */}
-      <MapPageUI/>
+    <HydrationBoundary state={dehydratedState}>
+      <MapPageUI />
     </HydrationBoundary>
-  )
+  );
 }
-
-export default MapPage
