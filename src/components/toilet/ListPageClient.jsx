@@ -5,8 +5,13 @@ import styles from "@/app/toilet/list/toiletList.module.css";
 import { fetchToilets } from "@/lib/fetchToilets";
 import { useQuery } from "@tanstack/react-query";
 import FilterComponent from "@/components/filter/FilterComponent";
+import LoginModal from "@/components/common/LoginModal";
+import Modal from "@/components/common/Modal";
 
 function ListPageClient() {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState();
   const { data: toilets = [], error, isLoading } = useQuery({
     queryKey: ["toilets"],
     queryFn: () => fetchToilets(),
@@ -29,12 +34,17 @@ function ListPageClient() {
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
   }
+  function handleLoginClose() {
+    setIsLoginOpen(false)
+  }
 
   if (isLoading) return <p>Loading toilets...</p>; // ✅ `isLoading` の間は `.map()` を実行しない
   if (error) return <p>Error loading toilets</p>;
 
   return (
     <main className={`page ${styles.relative}`}>
+      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
+      {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox`}>
         <h2 className="h2">Restroom List</h2>
         <p className={`pageDescription`}>Find restrooms based on country, rating, and accessibility to suit your needs.</p>
@@ -43,7 +53,11 @@ function ListPageClient() {
       <div className={styles.cardBox}>
         {filteredToilets.length > 0 ? (
           filteredToilets.map((toilet) => (
-            <ToiletCard key={toilet._id} toilet={toilet} />
+            <ToiletCard key={toilet._id}
+              toilet={toilet}
+              setIsLoginOpen={setIsLoginOpen}
+              setIsModalOpen={setIsModalOpen}
+              setModalData={setModalData} />
           ))
         ) : (
           <p>No results found.</p>
