@@ -20,7 +20,7 @@ const modalConfig = {
     btnMessage: "close",
   }
 }
-function SignupForm({ setIsSingUp, alert = null, isModal = false ,onCloseIsModal}) {
+function SignupForm({ setIsSingUp, alert = null, isModal = false, onCloseIsModal }) {
   const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
   const dispatch = useDispatch();
   // const [errorMessage, setErrorMessage] = useState("");
@@ -58,10 +58,18 @@ function SignupForm({ setIsSingUp, alert = null, isModal = false ,onCloseIsModal
   const handleIsSingUp = () => {
     setIsSingUp(false)
   }
+  const allModalClose = () => {
+    if(isModal){
+      setisModalOpen(false);
+      onCloseIsModal()
+    }else{
+      setisModalOpen(false);
+    }
+  }
 
   return (
     <div className={formStyles.formContainer}>
-      {isModalOpen && modalData && <Modal {...modalData} onClose={() => setisModalOpen(false)} />}
+      {isModalOpen && modalData && <Modal {...modalData} onClose={() => allModalClose()} />}
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
           {isModal && <div className={`${formStyles.closeIcon}`} onClick={() => onCloseIsModal()}>

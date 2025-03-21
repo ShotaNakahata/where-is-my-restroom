@@ -1,15 +1,17 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import AddRatingForm from "@/components/forms/AddRatingForm";
 import styles from "@/components/toilet/ToiletDetailClient.module.css";
 import { useSelector } from "react-redux";
 import LoginModal from "@/components/common/LoginModal";
+import Modal from "@/components/common/Modal";
+import { fetchAddFavorite } from "@/utils/fetchAddFavorite";
 
 function ToiletDetailClient({ initialToilet }) {
   const [toilet, setToilet] = useState(initialToilet);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth)
 
@@ -28,23 +30,35 @@ function ToiletDetailClient({ initialToilet }) {
   }
   async function handleAddFavorite() {
     if (!isAuthenticated) {
-      console.log("not login")
+      console.log("not login");
       setIsLoginOpen(true);
     } else {
       try {
         await fetchAddFavorite(user._id, toilet._id);
         setIsModalOpen(true);
+        setModalData({
+          message: "Added to Favorites!",
+          description: "This restroom has been added to your favorites.",
+          btnMessage: "OK",
+        })
         console.log("🟢 Favorite added successfully!");
       } catch (error) {
         setIsModalOpen(true);
+        setModalData({
+          message: "Failed to Add Favorite",
+          description: "An error occurred while adding the restroom to favorites.",
+          btnMessage: "Try Again",
+        })
         console.error("❌ Failed to add favorite:", error);
       }
     }
   }
+  
 
   return (
     <div className={`${styles.detailPage}`}>
-      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose}/>}
+      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
+      {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox box ${styles.detailTextBox}`}>
         <Image className={styles.img} src={toilet.image} alt="toilet image" width="100" height="100" style={{ width: "100%", height: "auto" }} />
         <div className={styles.positon}>

@@ -58,10 +58,18 @@ function LoginForm({ setIsSingUp, alert = null, isModal = false ,onCloseIsModal}
   const handleIsSingUp = () => {
     setIsSingUp(true)
   }
+  const allModalClose = () => {
+    if(isModal){
+      setisModalOpen(false);
+      onCloseIsModal()
+    }else{
+      setisModalOpen(false);
+    }
+  }
 
   return (
     <div className={formStyles.formContainer}>
-      {isModalOpen && modalData && <Modal {...modalData} onClose={() => setisModalOpen(false)} />}
+      {isModalOpen && modalData && <Modal {...modalData} onClose={() => allModalClose()}/>}
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
           {isModal && <div className={`${formStyles.closeIcon}`} onClick={() => onCloseIsModal()}>
