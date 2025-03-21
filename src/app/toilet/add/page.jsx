@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 import ToiletForm from "@/components/forms/ToiletForm";
 import styles from "@/app/toilet/add/toiletAdd.module.css";
 import Image from "next/image";
+
 
 function page() {
   return (

@@ -43,7 +43,7 @@ function ListPageClient() {
 
   return (
     <main className={`page ${styles.relative}`}>
-      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
+      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} alert="Please log in to add this toilet to your favorites."/>}
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox`}>
         <h2 className="h2">Restroom List</h2>

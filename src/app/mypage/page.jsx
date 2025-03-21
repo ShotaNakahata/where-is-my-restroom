@@ -1,16 +1,23 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "@/app/mypage/MyPage.module.css";
 import { useSelector } from 'react-redux';
 import { useQuery } from "@tanstack/react-query";
 import { fetchFavorites } from "@/lib/getFavorite";
 import ToiletCard from "@/components/card/ToiletCard";
+import LoginModal from "@/components/common/LoginModal";
+import Modal from "@/components/common/Modal";
 
 function MyPage() {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
+  useEffect(()=>{
+    if(!isAuthenticated){
+      setIsLoginOpen(true);
+    }
+  },[])
   function handleLoginClose() {
     setIsLoginOpen(false)
   }
@@ -29,7 +36,7 @@ function MyPage() {
 
   return (
     <main className={`page`}>
-      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
+      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} alert="You need to log in to access My Page."/>}
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox ${styles.titleBox}`}>
         <h2 className='h2'>My Page</h2>
