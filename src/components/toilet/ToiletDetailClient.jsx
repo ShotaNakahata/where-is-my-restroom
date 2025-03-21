@@ -6,14 +6,14 @@ import styles from "@/components/toilet/ToiletDetailClient.module.css";
 import { useSelector } from "react-redux";
 import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
-import { fetchAddFavorite } from "@/utils/fetchAddFavorite";
+import { addFavorite } from "@/utils/addFavorite";
 
 function ToiletDetailClient({ initialToilet }) {
   const [toilet, setToilet] = useState(initialToilet);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const { user, isAuthenticated } = useSelector((state) => state.auth)
+  const auth = useSelector((state) => state.auth)
 
   function handleRatingUpdate(newRating, newComment) {
     setToilet(prevToilet => ({
@@ -28,33 +28,6 @@ function ToiletDetailClient({ initialToilet }) {
   function handleLoginClose() {
     setIsLoginOpen(false)
   }
-  async function handleAddFavorite() {
-    if (!isAuthenticated) {
-      console.log("not login");
-      setIsLoginOpen(true);
-    } else {
-      try {
-        await fetchAddFavorite(user._id, toilet._id);
-        setIsModalOpen(true);
-        setModalData({
-          message: "Added to Favorites!",
-          description: "This restroom has been added to your favorites.",
-          btnMessage: "OK",
-        })
-        console.log("🟢 Favorite added successfully!");
-      } catch (error) {
-        setIsModalOpen(true);
-        setModalData({
-          message: "Failed to Add Favorite",
-          description: "An error occurred while adding the restroom to favorites.",
-          btnMessage: "Try Again",
-        })
-        console.error("❌ Failed to add favorite:", error);
-      }
-    }
-  }
-  
-
   return (
     <div className={`${styles.detailPage}`}>
       {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
@@ -77,7 +50,7 @@ function ToiletDetailClient({ initialToilet }) {
         </ul>
         <div className={`${styles.favoriteBtn}`}>
           <button className={`btnLg ${styles.favoriteBtn}`}
-            onClick={handleAddFavorite}>
+            onClick={() => addFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet})}>
             Add Favorite
           </button>
         </div>
