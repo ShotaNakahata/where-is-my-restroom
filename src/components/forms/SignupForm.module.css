@@ -10,3 +10,8 @@
   margin-top: 2rem;
   width: 100% !important;
 }
+.alert{
+  color: red;
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+}

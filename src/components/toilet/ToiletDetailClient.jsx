@@ -4,9 +4,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AddRatingForm from "@/components/forms/AddRatingForm";
 import styles from "@/components/toilet/ToiletDetailClient.module.css";
+import { useSelector } from "react-redux";
+import LoginModal from "@/components/common/LoginModal";
 
 function ToiletDetailClient({ initialToilet }) {
   const [toilet, setToilet] = useState(initialToilet);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const { user, isAuthenticated } = useSelector((state) => state.auth)
 
   function handleRatingUpdate(newRating, newComment) {
     setToilet(prevToilet => ({
@@ -18,9 +23,28 @@ function ToiletDetailClient({ initialToilet }) {
       comments: [...prevToilet.comments, newComment],
     }));
   }
+  function handleLoginClose() {
+    setIsLoginOpen(false)
+  }
+  async function handleAddFavorite() {
+    if (!isAuthenticated) {
+      console.log("not login")
+      setIsLoginOpen(true);
+    } else {
+      try {
+        await fetchAddFavorite(user._id, toilet._id);
+        setIsModalOpen(true);
+        console.log("🟢 Favorite added successfully!");
+      } catch (error) {
+        setIsModalOpen(true);
+        console.error("❌ Failed to add favorite:", error);
+      }
+    }
+  }
 
   return (
     <div className={`${styles.detailPage}`}>
+      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose}/>}
       <div className={`pageTextBox box ${styles.detailTextBox}`}>
         <Image className={styles.img} src={toilet.image} alt="toilet image" width="100" height="100" style={{ width: "100%", height: "auto" }} />
         <div className={styles.positon}>
@@ -37,6 +61,12 @@ function ToiletDetailClient({ initialToilet }) {
             <p className={`${styles.info}`}><span className={styles.span}>address:</span> {toilet.address}</p>
           </li>
         </ul>
+        <div className={`${styles.favoriteBtn}`}>
+          <button className={`btnLg ${styles.favoriteBtn}`}
+            onClick={handleAddFavorite}>
+            Add Favorite
+          </button>
+        </div>
       </div>
 
       {/* ✅ `onRatingAdded` を `AddRatingForm` に渡す */}

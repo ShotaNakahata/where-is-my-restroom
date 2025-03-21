@@ -17,6 +17,7 @@ function ToiletCard({toilet}) {
           </span>
           <p className={styles.toiletName}>{toilet.name}</p>
         </div>
+        
         <ul className={styles.cardUl}>
           <li className={styles.cardli}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="icon">

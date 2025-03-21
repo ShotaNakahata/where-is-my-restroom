@@ -3,3 +3,8 @@
   grid-template-columns: 1fr;
   row-gap: 1.3rem !important;
 }
+.alert{
+  color: red;
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+}

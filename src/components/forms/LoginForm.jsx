@@ -21,7 +21,7 @@ const modalConfig = {
   }
 }
 
-function LoginForm({ setIsSingUp }) {
+function LoginForm({ setIsSingUp, alert = null, isModal = false ,onCloseIsModal}) {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
   const dispatch = useDispatch();
   const [isModalOpen, setisModalOpen] = useState(false);
@@ -64,7 +64,13 @@ function LoginForm({ setIsSingUp }) {
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setisModalOpen(false)} />}
       <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${formStyles.formContents} `}>
+          {isModal && <div className={`${formStyles.closeIcon}`} onClick={() => onCloseIsModal()}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={`${formStyles.icon} ${formStyles.fixedIcon}`}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </div>}
           <h2 className={`h2 ${formStyles.formH2}`}>Login</h2>
+          {alert && <p className={styles.alert}>{alert}</p>}
           <div className={`${styles.loginArea} grid `}>
             {/* EMAIL */}
             <div className={formStyles.formContent}>
