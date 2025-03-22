@@ -11,7 +11,7 @@ const favoriteSlice = createSlice({
     setFavorites: (state, action) => {
       state.favoriteToilets = action.payload;
     },
-    addFavorite: (state, action) => {
+    pushFavorite: (state, action) => {
       if (!state.favoriteToilets.find(toilet => toilet._id === action.payload._id)) {
         state.favoriteToilets.push(action.payload);
       }
@@ -25,5 +25,5 @@ const favoriteSlice = createSlice({
   }
 });
 
-export const { setFavorites, addFavorite, removeFavorite, clearFavorites } = favoriteSlice.actions;
+export const { setFavorites, pushFavorite, removeFavorite, clearFavorites } = favoriteSlice.actions;
 export default favoriteSlice.reducer;

@@ -8,40 +8,17 @@ import FilterComponent from "@/components/filter/FilterComponent";
 import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
 import { useInitFavoriteFetch } from "@/hooks/useInitFavoriteFetch";
-// import { fetchFavorites } from "@/lib/getFavorite";
-// import { useDispatch, useSelector } from "react-redux";
-// import { setFavorites } from "@/redux/slices/favoriteSlice";
 
 function ListPageClient() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
-  // const auth = useSelector((state) => state.auth);
-  // const {favoriteToilets} = useSelector((state) => state.favorite);
   const { data: toilets = [], error, isLoading } = useQuery({
     queryKey: ["toilets"],
     queryFn: () => fetchToilets(),
     staleTime: 300000, // 5分キャッシュ
   });
   useInitFavoriteFetch();
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log("form listPageClient:「start useEffect fetchFavorite」");
-  //   if (
-  //     auth.isAuthenticated &&
-  //     auth.user?._id &&
-  //     (!favoriteToilets || favoriteToilets.length === 0) // ← すでにあるなら fetch しない
-  //   ) {
-  //     console.log("First fetch Favorite and save on redux")
-  //     fetchFavorites(auth.user._id)
-  //       .then((favorites) => dispatch(setFavorites(favorites)))
-  //       .catch((err) => {
-  //         console.error("❌ Failed to load favorites:", err);
-  //       });
-  //   }
-  //   console.log("after useEffect fetchFavorite:[favoriteToilets]", favoriteToilets)
-  // }, [auth.isAuthenticated, auth.user?._id, favoriteToilets, dispatch]);
 
   const [filters, setFilters] = useState({
     topRating: false,

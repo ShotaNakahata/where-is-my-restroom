@@ -4,12 +4,15 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchAddFavorite } from "@/utils/fetchAddFavorite";
+import { useDispatch } from "react-redux";
+import { pushFavorite } from "@/redux/slices/favoriteSlice";
 
 export function useFavoriteAction() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const addFavorite = async (toilet) => {
     if (!auth.isAuthenticated) {
@@ -17,6 +20,7 @@ export function useFavoriteAction() {
     } else {
       try {
         await fetchAddFavorite(auth.user._id, toilet._id);
+        dispatch(pushFavorite(toilet));
         setModalData({
           message: "Added to Favorites!",
           description: "This restroom has been added to your favorites.",

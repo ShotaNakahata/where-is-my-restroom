@@ -3,10 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "@/components/card/ToiletCard.module.css";
 import { addFavorite } from "@/utils/addFavorite";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
   const auth = useSelector((state) => state.auth);
+  const { favoriteToilets } = useSelector((state) => state.favorite);
+  const isFavorite = favoriteToilets?.some(fav => fav._id === toilet._id);
+  const dispatch = useDispatch();
+
   return (
     <div key={toilet._id} className={`${styles.toilet} box`}>
       <Link href={`/toilet/detail/${toilet._id}`} className={`${styles.notLink}`}>
@@ -40,9 +44,9 @@ function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
         </div>
       </Link>
       <div className={`${styles.favoriteBtn}`}>
-        <button className={`btnLg ${styles.favoriteBtn}`}
-          onClick={() => addFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet })}>
-          Add Favorite
+        <button className={`btnLg ${styles.favoriteBtn} ${isFavorite && styles.isFavorite}`}
+          onClick={() => addFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet,dispatch })}>
+          {isFavorite ? "Remove Favorite" : "Add Favorite"}
         </button>
       </div>
     </div>
