@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/components/card/ToiletCard.module.css";
-import { addFavorite } from "@/utils/addFavorite";
+import { toggleFavorite } from "@/utils/toggleFavorite";
 import { useDispatch, useSelector } from 'react-redux';
 
 function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
@@ -45,7 +45,7 @@ function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
       </Link>
       <div className={`${styles.favoriteBtn}`}>
         <button className={`btnLg ${styles.favoriteBtn} ${isFavorite && styles.isFavorite}`}
-          onClick={() => addFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet,dispatch })}>
+          onClick={() => toggleFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet, dispatch, isFavorite })}>
           {isFavorite ? "Remove Favorite" : "Add Favorite"}
         </button>
       </div>

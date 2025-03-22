@@ -3,15 +3,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AddRatingForm from "@/components/forms/AddRatingForm";
 import styles from "@/components/toilet/ToiletDetailClient.module.css";
-// import { useSelector } from "react-redux";
 import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
-// import { addFavorite } from "@/utils/addFavorite";
 import { useFavoriteAction } from "@/hooks/useFavoriteAction";
 
 function ToiletDetailClient({ initialToilet }) {
   const [toilet, setToilet] = useState(initialToilet);
-  // const auth = useSelector((state) => state.auth);
   const {
     isLoginOpen,
     isModalOpen,
