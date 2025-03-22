@@ -7,13 +7,24 @@ import { useRefContext } from '@/providers/RefContext';
 import { scrollToRef } from "@/utils/scrollUtils";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/redux/slices/authSlice";
+import { usePathname } from "next/navigation";
+import LoginModal from "@/components/common/LoginModal";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { loginRef } = useRefContext();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const pathName = usePathname()
 
+  function handleLoginClick() {
+    if(pathName==="/"){
+      scrollToRef(loginRef)
+    }else{
+      setIsLoginModalOpen(true);
+    }
+  }
   function handleLogout() {
     dispatch(logout())
     localStorage.removeItem("user");
@@ -21,6 +32,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
+      {isLoginModalOpen && <LoginModal onCloseIsModal={() => setIsLoginModalOpen(false)} />}
       <div className={styles.logoContainer}>
         <Link href="#">
           <Image className={styles.logo} src="/logo-sample.jpeg" alt='Logo img' width={90} height={68} />
@@ -51,7 +63,7 @@ function Header() {
           <li>
             {/* <a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> */}
             {!isAuthenticated ? 
-            <a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> 
+            <a onClick={handleLoginClick} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> 
             : <a onClick={handleLogout} className={`${styles.navLink} btnLg ${styles.login}`}>Logout</a>}
           </li>
         </ul>
