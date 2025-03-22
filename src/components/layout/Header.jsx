@@ -7,6 +7,7 @@ import { useRefContext } from '@/providers/RefContext';
 import { scrollToRef } from "@/utils/scrollUtils";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/redux/slices/authSlice";
+import { clearFavorites } from "@/redux/slices/favoriteSlice";
 import { usePathname } from "next/navigation";
 import LoginModal from "@/components/common/LoginModal";
 
@@ -26,7 +27,8 @@ function Header() {
     }
   }
   function handleLogout() {
-    dispatch(logout())
+    dispatch(logout());
+    dispatch(clearFavorites());
     localStorage.removeItem("user");
   }
 

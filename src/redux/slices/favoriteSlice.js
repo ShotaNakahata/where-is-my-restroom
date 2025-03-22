@@ -21,6 +21,7 @@ const favoriteSlice = createSlice({
     },    
     clearFavorites: (state) => {
       state.favoriteToilets = []
+      // console.log("favorite state is cleared [state]",state);
     }
   }
 });
