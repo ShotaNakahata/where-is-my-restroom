@@ -3,11 +3,26 @@ import modalStyles from "@/components/common/Modal.module.css";
 import cardStyles from "@/components/card/ToiletCard.module.css";
 import styles from "@/components/common/ToiletModal.module.css";
 import Link from "next/link";
+import { useFavoriteAction } from "@/hooks/useFavoriteAction";
+import Modal from "@/components/common/Modal";
+import LoginModal from "@/components/common/LoginModal";
 
 function ToiletModal({ btnMessage, onClose, toilet }) {
-  console.log("ToiletModal [toilet]",toilet)
+  const {
+    isLoginOpen,
+    isModalOpen,
+    modalData,
+    setIsLoginOpen,
+    setIsModalOpen,
+    addFavorite
+  } = useFavoriteAction();
+  function handleLoginClose() {
+    setIsLoginOpen(false)
+  }
   return (
     <div className={`${modalStyles.modalOverlay} `}>
+      {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
+      {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`${modalStyles.modalContent} ${styles.relative} ${styles.pt}`}>
         <div className={cardStyles.toiletTextInfo}>
           <div className={`${cardStyles.mainTileBox} ${styles.mb}`}>
@@ -22,7 +37,7 @@ function ToiletModal({ btnMessage, onClose, toilet }) {
             </span>
             <p className={`${cardStyles.toiletName} ${styles.name}`}>{toilet.name}</p>
             <div className={`${styles.btnBox}`}>
-              <button className={`${styles.ModalBtn} btnLg`}>Add Favorite</button>
+              <button className={`${styles.ModalBtn} btnLg`} onClick={() => addFavorite(toilet)}>Add Favorite</button>
               <Link href={`/toilet/detail/${toilet._id}`} className={`${styles.ModalBtn} btnLg`}>View details</Link>
             </div>
           </div>

@@ -3,17 +3,23 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AddRatingForm from "@/components/forms/AddRatingForm";
 import styles from "@/components/toilet/ToiletDetailClient.module.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
-import { addFavorite } from "@/utils/addFavorite";
+// import { addFavorite } from "@/utils/addFavorite";
+import { useFavoriteAction } from "@/hooks/useFavoriteAction";
 
 function ToiletDetailClient({ initialToilet }) {
   const [toilet, setToilet] = useState(initialToilet);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState();
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const auth = useSelector((state) => state.auth)
+  // const auth = useSelector((state) => state.auth);
+  const {
+    isLoginOpen,
+    isModalOpen,
+    modalData,
+    setIsLoginOpen,
+    setIsModalOpen,
+    addFavorite
+  } = useFavoriteAction();
 
   function handleRatingUpdate(newRating, newComment) {
     setToilet(prevToilet => ({
@@ -50,7 +56,7 @@ function ToiletDetailClient({ initialToilet }) {
         </ul>
         <div className={`${styles.favoriteBtn}`}>
           <button className={`btnLg ${styles.favoriteBtn}`}
-            onClick={() => addFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet})}>
+            onClick={() => addFavorite(toilet)}>
             Add Favorite
           </button>
         </div>
