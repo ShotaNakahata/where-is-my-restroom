@@ -1,4 +1,6 @@
 "use client";
+// add Favoriteをしてそのままmodal等を表示する
+// もしloginされていなかったらloginModalも表示
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchAddFavorite } from "@/utils/fetchAddFavorite";
