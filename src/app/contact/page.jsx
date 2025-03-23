@@ -52,7 +52,10 @@ function ContactPage() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.imgBox}>
-          <Image src="/hero.png" className={styles.contactImg} alt='contact img' width="290" height="286" />
+          <div className={styles.imageWrapper}>
+          <Image src="/contact/ContactImg.webp" className={styles.contactImg} alt='contact img' fill  />
+          {/* width="300" height="400" */}
+          </div>
         </div>
         <form className={`${formStyles.form} box`} onSubmit={handleSubmit(onSubmit)}>
           <div className={`${formStyles.formContents} `}>

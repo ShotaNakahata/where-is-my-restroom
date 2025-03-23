@@ -1,8 +1,8 @@
 .sectionHow{
-  background-color: aquamarine;
+  background-color: #faebd7;
 }
 .stepContainer{
-  background-color:#f8bebe;
+  background-color: #faebd7;
 }
 .featureImgBox{
   display: flex;
@@ -13,7 +13,7 @@
 .featureNum{
   font-size:7.4rem ;
   font-weight: 600;
-  color: #ddd;
+  color: #C9C9D7;
   margin-bottom: 1.2rem;
 }
 .featureTertiary{

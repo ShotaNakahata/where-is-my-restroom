@@ -1,5 +1,5 @@
 .contactPage {
-  /* background-color: rgb(231, 245, 171); */
+  background-color: #fdf2e9;
   padding: 7.5rem 0;
 }
 .contactContainer {
@@ -30,6 +30,28 @@
   display: none;
   visibility: hidden;
 }
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+@media (min-width: 768px){
+  .imgBox{
+    display: flex;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+  }
+  .contactImg{
+    object-fit: cover;
+  }
+  .contactContainer {
+    max-width: 130rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+  }
+}
 
 @media (min-width: 900px) {
   .contactPage {
@@ -43,9 +65,6 @@
     font-size: 2rem;
     line-height: 1.2;
   }
-  .contactContainer {
-    padding: 0 6rem;
-  }
 }
 @media (min-width: 1000px) {
   .contactPage {
@@ -53,12 +72,6 @@
   }
   .contactH2{
     margin-bottom: 5rem;
-  }
-  .contactContainer {
-    max-width: 130rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5rem;
   }
   .textBox{
     max-width: 130rem;
@@ -71,14 +84,5 @@
     font-size: 2.7rem;
     line-height: 1.1;
     text-align: center;
-  }
-  .imgBox{
-    display: flex;
-    visibility: visible;
-    justify-content: center;
-    align-items: center;
-  }
-  .contactImg{
-    width: 100%;
   }
 }
