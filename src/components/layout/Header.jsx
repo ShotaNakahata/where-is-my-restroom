@@ -54,7 +54,6 @@ function Header() {
       </div>
       <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
         <ul className={`${styles.navList} link`}>
-          {/* stateとlogin機能を準備したらWelcome Guestを書き換える "Rewrite 'Welcome Guest' after preparing state and login functionality."*/}
           <li className={`${styles.Welcome}`}>
             <Link href="/#" className={`${styles.navLink} ${styles.Welcome}`}>Welcome {!isAuthenticated ? "Guest" : user.name}</Link>
           </li>
@@ -63,7 +62,6 @@ function Header() {
           <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           <li><Link href="/mypage" className={styles.navLink}>MyPage</Link></li>
           <li>
-            {/* <a onClick={() => scrollToRef(loginRef)} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> */}
             {!isAuthenticated ? 
             <a onClick={handleLoginClick} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> 
             : <a onClick={handleLogout} className={`${styles.navLink} btnLg ${styles.login}`}>Logout</a>}

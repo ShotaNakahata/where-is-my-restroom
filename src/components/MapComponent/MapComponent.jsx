@@ -25,7 +25,6 @@ function MapComponent() {
   useDisableScroll(selectedToilet);
   const { isLoaded, loadError } = useGoogleMaps(); // ✅ `Google Maps API` のロード状態を取得
 
-  // ✅ `server-side prefetch` した `toilets` を `useQuery` で取得（再 fetch しない）
   const { data: toilets } = useQuery({
     queryKey: ["toilets"],
     queryFn: () => fetchToilets(),

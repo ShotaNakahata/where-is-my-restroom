@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import modalStyles from "@/components/common/Modal.module.css";
 import cardStyles from "@/components/card/ToiletCard.module.css";
@@ -6,6 +7,7 @@ import Link from "next/link";
 import { useFavoriteAction } from "@/hooks/useFavoriteAction";
 import Modal from "@/components/common/Modal";
 import LoginModal from "@/components/common/LoginModal";
+import { useSelector } from 'react-redux';
 
 function ToiletModal({ btnMessage, onClose, toilet }) {
   const {
@@ -14,8 +16,10 @@ function ToiletModal({ btnMessage, onClose, toilet }) {
     modalData,
     setIsLoginOpen,
     setIsModalOpen,
-    addFavorite
+    toggleFavorite
   } = useFavoriteAction();
+  const { favoriteToilets } = useSelector((state) => state.favorite);
+  const isFavorite = favoriteToilets.some((favorite) => favorite._id === toilet._id)
   function handleLoginClose() {
     setIsLoginOpen(false)
   }
@@ -37,7 +41,7 @@ function ToiletModal({ btnMessage, onClose, toilet }) {
             </span>
             <p className={`${cardStyles.toiletName} ${styles.name}`}>{toilet.name}</p>
             <div className={`${styles.btnBox}`}>
-              <button className={`${styles.ModalBtn} btnLg`} onClick={() => addFavorite(toilet)}>Add Favorite</button>
+              <button className={`${styles.ModalBtn} btnLg ${isFavorite && "isFavorite"}`} onClick={() => toggleFavorite(toilet, isFavorite)}>{isFavorite ? "Remove Favorite" : "Add Favorite"}</button>
               <Link href={`/toilet/detail/${toilet._id}`} className={`${styles.ModalBtn} btnLg`}>View details</Link>
             </div>
           </div>

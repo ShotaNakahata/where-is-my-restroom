@@ -153,6 +153,12 @@ body {
 .btnLg:hover {
   background-color: #cf711f;
 }
+.isFavorite{
+  background-color: #2980b9 !important;
+}
+.isFavorite:hover{
+  background-color: #2471a3 !important;
+}
 /**************************/
 /* DECORATION */
 /**************************/

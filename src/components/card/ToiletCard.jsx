@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
   const auth = useSelector((state) => state.auth);
   const { favoriteToilets } = useSelector((state) => state.favorite);
-  const isFavorite = favoriteToilets?.some(fav => fav._id === toilet._id);
+  const isFavorite = favoriteToilets?.some(fav => fav._id.toString() === toilet._id.toString());
   const dispatch = useDispatch();
 
   return (
@@ -44,7 +45,7 @@ function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
         </div>
       </Link>
       <div className={`${styles.favoriteBtn}`}>
-        <button className={`btnLg ${styles.favoriteBtn} ${isFavorite && styles.isFavorite}`}
+        <button className={`btnLg ${styles.favoriteBtn} ${isFavorite && "isFavorite"}`}
           onClick={() => toggleFavorite({ setIsLoginOpen, setIsModalOpen, setModalData, auth, toilet, dispatch, isFavorite })}>
           {isFavorite ? "Remove Favorite" : "Add Favorite"}
         </button>

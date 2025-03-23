@@ -1,24 +1,35 @@
 "use client";
-// add Favoriteをしてそのままmodal等を表示する
-// もしloginされていなかったらloginModalも表示
+// お気に入りの追加・削除 + モーダル制御 + Redux 更新
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchAddFavorite } from "@/utils/fetchAddFavorite";
-import { useDispatch } from "react-redux";
-import { pushFavorite } from "@/redux/slices/favoriteSlice";
+import { fetchRemoveFavorite } from "@/utils/fetchRemoveFavorite";
+import { pushFavorite, removeFavorite } from "@/redux/slices/favoriteSlice";
 
 export function useFavoriteAction() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
+
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const addFavorite = async (toilet) => {
+  const toggleFavorite = async (toilet, isFavorite) => {
     if (!auth.isAuthenticated) {
       setIsLoginOpen(true);
-    } else {
-      try {
+      return;
+    }
+
+    try {
+      if (isFavorite) {
+        await fetchRemoveFavorite(auth.user._id, toilet._id);
+        dispatch(removeFavorite(toilet._id));
+        setModalData({
+          message: "Removed from Favorites!",
+          description: "This restroom has been removed from your favorites.",
+          btnMessage: "OK",
+        });
+      } else {
         await fetchAddFavorite(auth.user._id, toilet._id);
         dispatch(pushFavorite(toilet));
         setModalData({
@@ -26,16 +37,17 @@ export function useFavoriteAction() {
           description: "This restroom has been added to your favorites.",
           btnMessage: "OK",
         });
-        setIsModalOpen(true);
-      } catch (error) {
-        setModalData({
-          message: "Failed to Add Favorite",
-          description: "An error occurred while adding the restroom to favorites.",
-          btnMessage: "Try Again",
-        });
-        setIsModalOpen(true);
-        console.error("❌ Failed to add favorite:", error);
       }
+
+      setIsModalOpen(true);
+    } catch (error) {
+      setModalData({
+        message: "Favorite Action Failed",
+        description: "An error occurred. Please try again later.",
+        btnMessage: "Close",
+      });
+      setIsModalOpen(true);
+      console.error("❌ Favorite toggle failed:", error);
     }
   };
 
@@ -45,6 +57,6 @@ export function useFavoriteAction() {
     modalData,
     setIsLoginOpen,
     setIsModalOpen,
-    addFavorite,
+    toggleFavorite,
   };
 }
