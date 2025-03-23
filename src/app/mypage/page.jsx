@@ -48,9 +48,6 @@ function MyPage() {
 
         <div className={`${styles.favoriteBox}`}>
           <h3 className={`h3 ${styles.h3}`}>Favorite Toilets</h3>
-          {/* {isLoading ? <p>Loading favorites...</p> : null}
-          {error ? <p>Error loading favorites.</p> : null} */}
-
           <div className={styles.cardBox}>
             {Array.isArray(favoriteToilets) && favoriteToilets.length > 0 ? (
               favoriteToilets.map((toilet) => (
@@ -61,7 +58,9 @@ function MyPage() {
                   setModalData={setModalData} />
               ))
             ) : (
-              <p>No favorites yet.</p>
+              <div className={`${styles.LoadingContent}`}>
+                <p className={`${styles.LoadingText}`}>No favorites yet.</p>
+              </div>
             )}
           </div>
         </div>
