@@ -6,6 +6,7 @@ import ToiletCard from "@/components/card/ToiletCard";
 import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
 import { useInitFavoriteFetch } from "@/hooks/useInitFavoriteFetch";
+import { useDisableScroll } from "@/utils/useDisableScroll";
 
 function MyPage() {
   useInitFavoriteFetch();
@@ -14,6 +15,7 @@ function MyPage() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
+  useDisableScroll(isLoginOpen || isModalOpen);
   useEffect(() => {
     if (!isAuthenticated) {
       setIsLoginOpen(true);
@@ -33,12 +35,15 @@ function MyPage() {
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox ${styles.titleBox}`}>
         <h2 className='h2'>My Page</h2>
-        <p className={`pageDescription`}>View and manage your profile and favorite toilets easily in My Page.</p>
+        <p className={`pageDescription ${styles.subHeading}`}>View and manage your profile and favorite toilets easily in My Page.</p>
       </div>
       <div className={`${styles.contentsBox}`}>
-        <div className={`${styles.userInfoBox}`}>
-          <h3 className={`${styles.userInfo}`}>User Name: {displayUser.name}</h3>
-          <p className={`${styles.userInfo}`}>Email: {displayUser.email}</p>
+        <div className={`${styles.userInfoContainer}`}>
+          <p className={`h3 ${styles.h3}`}>User Information</p>
+          <div className={`${styles.userInfoBox}`}>
+            <h3 className={`${styles.userInfo}`}>User Name: {displayUser.name}</h3>
+            <p className={`${styles.userInfo}`}>Email: {displayUser.email}</p>
+          </div>
         </div>
 
         <div className={`${styles.favoriteBox}`}>

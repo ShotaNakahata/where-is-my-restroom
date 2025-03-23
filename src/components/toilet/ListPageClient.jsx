@@ -1,17 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ToiletCard from "@/components/card/ToiletCard";
-import styles from "@/app/toilet/list/toiletList.module.css";
+import listStyles from "@/app/toilet/list/toiletList.module.css";
+import styles from "@/components/toilet/ListPageClient.module.css";
 import { fetchToilets } from "@/lib/fetchToilets";
 import { useQuery } from "@tanstack/react-query";
 import FilterComponent from "@/components/filter/FilterComponent";
 import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
 import { useInitFavoriteFetch } from "@/hooks/useInitFavoriteFetch";
+import { useDisableScroll } from "@/utils/useDisableScroll";
 
 function ListPageClient() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useDisableScroll(isLoginOpen||isModalOpen);
+
   const [modalData, setModalData] = useState();
   const { data: toilets = [], error, isLoading } = useQuery({
     queryKey: ["toilets"],
@@ -44,15 +48,15 @@ function ListPageClient() {
   if (error) return <p>Error loading toilets</p>;
 
   return (
-    <main className={`page ${styles.relative}`}>
+    <main className={`page ${listStyles.relative}`}>
       {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} alert="Please log in to add this toilet to your favorites." />}
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox`}>
         <h2 className="h2">Restroom List</h2>
-        <p className={`pageDescription`}>Find restrooms based on country, rating, and accessibility to suit your needs.</p>
+        <p className={`pageDescription ${styles.subHeading}`}>Find restrooms based on country, rating, and accessibility to suit your needs.</p>
       </div>
       <FilterComponent filters={filters} onFilterChange={handleFilterChange} />
-      <div className={styles.cardBox}>
+      <div className={listStyles.cardBox}>
         {filteredToilets.length > 0 ? (
           filteredToilets.map((toilet) => (
             <ToiletCard key={toilet._id}
