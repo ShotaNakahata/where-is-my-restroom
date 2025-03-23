@@ -1,9 +1,8 @@
-
 .detailPage {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 3rem;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   font-size: 10px;
 }
 .positon {
@@ -82,7 +81,14 @@
   text-align: center;
 }
 .commentsContainer {
+  margin: 0 3rem;
   margin-top: 3rem;
+}
+.line {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 0.05rem solid #333;
 }
 .detailTextBox {
   max-width: 60rem;
@@ -98,26 +104,34 @@
 .commentsBox {
   display: flex;
   flex-direction: column;
+  row-gap: 2rem;
   align-items: center;
+  padding: 0 2rem;
 }
 .commentBox {
-  font-size: 1rem;
-  margin: 0 auto;
-  border: 0.07rem solid #555;
-  line-height: 1.4;
+  background-color: #fff;
+  width: 100%;
+  max-width: 83rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  border: 0.3rem solid #cf711f;
   border-radius: 1rem;
-  padding: 4rem 4rem;
-  /* border-radius: ; */
+  /* margin: 0 5rem 3rem 5rem; */
 }
-.favoriteBtn{
+.favoriteBtn {
   width: 100%;
 }
 
-.favoriteBtn{
-  border-radius:unset;
+.favoriteBtn {
+  border-radius: unset;
   width: 100%;
-  /* font-size: 1.8rem;
-  padding: 0.8rem 0.3rem; */
+}
+.rating {
+  color: gold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 /**************************/
 /* 576px */
@@ -133,16 +147,18 @@
 /**************************/
 @media (min-width: 700px) {
   .detailTextBox {
-    grid-column: 1/3;
+    /* grid-column: 1/3; */
     margin: 0 auto;
   }
   .addRatingForm {
+    margin: auto 0;
     min-width: 370px;
     /* grid-column: 1/3; */
   }
   .commentsContainer {
     /* grid-row: 1;
     grid-column: 2/3; */
+    grid-column: 1/3;
     padding: 0 3rem;
   }
   .toiletType {
@@ -151,7 +167,8 @@
   }
   .detailPage {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 3rem;
+    row-gap: 7rem;
+    padding: 0 2rem;
   }
   .title {
     font-size: 3rem;
@@ -161,6 +178,9 @@
     left: 1rem;
   }
 }
+/**************************/
+/* 768px */
+/**************************/
 @media (min-width: 768px) {
   .detailTextBox {
     grid-column: 1/2;
@@ -169,11 +189,9 @@
   .addRatingForm {
     grid-row: 1;
     grid-column: 2/3;
-    margin: auto 0;
-    /* grid-column: 1/3; */
   }
   .commentsContainer {
-    grid-column: 1/3;
+    padding: 4rem 3rem 0;
     padding: 0 3rem;
   }
   .toiletType {
@@ -181,19 +199,45 @@
     left: 0rem;
   }
 }
+/**************************/
+/* 900px */
+/**************************/
 @media (min-width: 900px) {
+  .rating {
+    font-size: 2.5rem;
+    margin-bottom: 1.3rem;
+  }
+  .comment {
+    font-size: 2.2rem;
+  }
   .toiletType {
     top: 1.2rem;
     left: -4rem;
   }
 }
+/**************************/
+/* 1000px */
+/**************************/
+@media (min-width: 1000px) {
+  .commentsBox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem
+    ;
+  }
+  .commentBox {
+    min-height: 14rem;
+  }
+}
+/**************************/
+/* 1200px */
+/**************************/
 @media (min-width: 1200px) {
   .detailTextBox {
     margin: 0 auto;
   }
   .addRatingForm {
     width: 90%;
-    height: 80%;
     margin: auto;
   }
   .commentsContainer {

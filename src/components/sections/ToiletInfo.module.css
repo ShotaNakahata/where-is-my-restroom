@@ -1,6 +1,6 @@
 .sectionToileInfo{
   padding: 9.6rem 0;
-  background:lightgreen;
+  background-color: antiquewhite;
 }
 .toilet{
   display: flex; /* ✅ 画像とテキストを横並びにする */
@@ -70,6 +70,12 @@
 .mb.container {
   padding: 0 4rem;
 }
+.line {
+  max-width: 50rem;
+  margin: 10rem auto 0;
+  padding-top:0 2rem;
+  border-top: 0.05rem solid #333;
+}
 /**************************/
 /* ABOVE 590px (small Tablets & above) */
 /**************************/
@@ -99,6 +105,14 @@
   }
   .sectionToileInfo .container{
     padding: 0 4rem;
+  }
+}
+/**************************/
+/* ABOVE 1000px  */
+/**************************/
+@media (min-width: 1000px){
+  .line {
+    max-width: 90rem;
   }
 }
 /**************************/

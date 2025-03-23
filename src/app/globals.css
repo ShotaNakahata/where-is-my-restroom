@@ -181,6 +181,7 @@ body {
 /**************************/
 .page {
   /* padding: 7.5rem 0; */
+  background-color: antiquewhite;
   padding: 4rem 0;
 }
 .pageTextBox {

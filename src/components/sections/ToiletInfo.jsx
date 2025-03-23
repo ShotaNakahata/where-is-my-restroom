@@ -64,6 +64,7 @@ function ToiletInfo() {
       <div className={`container flexCenter`}>
       <Link href={"/toilet/list"} className={`btnLg ${styles.toiletBtn}`}>Find nearby restrooms</Link>
       </div>
+      <div className={`${styles.line}`}></div>
     </section>
   )
 }

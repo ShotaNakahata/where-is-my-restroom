@@ -65,10 +65,12 @@ function ToiletDetailClient({ initialToilet }) {
       </div>
 
       <div className={styles.commentsContainer}>
-        <h2 className={`h2 `}>Comments</h2>
+        <div className={`${styles.line}`}></div>
+        <h2 className={`h2 ${styles.h2}`}>Comments</h2>
         <div className={styles.commentsBox}>
           {toilet.comments.map((comment, index) => (
             <div className={styles.commentBox} key={index}>
+              <p className={styles.rating}>{"★".repeat(toilet.ratings[index])}</p>
               <p className={styles.comment}>{comment}</p>
             </div>
           ))}
