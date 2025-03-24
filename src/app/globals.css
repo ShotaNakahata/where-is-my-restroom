@@ -30,7 +30,7 @@ body {
 /* SPACING */
 /**************************/
 .sectionP{
-  padding: 9.6rem 0;
+  padding: 6.6rem 0;
 }
 
 /**************************/
@@ -205,15 +205,14 @@ body {
   list-style: none;
 }
 /**************************/
-/* ABOVE 590px (Tablets & above) */
+/* LINE */
 /**************************/
-/* @media(min-width: 59rem) {
-  .gap {
-    column-gap: 6.4rem;
-    row-gap: 9.6rem;
-  }
-} */
-
+.line {
+  max-width: 50rem;
+  margin: 10rem auto 0;
+  padding-top:0 2rem;
+  border-top: 0.05rem solid #333;
+}
 /**************************/
 /* ABOVE 590px (small Tablets & above) */
 /**************************/
@@ -286,5 +285,8 @@ body {
   .h3{
     margin-bottom: 2.2rem;
     font-size: 2.6rem;
+  }
+  .line {
+    max-width: 90rem;
   }
 }

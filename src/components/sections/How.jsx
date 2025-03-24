@@ -64,6 +64,7 @@ export default function How() {
           )
         })}
       </div>
+      <div className={`line`}></div>
     </section>
   )
 }

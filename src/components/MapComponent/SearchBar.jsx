@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Autocomplete } from "@react-google-maps/api";
 import { useGoogleMaps } from "@/providers/MapLoader";
+import styles from "@/components/MapComponent/SearchBar.module.css";
 
 export default function SearchBar({ onPlaceSelected }) {
   const [query, setQuery] = useState("");
@@ -88,8 +89,8 @@ export default function SearchBar({ onPlaceSelected }) {
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleSearch}
         placeholder="Search for a location"
+        className={`${styles.barInput}`}
         style={{
-          width: "300px",
           padding: "10px",
           borderRadius: "5px",
           border: "1px solid #ccc",
