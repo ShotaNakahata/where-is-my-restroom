@@ -26,7 +26,7 @@
   line-height: 1.5;
   text-align: center;
 }
-.imgBox{
+.imgBox {
   display: none;
   visibility: hidden;
 }
@@ -35,15 +35,17 @@
   width: 100%;
   aspect-ratio: 3 / 4;
 }
-@media (min-width: 768px){
-  .imgBox{
+@media (min-width: 768px) {
+  .imgBox {
     display: flex;
     visibility: visible;
     justify-content: center;
     align-items: center;
   }
-  .contactImg{
+  .contactImg {
     object-fit: cover;
+    border-radius: 1.4rem;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.122);
   }
   .contactContainer {
     max-width: 130rem;
@@ -68,19 +70,19 @@
 }
 @media (min-width: 1000px) {
   .contactPage {
-    padding:14rem 0 9rem 0;
+    padding: 14rem 0 9rem 0;
   }
-  .contactH2{
+  .contactH2 {
     margin-bottom: 5rem;
   }
-  .textBox{
+  .textBox {
     max-width: 130rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 2.5rem;
   }
-  .description{
+  .description {
     font-size: 2.7rem;
     line-height: 1.1;
     text-align: center;

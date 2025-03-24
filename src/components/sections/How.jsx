@@ -5,32 +5,32 @@ import styles from "./How.module.css";
 const steps = [
   {
     id: 1,
-    imgSrc: "/app-screen-1.png",
-    keyword:"Map",
+    imgSrc: "/howItWorks/map.webp",
+    keyword: "Map",
     title: " Find Restrooms Easily",
     description:
       "Share your location to quickly find nearby restrooms. Accessible restrooms are shown in blue, and regular restrooms in red, helping you efficiently locate the best restroom based on your needs.",
   },
   {
     id: 2,
-    imgSrc: "/app-screen-1.png",
-    keyword:"List",
+    imgSrc: "/howItWorks/list.webp",
+    keyword: "List",
     title: " Filter & Find Restrooms Easily",
     description:
       "Search for restrooms in a list format. Use filters to find Accessible, Top Rated, or Nearby restrooms quickly and easily.",
   },
   {
     id: 3,
-    imgSrc: "/app-screen-1.png",
-    keyword:"Bookmark",
+    imgSrc: "/howItWorks/bookmark.webp",
+    keyword: "Bookmark",
     title: " Save & Access Your Favorite Toilets",
     description:
       "Save your favorite restrooms and manage them on My Page. With bookmarks, you can quickly find the toilets you like whenever you need them!",
   },
   {
     id: 4,
-    imgSrc: "/app-screen-1.png",
-    keyword:"Rate",
+    imgSrc: "/howItWorks/rating.webp",
+    keyword: "Rate",
     title: " Find the Best Restrooms with Reviews & Ratings",
     description:
       "Check ratings and share your experience to help others find the cleanest and best-equipped restrooms. See user comments for more reliability, making it easier to find a restroom that meets your needs!",
@@ -49,8 +49,10 @@ export default function How() {
         {steps.map((step) => {
           return (
             <div key={step.id} className={styles.stepContainer}>
-              <div className={styles.featureImgBox}>
-                <Image className={styles.img} src={step.imgSrc} width="100" height="200" alt={step.title} />
+              <div className={styles.imgBg}>
+                <div className={styles.featureImgBox}>
+                  <Image className={styles.img} src={step.imgSrc} width="100" height="200" alt={step.title} />
+                </div>
               </div>
               <div className={styles.featureTextBox}>
                 <p className={styles.featureNum}>{`0${step.id}`}</p>
