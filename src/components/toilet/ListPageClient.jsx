@@ -44,7 +44,7 @@ function ListPageClient() {
     setIsLoginOpen(false)
   }
 
-  if (isLoading) return <p>Loading toilets...</p>; // ✅ `isLoading` の間は `.map()` を実行しない
+  if (isLoading) return <p>Loading toilets...</p>; 
   if (error) return <p>Error loading toilets</p>;
 
   return (

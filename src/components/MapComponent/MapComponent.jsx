@@ -8,6 +8,7 @@ import SearchBar from "@/components/MapComponent/SearchBar";
 import ToiletMarker from "@/components/MapComponent/ToiletMarker";
 import ToiletModal from "@/components/common/ToiletModal";
 import { useDisableScroll } from "@/utils/useDisableScroll";
+import { fetchToilets } from "@/lib/fetchToilets";
 
 const mapContainerStyle = {
   width: "100%",
