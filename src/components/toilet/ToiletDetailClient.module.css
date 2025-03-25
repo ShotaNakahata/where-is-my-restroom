@@ -4,6 +4,8 @@
   row-gap: 3rem;
   /* background-color: antiquewhite; */
   font-size: 10px;
+  max-width: 47.4rem;
+  margin: 0 auto;
 }
 .positon {
   position: relative;
@@ -12,7 +14,7 @@
   position: absolute;
   font-size: 1.1rem;
   top: 1rem;
-  left: 0rem;
+  left: 1rem;
   display: inline-block;
   padding: 0.6em 0.8em;
   margin-bottom: 1.2em;
@@ -139,7 +141,7 @@
 @media (min-width: 576px) {
   .toiletType {
     top: 1rem;
-    left: -2rem;
+    left: 2rem;
   }
 }
 /**************************/
@@ -167,11 +169,14 @@
   }
   .detailPage {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 7rem;
+    max-width: none;
+    column-gap: 2rem;
+    row-gap: 5rem;
     padding: 0 2rem;
   }
   .title {
-    font-size: 3rem;
+    font-size: 2.7rem;
+    margin-bottom: 2rem !important;
   }
   .toiletType {
     top: 1.2rem;
@@ -194,9 +199,8 @@
     padding: 4rem 3rem 0;
     padding: 0 3rem;
   }
-  .toiletType {
-    top: 1.2rem;
-    left: 0rem;
+  .info{
+    font-size: 1.7rem;
   }
 }
 /**************************/
@@ -210,10 +214,13 @@
   .comment {
     font-size: 2.2rem;
   }
-  .toiletType {
+  .title{
+    padding-top: 6rem;
+  }
+  /* .toiletType {
     top: 1.2rem;
     left: -4rem;
-  }
+  } */
 }
 /**************************/
 /* 1000px */
@@ -222,25 +229,40 @@
   .commentsBox {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem
-    ;
+    gap: 2rem;
+  }
+  .detailTextBox {
+    margin: 0 auto;
+    min-height: 54.8rem;
   }
   .commentBox {
     min-height: 14rem;
+  }
+  .title{
+    font-size: 3.4rem;
+    padding-top: 6rem;
+    margin-bottom: 4rem !important;
+  }
+  .info{
+    font-size: 2rem;
   }
 }
 /**************************/
 /* 1200px */
 /**************************/
 @media (min-width: 1200px) {
-  .detailTextBox {
-    margin: 0 auto;
-  }
-  .addRatingForm {
+
+  /* .addRatingForm {
     width: 90%;
     margin: auto;
-  }
+  } */
   .commentsContainer {
     padding: 0 3rem;
+  }
+  .detailTextBox{
+    min-width: 43rem;
+  }
+  .detailPage{
+    padding: 0 7rem;
   }
 }

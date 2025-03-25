@@ -3,8 +3,9 @@ import { fetchToilets } from "@/lib/fetchToilets";
 import ToiletDetailClient from "@/components/toilet/ToiletDetailClient";
 import styles from "./ToiletDetail.module.css";
 
-async function ToiletDetail({ params }) {
-  const toilet = await fetchToilets(params.id);
+async function ToiletDetail(props) {
+  const { id } = props.params; 
+  const toilet = await fetchToilets(id);
   if (!toilet) return notFound();
 
   return (

@@ -24,14 +24,11 @@ function ListPageClient() {
     queryKey: ["toilets"],
     queryFn: () => fetchToilets(),
     staleTime: 300000,
-    // onSuccess: (data) => {
-    //   dispatch(setToilets(data));
-    // },
   });
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(setToilets(data));
-  },[data, dispatch]);
-  
+  }, [data, dispatch]);
+
   console.log("🟢 Redux内のtoilets:", toilets);
   useInitFavoriteFetch();
 
@@ -42,12 +39,12 @@ function ListPageClient() {
   })
 
   // const filteredToilets = toilets.filter((toilet) => {
-    const filteredToilets = (toilets ?? []).filter((toilet) => {
-      if (filters.topRating && toilet.averageRating < 5) return false;
-      if (filters.accessible && !toilet.isUniversal) return false;
-      if (filters.country && toilet.country !== filters.country) return false;
-      return true;
-    });
+  const filteredToilets = (toilets ?? []).filter((toilet) => {
+    if (filters.topRating && toilet.averageRating < 5) return false;
+    if (filters.accessible && !toilet.isUniversal) return false;
+    if (filters.country && toilet.country !== filters.country) return false;
+    return true;
+  });
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);

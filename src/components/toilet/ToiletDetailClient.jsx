@@ -35,7 +35,8 @@ function ToiletDetailClient({ initialToilet }) {
     <div className={`${styles.detailPage}`}>
       {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} />}
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
-      <div className={`pageTextBox box ${styles.detailTextBox}`}>
+      {/* pageTextBox */}
+      <div className={` box ${styles.detailTextBox}`}>
         <Image className={styles.img} src={toilet.image} alt="toilet image" width="100" height="100" style={{ width: "100%", height: "auto" }} />
         <div className={styles.positon}>
           <h2 className={`h2 ${styles.title}`}>{toilet.name}</h2>
