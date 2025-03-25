@@ -5,7 +5,7 @@ import { connectToDatabase } from "@/lib/mongodb";
 
 export const config = {
   api: {
-    bodyParser: false,  // ✅ `multer` を使うので `bodyParser` を無効化
+    bodyParser: false,  
   },
 };
 
