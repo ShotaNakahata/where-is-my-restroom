@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import Modal from "@/components/common/Modal";
 import LoginModal from "@/components/common/LoginModal";
 import StarRating from './rating/StarRating';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToilet } from "@/redux/slices/toiletsSlice";
 
 const modalConfig = {
   success: {
@@ -26,6 +27,7 @@ const modalConfig = {
 function ToiletForm() {
   const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting }, setValue } = useForm({ mode: 'onBlur' });
   const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setisModalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false)
@@ -42,7 +44,7 @@ function ToiletForm() {
         formData.append("name", data.name);
         formData.append("address", data.address);
         formData.append("rating", data.rating);
-        formData.append("comments", data.comment?.trim() || "No comment provided.");  
+        formData.append("comments", data.comment?.trim() || "No comment provided.");
         formData.append("isUniversal", data.isUniversal === "true");
 
         if (selectedImage) {
@@ -53,7 +55,7 @@ function ToiletForm() {
 
         const response = await fetch("/api/toilets", {
           method: "POST",
-          body: formData,  // ✅ `headers` は不要（`FormData` は `multipart/form-data` を自動設定）
+          body: formData,
         });
 
         console.log("🟢 [INFO] Received response:", response);
@@ -62,6 +64,8 @@ function ToiletForm() {
         console.log("🟢 [INFO] Response JSON:", result);
 
         if (response.ok) {
+          console.log("response ok and start dispatch(addToilet(formData));", result.toilet)
+          dispatch(addToilet(result.toilet));
           setModalData(modalConfig.success);
           reset();
         } else {
