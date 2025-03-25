@@ -2,11 +2,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "@/redux/slices/authSlice";
 import favoriteReducer from "@/redux/slices/favoriteSlice";
+import toiletsReducer from "@/redux/slices/toiletsSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    favorite:favoriteReducer
+    toilets:toiletsReducer,
+    favorite:favoriteReducer,
   }
 })
 

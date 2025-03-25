@@ -10,18 +10,29 @@ import LoginModal from "@/components/common/LoginModal";
 import Modal from "@/components/common/Modal";
 import { useInitFavoriteFetch } from "@/hooks/useInitFavoriteFetch";
 import { useDisableScroll } from "@/utils/useDisableScroll";
+import { useDispatch, useSelector } from "react-redux";
+import { setToilets } from "@/redux/slices/toiletsSlice";
 
 function ListPageClient() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  useDisableScroll(isLoginOpen||isModalOpen);
-
+  useDisableScroll(isLoginOpen || isModalOpen);
+  const dispatch = useDispatch();
+  const { toilets } = useSelector((state) => state.toilets);
   const [modalData, setModalData] = useState();
-  const { data: toilets = [], error, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: ["toilets"],
     queryFn: () => fetchToilets(),
-    staleTime: 300000, // 5分キャッシュ
+    staleTime: 300000,
+    // onSuccess: (data) => {
+    //   dispatch(setToilets(data));
+    // },
   });
+  useEffect(()=>{
+    dispatch(setToilets(data));
+  },[data, dispatch]);
+  
+  console.log("🟢 Redux内のtoilets:", toilets);
   useInitFavoriteFetch();
 
   const [filters, setFilters] = useState({
@@ -30,12 +41,13 @@ function ListPageClient() {
     country: "",
   })
 
-  const filteredToilets = toilets.filter((toilet) => {
-    if (filters.topRating && toilet.averageRating < 5) return false;
-    if (filters.accessible && !toilet.isUniversal) return false;
-    if (filters.country && toilet.country !== filters.country) return false;
-    return true;
-  });
+  // const filteredToilets = toilets.filter((toilet) => {
+    const filteredToilets = (toilets ?? []).filter((toilet) => {
+      if (filters.topRating && toilet.averageRating < 5) return false;
+      if (filters.accessible && !toilet.isUniversal) return false;
+      if (filters.country && toilet.country !== filters.country) return false;
+      return true;
+    });
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
@@ -44,7 +56,7 @@ function ListPageClient() {
     setIsLoginOpen(false)
   }
 
-  if (isLoading) return <p>Loading toilets...</p>; 
+  if (isLoading) return <p>Loading toilets...</p>;
   if (error) return <p>Error loading toilets</p>;
 
   return (

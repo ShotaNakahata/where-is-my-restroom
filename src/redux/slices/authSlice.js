@@ -4,14 +4,6 @@ const initialState = {
   user: null,  
   isAuthenticated: false,
 };
-//dipatchの例
-// dispatch(login(userData)) 
-// そのuserDataの内容は↓
-// const userData = {
-//   id: 1,
-//   name: "John Doe",
-//   email: "johndoe@example.com",
-// };
 const authSlice = createSlice({
   name: "auth",
   initialState,
