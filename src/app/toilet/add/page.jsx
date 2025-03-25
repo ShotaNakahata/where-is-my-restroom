@@ -12,16 +12,17 @@ function page() {
         <p className={styles.description}>We’d love to hear from you! Please fill out the form below to get in touch with us. Whether you have a question, feedback, or just want to say hi, we’re here to help.</p>
       </div>
       <div className={styles.addContainer}>
-        {/* <div className={styles.imgBox}>
-          <Image src="/addToilet/addToiletImg.webp" className={styles.contactImg} alt='contact img' width="290" height="286" />
-        </div> */}
         <div className={styles.imgBox}>
           <div className={styles.imageWrapper}>
             <Image src="/addToilet/addToiletImg.webp" className={styles.addImg} alt='contact img' fill />
-            {/* width="300" height="400" */}
           </div>
         </div>
         <div className={styles.form}>
+          {/* <div className={styles.imgBox}>
+            <div className={styles.imageWrapper}>
+              <Image src="/addToilet/addToiletImg.webp" className={styles.addImg} alt='contact img'  width="300" height="400" />
+            </div>
+          </div> */}
           <ToiletForm />
         </div>
       </div>

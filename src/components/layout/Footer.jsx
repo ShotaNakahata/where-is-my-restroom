@@ -13,7 +13,7 @@ function Footer() {
       <div className={`container grid grid3cols ${styles.gridgap}`}>
         {/* LOGO */}
         <div className={`${styles.logo}`}>
-          <Image src="/logo-sample.jpeg" alt='Logo img' width={90} height={68} />
+          <Image src="/logo.webp" alt='Logo img' width={90} height={68} />
         </div>
         {/* ACCOUNT */}
         <div className={styles.account}>

@@ -25,10 +25,6 @@
   line-height: 1.5;
   text-align: center;
 }
-/* .imgBox{
-  display: none;
-  visibility: hidden;
-} */
 .addImg {
   object-fit: cover;
   border-radius: 1.4rem;
@@ -60,7 +56,6 @@
     max-width: 130rem;
     display: grid;
     grid-template-columns: 1fr 1.3fr;
-    /* grid-template-columns: repeat(2,1fr); */
     gap: 4rem;
   }
 }
@@ -88,12 +83,6 @@
   .addH2 {
     margin-bottom: 5rem;
   }
-  /* .addContainer {
-    max-width: 150rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5rem;
-  } */
   .textBox {
     max-width: 130rem;
     display: flex;
@@ -117,3 +106,4 @@
     width: 100%;
   }
 }
+
