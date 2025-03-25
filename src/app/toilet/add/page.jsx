@@ -14,7 +14,7 @@ function page() {
       </div>
       <div className={styles.addContainer}>
         <div className={styles.imgBox}>
-          <Image src="/hero.png" className={styles.contactImg} alt='contact img' width="290" height="286" />
+          <Image src="/mainImg.webp" className={styles.contactImg} alt='contact img' width="290" height="286" />
         </div>
         <div className={styles.form}>
           <ToiletForm />
