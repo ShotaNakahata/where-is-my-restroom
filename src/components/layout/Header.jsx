@@ -48,29 +48,11 @@ function Header() {
     <header className={styles.header}>
       {isLoginModalOpen && <LoginModal onCloseIsModal={() => setIsLoginModalOpen(false)} />}
       <div className={styles.logoContainer}>
-        <Link href="#">
+        <Link href={pathName === "/" ? "#" : "/"}>
           <Image className={styles.logo} src="/logo.webp" alt='Logo img' width={90} height={68} />
         </Link>
       </div>
       <div className={`${styles.menuIcon}`}>
-        {/* <button className={styles.hederBtn} onClick={() => setIsOpen(!isOpen)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className={`${styles.icon} ${isOpen ? styles.fixedIcon : ""}`}
-          >
-            {isOpen ? (
-              // 閉じるアイコン
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            ) : (
-              // ハンバーガーアイコン
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            )}
-          </svg>
-        </button> */}
         <button className={styles.hederBtn} onClick={() => setIsOpen(!isOpen)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
