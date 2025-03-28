@@ -25,6 +25,15 @@ body {
   padding: 0 2.4rem;
   margin: 0 auto;
 }
+/**************************/
+/* ELEMWNT FONT */
+/**************************/
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
 
 /**************************/
 /* SPACING */

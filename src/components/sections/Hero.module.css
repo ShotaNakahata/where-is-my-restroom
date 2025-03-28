@@ -1,10 +1,10 @@
 .heroSection{
   background-color: #faebd7;
-  padding: 2.2rem 0 3.6rem 0;
+  padding: 2.2rem 0 3rem 0;
 }
 .hero{
   padding: 0 2.5rem;
-  gap: 3.4rem;
+  gap: 1.6rem;
   justify-content: center;
   align-content: center;
 }
@@ -41,26 +41,25 @@
   text-decoration: none;
   font-weight: 570;
 }
+
 /**************************/
 /* ABOVE 576px */
 /**************************/
 @media (min-width: 576px){
-  /* .heroImg{
-    width: 70%;
-    height: 70%;
-  } */
+  .heroSection{
+    padding-top: 3.2rem;
+  }
 }
 /**************************/
 /* ABOVE 700px (small Tablets & above) */
 /**************************/
 @media (min-width: 700px){
-  
   .heroDescription{
     font-size: 2.4rem;
     margin-bottom: 6rem;
   }
   .hero{
-    padding: 5rem 8rem;
+    padding: 5rem 8rem 1rem 8rem;
   }
   .btnBox{
     grid-template-columns: repeat(3, 1fr);
@@ -81,6 +80,7 @@
 /**************************/
 @media (min-width: 1000px){
   .hero{
+    gap: 5rem;
     grid-template-columns: repeat(2,2fr);
   }
   .heroDescription{
@@ -134,6 +134,7 @@
 @media (min-width: 1200px){
   .hero{
     max-width: 140rem;
+    padding: 4rem 6rem 0 6rem;
     margin: 0 auto;
     gap: 5rem;
   }
