@@ -138,10 +138,10 @@ body {
   color: #fff;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 600; /* ✅ `600` に統一 */
   text-decoration: none;
-  padding: 1.2rem 0.8rem;
+  padding: 1rem 0.6rem;
   border-radius: 0.7rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, opacity 0.2s;
