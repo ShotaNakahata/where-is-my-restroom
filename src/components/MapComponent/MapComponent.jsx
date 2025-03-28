@@ -33,9 +33,6 @@ function MapComponent() {
     queryKey: ["toilets"],
     queryFn: () => fetchToilets(),
     staleTime: 1000 * 60 * 5,
-    // onSuccess: (data) => {
-    //   dispatch(setToilets(data));
-    // }
   });
   useEffect(()=>{
       dispatch(setToilets(data));

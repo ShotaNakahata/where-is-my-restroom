@@ -59,8 +59,11 @@
   background-color: #cf711f;
 }
 .title {
-  padding-top: 4rem;
+  font-size: 2rem;
   text-align: center;
+  margin-bottom: 3.2rem;
+  padding-top: 5rem;
+  line-height: 1.2;
 }
 
 .infoBox {
@@ -72,7 +75,7 @@
 }
 .info {
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 500;
 }
 .span {
@@ -174,8 +177,15 @@
     row-gap: 5rem;
     padding: 0 2rem;
   }
+  /* .title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3.2rem;
+    padding-top: 5rem;
+    line-height: 1.2;
+  } */
   .title {
-    font-size: 2.7rem;
+    font-size: 2.2rem;
     margin-bottom: 2rem !important;
   }
   .toiletType {
@@ -199,9 +209,9 @@
     padding: 4rem 3rem 0;
     padding: 0 3rem;
   }
-  .info{
+  /* .info{
     font-size: 1.7rem;
-  }
+  } */
 }
 /**************************/
 /* 900px */
@@ -216,6 +226,9 @@
   }
   .title{
     padding-top: 6rem;
+  }
+  .infoBox {
+    padding: 0 4.5rem 3rem 4.5rem;
   }
   /* .toiletType {
     top: 1.2rem;
@@ -239,12 +252,12 @@
     min-height: 14rem;
   }
   .title{
-    font-size: 3.4rem;
+    font-size: 3rem;
     padding-top: 6rem;
     margin-bottom: 4rem !important;
   }
   .info{
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }
 /**************************/

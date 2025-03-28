@@ -57,9 +57,8 @@ textarea {
   letter-spacing: -0.5px;
 }
 .h2{
-  margin-bottom: 4rem;
+  margin-bottom: 3.2rem;
   font-size: 3rem;
-  /* font-size: 3rem; */
   line-height: 1.2;
 }
 .h3{
@@ -195,7 +194,7 @@ textarea {
 }
 .pageTextBox {
   max-width: 130rem;
-  padding: 0 3rem;
+  padding: 0 1rem;
   margin: 0 auto;
   margin-bottom: 4rem;
   display: flex;
@@ -223,6 +222,14 @@ textarea {
   border-top: 0.05rem solid #333;
 }
 /**************************/
+/* ABOVE 576px (small Tablets & above) */
+/**************************/
+@media (min-width: 576px){
+  .pageTextBox {
+    padding: 0 1.5rem;
+  }
+}
+/**************************/
 /* ABOVE 590px (small Tablets & above) */
 /**************************/
 @media (min-width: 700px){
@@ -238,7 +245,6 @@ textarea {
   .h2{
     font-size: 4.5rem;
     margin-bottom: 4rem;
-    /* font-size: 3rem; */
     line-height: 1.2;
   }
   
