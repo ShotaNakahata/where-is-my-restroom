@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 3rem;
-  /* background-color: antiquewhite; */
   font-size: 10px;
   max-width: 47.4rem;
   margin: 0 auto;
@@ -101,7 +100,6 @@
   padding: 0;
   margin: 0 3rem;
   overflow: hidden;
-  /* border: ; */
 }
 .comment {
   font-size: 2rem;
@@ -123,7 +121,6 @@
   padding: 2rem;
   border: 0.3rem solid #cf711f;
   border-radius: 1rem;
-  /* margin: 0 5rem 3rem 5rem; */
 }
 .favoriteBtn {
   width: 100%;
@@ -152,17 +149,13 @@
 /**************************/
 @media (min-width: 700px) {
   .detailTextBox {
-    /* grid-column: 1/3; */
     margin: 0 auto;
   }
   .addRatingForm {
     margin: auto 0;
     min-width: 370px;
-    /* grid-column: 1/3; */
   }
   .commentsContainer {
-    /* grid-row: 1;
-    grid-column: 2/3; */
     grid-column: 1/3;
     padding: 0 3rem;
   }
@@ -177,13 +170,6 @@
     row-gap: 5rem;
     padding: 0 2rem;
   }
-  /* .title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 3.2rem;
-    padding-top: 5rem;
-    line-height: 1.2;
-  } */
   .title {
     font-size: 2.2rem;
     margin-bottom: 2rem !important;
@@ -209,9 +195,6 @@
     padding: 4rem 3rem 0;
     padding: 0 3rem;
   }
-  /* .info{
-    font-size: 1.7rem;
-  } */
 }
 /**************************/
 /* 900px */
@@ -230,10 +213,6 @@
   .infoBox {
     padding: 0 4.5rem 3rem 4.5rem;
   }
-  /* .toiletType {
-    top: 1.2rem;
-    left: -4rem;
-  } */
 }
 /**************************/
 /* 1000px */

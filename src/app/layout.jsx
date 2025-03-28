@@ -17,7 +17,7 @@ export const metadata = {
   description:
     "Find, post, and rate restrooms around you. A web app for accessible toilet information.",
   icons: {
-    icon: "/logo.ico", //🔴後に変更
+    icon: "/favicon.ico", //🔴後に変更
     apple: "/logo.webp",//🔴後に変更
   },
   twitter: {
