@@ -1,4 +1,5 @@
 .header {
+  /* background-color: aquamarine; */
   background-color: #faebd7;
   width: 100%;
   display: flex;
@@ -8,34 +9,23 @@
   overflow: hidden;
   z-index: 100;
 }
-
-.logoContainer {
-  z-index: 1001;
+.menuIcon {
+  display: block;
 }
-
+.icon {
+  display: block;
+  height: 4.3rem;
+}
 .logo {
   display: block;
   height: 5rem;
 }
-
-.menuIcon {
-  position: fixed;
-  top: 1rem;
-  right: 2rem;
-  z-index: 2000; /* メニューの上に固定表示 */
-}
-
-.headerBtn {
+.hederBtn {
+  position: relative;
   background: none;
+  z-index: 100;
   border: none;
-  padding: 0;
 }
-
-.icon {
-  height: 4.3rem;
-  display: block;
-}
-
 .nav {
   display: none;
   align-items: center;
@@ -46,19 +36,9 @@
   width: 100%;
   height: 100vh;
   opacity: 0;
+  /* ct */
   visibility: hidden;
 }
-
-.nav.open {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  background-color: rgba(255, 255, 255, 0.95);
-  position: fixed;
-  z-index: 1000; /* menuIconより下 */
-}
-
 .navList {
   display: flex;
   flex-direction: column;
@@ -72,58 +52,97 @@
 .navLink {
   display: inline-block;
   text-decoration: none;
+}
+.nav.open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  background-color: rgba(255, 255, 255, 0.91);
+  letter-spacing: 0.1rem;
+  position: fixed;
+}
+.open .Welcome {
+  display: none;
+}
+.open .navLink {
   color: #555;
+  align-items: center;
+  justify-content: center;
   font-size: 2.5rem;
   font-weight: 540;
   padding: 0.5rem 2rem;
   cursor: pointer;
 }
-
-.login {
+.open .login {
   color: #fff;
 }
-
-.open .Welcome {
-  display: none;
+.fixedIcon {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  z-index: 1000;
 }
 
+/**************************/
+/* ABOVE 590px (small Tablets & above) */
+/* menu buttonとiconの拡大 */
+/**************************/
 @media (min-width: 700px) {
   .icon {
     height: 5.3rem;
   }
-
   .logo {
     height: 6.3rem;
   }
 }
 
+/**************************/
+/* ABOVE 1000px (small Tablets & above) */
+/* menu を表示  hederを上部に固定　bgをなくす*/
+/**************************/
+
 @media (min-width: 1000px) {
-  .header {
+  .header{
     position: fixed;
     background: none;
   }
-
   .nav {
     display: flex;
     flex-direction: column;
-    position: static;
+    /* align-items: center; */
+    /* justify-content:end; */
+    position:static;
+    top: auto;
+    left: auto;
     width: auto;
     height: auto;
     opacity: 1;
+    /* ct */
     visibility: visible;
   }
 
   .navList {
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    list-style: none;
     font-size: 2rem;
   }
-
-  .menuIcon,
-  .icon {
+  .navLink {
+    font-weight: 550;
+    color: #555;
+  }
+  .login.navLink{
+    color: #fff;
+  }
+  .menuIcon {
     display: none;
   }
-
-  .logo {
-    height: 7rem;
+  .icon {
+    display: none;
+    height: 4.3rem;
   }
 }
