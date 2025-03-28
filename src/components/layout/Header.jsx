@@ -22,9 +22,9 @@ function Header() {
   useDisableScroll(isOpen)
 
   function handleLoginClick() {
-    if(pathName==="/"){
+    if (pathName === "/") {
       scrollToRef(loginRef)
-    }else{
+    } else {
       setIsLoginModalOpen(true);
     }
   }
@@ -53,16 +53,25 @@ function Header() {
         </Link>
       </div>
       <div className={`${styles.menuIcon}`}>
-        <button className={`${styles.hederBtn} `} onClick={() => setIsOpen(!isOpen)}>
-          {!isOpen ?
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={`${styles.icon}`}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg> :
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={`${styles.icon} ${styles.fixedIcon}`}>
+        <button className={styles.hederBtn} onClick={() => setIsOpen(!isOpen)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className={`${styles.icon} ${isOpen ? styles.fixedIcon : ""}`}
+          >
+            {isOpen ? (
+              // 閉じるアイコン
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          }
+            ) : (
+              // ハンバーガーアイコン
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            )}
+          </svg>
         </button>
+
       </div>
       <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
         <ul className={`${styles.navList} link`}>
@@ -74,9 +83,9 @@ function Header() {
           <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           <li><Link href="/mypage" className={styles.navLink}>MyPage</Link></li>
           <li>
-            {!isAuthenticated ? 
-            <a onClick={handleLoginClick} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a> 
-            : <a onClick={handleLogout} className={`${styles.navLink} btnLg ${styles.login}`}>Logout</a>}
+            {!isAuthenticated ?
+              <a onClick={handleLoginClick} className={`${styles.navLink} btnLg ${styles.login}`}>Login</a>
+              : <a onClick={handleLogout} className={`${styles.navLink} btnLg ${styles.login}`}>Logout</a>}
           </li>
         </ul>
       </nav>
