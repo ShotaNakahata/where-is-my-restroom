@@ -9,13 +9,27 @@
   overflow: hidden;
   z-index: 100;
 }
-.menuIcon {
+/* .menuIcon {
   display: block;
 }
 .icon {
   display: block;
   height: 4.3rem;
+} */
+.menuIcon {
+  position: relative; /* ← 必須 */
+  display: block;
 }
+
+.icon {
+  display: block;
+  height: 4.3rem;
+  position: absolute;
+  top: -2.5rem;
+  right: 1rem;
+  z-index: 100;
+}
+
 .logo {
   display: block;
   height: 5rem;
