@@ -49,7 +49,7 @@ function Header() {
       {isLoginModalOpen && <LoginModal onCloseIsModal={() => setIsLoginModalOpen(false)} />}
       <div className={styles.logoContainer}>
         <Link href={pathName === "/" ? "#" : "/"}>
-          <Image className={styles.logo} src="/logo.webp" alt='Logo img' width={90} height={68} />
+          <Image className={styles.logo} src="/logo.webp" alt='Logo img' width={90} height={68} priority/>
         </Link>
       </div>
       <div className={`${styles.menuIcon}`}>

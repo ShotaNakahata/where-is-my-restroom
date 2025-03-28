@@ -36,7 +36,7 @@ function Hero() {
           </div>
         </div>
         <div className={styles.heroImgBox}>
-          <Image src="/mainImg.webp" className={styles.heroImg} alt='hero img' width="200" height="200" />
+          <Image src="/mainImg.webp" className={styles.heroImg} alt='hero img' width="200" height="200" priority/>
         </div>
       </div>
     </section>
