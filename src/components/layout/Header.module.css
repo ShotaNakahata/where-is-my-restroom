@@ -1,6 +1,6 @@
 .header {
   /* background-color: aquamarine; */
-  background-color: #fdf2e9;
+  background-color: #faebd7;
   width: 100%;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@
 }
 .logo {
   display: block;
-  height: 8rem;
+  height: 5rem;
 }
 .hederBtn {
   position: relative;
@@ -143,5 +143,9 @@
   .icon {
     display: none;
     height: 4.3rem;
+  }
+  .logo {
+    display: block;
+    height: 7rem;
   }
 }
