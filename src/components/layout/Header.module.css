@@ -9,23 +9,8 @@
   z-index: 100;
 }
 
-.menuIcon {
-  display: block;
-}
-
-.icon {
-  display: block;
-  height: 4.3rem;
-  position: relative;
-  top: auto;
-  right: auto;
-}
-
-.fixedIcon {
-  position: fixed;
-  top: 1rem;
-  right: 2rem;
-  z-index: 1000;
+.logoContainer {
+  z-index: 1001;
 }
 
 .logo {
@@ -33,11 +18,22 @@
   height: 5rem;
 }
 
-.hederBtn {
-  position: relative;
+.menuIcon {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  z-index: 2000; /* メニューの上に固定表示 */
+}
+
+.headerBtn {
   background: none;
-  z-index: 100;
   border: none;
+  padding: 0;
+}
+
+.icon {
+  height: 4.3rem;
+  display: block;
 }
 
 .nav {
@@ -58,9 +54,9 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  background-color: rgba(255, 255, 255, 0.91);
-  letter-spacing: 0.1rem;
+  background-color: rgba(255, 255, 255, 0.95);
   position: fixed;
+  z-index: 1000; /* menuIconより下 */
 }
 
 .navList {
@@ -76,30 +72,26 @@
 .navLink {
   display: inline-block;
   text-decoration: none;
-}
-
-.open .Welcome {
-  display: none;
-}
-
-.open .navLink {
   color: #555;
-  align-items: center;
-  justify-content: center;
   font-size: 2.5rem;
   font-weight: 540;
   padding: 0.5rem 2rem;
   cursor: pointer;
 }
 
-.open .login {
+.login {
   color: #fff;
+}
+
+.open .Welcome {
+  display: none;
 }
 
 @media (min-width: 700px) {
   .icon {
     height: 5.3rem;
   }
+
   .logo {
     height: 6.3rem;
   }
@@ -115,8 +107,6 @@
     display: flex;
     flex-direction: column;
     position: static;
-    top: auto;
-    left: auto;
     width: auto;
     height: auto;
     opacity: 1;
@@ -124,34 +114,16 @@
   }
 
   .navList {
-    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    list-style: none;
     font-size: 2rem;
   }
 
-  .navLink {
-    font-weight: 550;
-    color: #555;
-  }
-
-  .login.navLink {
-    color: #fff;
-  }
-
-  .menuIcon {
-    display: none;
-  }
-
+  .menuIcon,
   .icon {
     display: none;
   }
 
   .logo {
-    display: block;
     height: 7rem;
   }
 }
