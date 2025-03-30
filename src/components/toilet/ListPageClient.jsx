@@ -53,11 +53,11 @@ function ListPageClient() {
     setIsLoginOpen(false)
   }
 
-  if (isLoading) return <p>Loading toilets...</p>;
-  if (error) return <p>Error loading toilets</p>;
+  // if (isLoading) return <p>Loading toilets...</p>;
+  // if (error) return <p>Error loading toilets</p>;
 
   return (
-    <main className={`page ${listStyles.relative}`}>
+    <main className={`page ${listStyles.relative} ${styles.pageMinHeight}`}>
       {isLoginOpen && <LoginModal onCloseIsModal={handleLoginClose} alert="Please log in to add this toilet to your favorites." />}
       {isModalOpen && modalData && <Modal {...modalData} onClose={() => setIsModalOpen(false)} />}
       <div className={`pageTextBox`}>
@@ -66,13 +66,19 @@ function ListPageClient() {
       </div>
       <FilterComponent filters={filters} onFilterChange={handleFilterChange} />
       <div className={listStyles.cardBox}>
-        {filteredToilets.length > 0 ? (
+        {isLoading ? (
+          <p className="statusMessage">Loading toilets...</p>
+        ) : error ? (
+          <p className="statusMessage">Error loading toilets</p>
+        ) : filteredToilets.length > 0 ? (
           filteredToilets.map((toilet) => (
-            <ToiletCard key={toilet._id}
+            <ToiletCard
+              key={toilet._id}
               toilet={toilet}
               setIsLoginOpen={setIsLoginOpen}
               setIsModalOpen={setIsModalOpen}
-              setModalData={setModalData} />
+              setModalData={setModalData}
+            />
           ))
         ) : (
           <p>No results found.</p>
