@@ -133,7 +133,8 @@ textarea {
 /**************************/
 .btnSm {
   display: inline-flex; 
-  background-color: #e67e22;
+  /* background-color: #e67e22; */
+  background-color: #d35400;/* 改善後 */
   color: #fff;
   align-items: center;
   justify-content: center;
@@ -151,6 +152,7 @@ textarea {
 .btnLg {
   display: inline-flex; /* ✅ `a` でも `button` でも同じレイアウトに */
   background-color: #e67e22;
+  /* background-color: #d35400;改善後 */
   color: #fff;
   align-items: center;
   justify-content: center;
@@ -197,7 +199,8 @@ textarea {
 /**************************/
 .page {
   /* padding: 7.5rem 0; */
-  background-color: #faebd7;
+  /* background-color: #faebd7; */
+  background-color: #fff6eb;
   padding: 4rem 0;
 }
 .pageTextBox {

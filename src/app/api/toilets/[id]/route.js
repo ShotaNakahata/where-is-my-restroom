@@ -1,3 +1,4 @@
+// src/app/api/toilets/[id]/route.js
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import Toilet from "@/models/Toilet";

@@ -16,7 +16,8 @@ function ToiletCard({ setIsLoginOpen, setIsModalOpen, setModalData, toilet }) {
     <div key={toilet._id} className={`${styles.toilet} box`}>
       <Link href={`/toilet/detail/${toilet._id}`} className={`${styles.notLink}`}>
         <div className={styles.toiletImg}>
-          <Image className={styles.img} src={toilet.image} alt="" width="100" height="100" style={{ width: "100%", height: "auto" }} />
+          <Image className={styles.img} src={toilet.image} alt="" width="362" height="240" style={{ width: "100%", height: "auto" }} quality={70}/>
+          {/* <Image className={styles.img} src={toilet.image} alt="" width="135" height="115" style={{ width: "100%", height: "auto" }} quality={70}/> */}
         </div>
         <div className={styles.toiletTextInfo}>
           <div className={styles.mainTileBox}>

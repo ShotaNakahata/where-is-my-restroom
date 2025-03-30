@@ -1,11 +1,15 @@
-import Link from "next/link";
+// app/toilet/detail/[id]/page.jsx
+
+// app/toilet/detail/[id]/page.jsx
+
 import { fetchToilets } from "@/lib/fetchToilets";
 import ToiletDetailClient from "@/components/toilet/ToiletDetailClient";
+import Link from "next/link";
 import styles from "./ToiletDetail.module.css";
 
-async function ToiletDetail(props) {
-  const { id } = props.params; 
-  const toilet = await fetchToilets(id);
+export default async function ToiletDetail({ params }) {
+  const toilet = await fetchToilets({ id: params.id });
+
   if (!toilet) return notFound();
 
   return (
@@ -14,10 +18,8 @@ async function ToiletDetail(props) {
       <div className={styles.btnBox}>
         <Link href={`/toilet/list`} className={`${styles.link} ${styles.btn}`}>Back to List Page</Link>
       </div>
-      {/* ✅ `toilet` を `Client Component` に渡す */}
       <ToiletDetailClient initialToilet={toilet} />
     </main>
   );
 }
 
-export default ToiletDetail;

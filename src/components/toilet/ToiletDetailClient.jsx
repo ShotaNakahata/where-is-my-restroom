@@ -8,6 +8,7 @@ import Modal from "@/components/common/Modal";
 import { useFavoriteAction } from "@/hooks/useFavoriteAction";
 
 function ToiletDetailClient({ initialToilet }) {
+  console.log("ToiletDetailClient [initialToilet]", initialToilet)
   const [toilet, setToilet] = useState(initialToilet);
   const {
     isLoginOpen,
@@ -69,7 +70,7 @@ function ToiletDetailClient({ initialToilet }) {
         <div className={`${styles.line}`}></div>
         <h2 className={`h2 ${styles.h2}`}>Comments</h2>
         <div className={styles.commentsBox}>
-          {toilet.comments.map((comment, index) => (
+          {toilet.comments?.map((comment, index) => (
             <div className={styles.commentBox} key={index}>
               <p className={styles.rating}>{"★".repeat(toilet.ratings[index])}</p>
               <p className={styles.comment}>{comment}</p>

@@ -3,16 +3,21 @@ import { HydrationBoundary } from "@tanstack/react-query";
 import ListPageClient from "@/components/toilet/ListPageClient";
 import { fetchToilets } from "@/lib/fetchToilets";
 
+const LIMIT = 12;
+
 export default async function ToiletListPage() {
   const queryClient = new QueryClient();
 
-  // 🔍 SSR中にデータをプリフェッチ
-  await queryClient.prefetchQuery({
+  // ✅ 無限スクロール用のプリフェッチ（最初の1ページ）
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ["toilets"],
-    queryFn: fetchToilets,
+    queryFn: ({ pageParam = 0 }) => fetchToilets({ limit: LIMIT, offset: pageParam }),
+    getNextPageParam: (lastPage, allPages) => {
+      const nextOffset = allPages.flat().length;
+      return lastPage.length < LIMIT ? undefined : nextOffset;
+    },
   });
 
-  // ✅ Server側でデータ確認用ログ（開発中のみ）
   console.log("🟢 [Server] Prefetched Toilets:", queryClient.getQueryData(["toilets"]));
 
   return (
@@ -21,4 +26,3 @@ export default async function ToiletListPage() {
     </HydrationBoundary>
   );
 }
-

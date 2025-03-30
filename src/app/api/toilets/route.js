@@ -1,3 +1,4 @@
+// src/app/api/toilets/route.js
 import { NextResponse } from "next/server";
 import { getLocationData } from "@/utils/getLocationData";
 import Toilet from "@/models/Toilet";
@@ -59,13 +60,26 @@ export async function POST(req) {
   }
 }
 
-export async function GET() {
+export async function GET(req) {
   try {
     console.log("🟢 [API] /api/toilets - GET request received");
     await connectToDatabase();
-    const toilets = await Toilet.find().sort({ createdAt: -1 });
 
-    console.log("🟢 [API] Fetched toilets:", toilets); // ✅ API のレスポンスを確認
+    const { searchParams } = new URL(req.url);
+
+    const limitParam = searchParams.get("limit");
+    const offsetParam = searchParams.get("offset");
+
+    const limit = limitParam !== null ? parseInt(limitParam, 10) : null;
+    const offset = offsetParam !== null ? parseInt(offsetParam, 10) : null;
+
+    let query = Toilet.find().sort({ createdAt: -1 });
+
+    if (limit !== null && offset !== null) {
+      query = query.skip(offset).limit(limit);
+    }
+
+    const toilets = await query.exec();
 
     return NextResponse.json(toilets, { status: 200 });
   } catch (error) {
