@@ -1,8 +1,15 @@
-import React from 'react'
-import MapComponent from "@/components/MapComponent/MapComponent";
+"use client";
+import React from "react";
+import dynamic from "next/dynamic";
 import styles from "@/components/MapComponent/MapPageUI.module.css";
 
-function MapPageUI() {
+
+const MapComponent = dynamic(() => import("@/components/MapComponent/MapComponent"), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>,
+});
+
+export default function MapPageUI() {
   return (
     <main className={`page`}>
       <div className={`container`}>
@@ -15,7 +22,5 @@ function MapPageUI() {
         <MapComponent />
       </div>
     </main>
-  )
+  );
 }
-
-export default MapPageUI

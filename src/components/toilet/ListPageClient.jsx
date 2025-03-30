@@ -9,9 +9,8 @@ import Modal from "@/components/common/Modal";
 import { useInitFavoriteFetch } from "@/hooks/useInitFavoriteFetch";
 import { useDisableScroll } from "@/utils/useDisableScroll";
 import { useDispatch, useSelector } from "react-redux";
-import { setToilets } from "@/redux/slices/toiletsSlice";
+import { addToilet } from "@/redux/slices/toiletsSlice";
 import { useInfiniteToiletData } from "@/hooks/useInfiniteToiletData";
-
 
 function ListPageClient() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -33,9 +32,10 @@ function ListPageClient() {
   useEffect(() => {
     if (!data?.pages) return;
     const flattenedToilets = data.pages.flatMap((page) => page.toilets ?? page);
-    dispatch(setToilets(flattenedToilets));
+    console.log("ListPageClient [data]", data);
+    console.log("ListPageClient [flattenedToilets]", flattenedToilets);
+    dispatch(addToilet(flattenedToilets)); 
   }, [data, dispatch]);
-
 
   const observerRef = useRef();
   useEffect(() => {
@@ -43,9 +43,8 @@ function ListPageClient() {
       console.log("❌ observerTarget が null");
       return;
     }
-  
     console.log("✅ observerTarget に DOM がセットされた！:", observerTarget);
-  
+
     if (!hasNextPage) {
       console.log("🔚 hasNextPage が false のため、observe せず");
       return;
