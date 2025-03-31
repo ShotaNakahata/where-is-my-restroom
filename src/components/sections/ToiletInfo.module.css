@@ -1,5 +1,6 @@
 .sectionToileInfo{
-  padding: 9.6rem 0 0;
+  /* padding: 9.6rem 0 0; */
+  padding-top: 0.6rem;
   background-color: #faebd7;
 }
 .toilet{
@@ -112,6 +113,9 @@
 /*　font拡大　*/
 /**************************/
 @media (min-width: 1200px){
+  .sectionToileInfo{
+    padding-top: 9.6rem;
+  }
   .toiletType{
     font-size: 1.5rem;
   }
