@@ -63,8 +63,7 @@ textarea {
 }
 .h3{
   margin-bottom: 2rem;
-  font-size: 2rem;
-  /* font-size: 3rem; */
+  font-size: 2.3rem;
   line-height: 1.2;
 }
 .subheading{
@@ -150,14 +149,13 @@ textarea {
   line-height: normal;
 }
 .btnLg {
-  display: inline-flex; /* ✅ `a` でも `button` でも同じレイアウトに */
+  display: inline-flex; 
   background-color: #e67e22;
-  /* background-color: #d35400;改善後 */
   color: #fff;
   align-items: center;
   justify-content: center;
   font-size: 1.7rem;
-  font-weight: 600; /* ✅ `600` に統一 */
+  font-weight: 600; 
   text-decoration: none;
   padding: 1rem 0.6rem;
   border-radius: 0.7rem;
@@ -166,6 +164,7 @@ textarea {
   border: none;
   text-align: center;
   line-height: normal;
+  letter-spacing: 0.1rem;
 }
 .btn:hover,
 .btnLg:hover {
@@ -257,6 +256,10 @@ textarea {
     font-size: 4.5rem;
     margin-bottom: 4rem;
     line-height: 1.2;
+  }
+  .h3{
+    font-size: 3rem;
+    margin-bottom: 3rem;
   }
   
   .icon{

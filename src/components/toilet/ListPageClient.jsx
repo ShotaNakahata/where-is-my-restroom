@@ -123,7 +123,7 @@ function ListPageClient() {
             </div>
           </>
         ) : (
-          <p>No results found.</p>
+          <p className="statusMessage">No results found.</p>
         )}
       </div>
     </main>

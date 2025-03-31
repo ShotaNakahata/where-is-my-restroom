@@ -41,7 +41,7 @@ function FilterComponent({ filters, onFilterChange }) {
           </button>
           <div>
             <div className={styles.optionTextContents}>
-              <h2 className={`h2 ${styles.h2}`}>Option</h2>
+              <h2 className={`h3 ${styles.h3}`}>Option</h2>
             </div>
             <div className={styles.optionContents}>
               {/* ✅ `Top Rating` チェックボックス */}

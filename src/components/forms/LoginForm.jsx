@@ -12,12 +12,12 @@ const modalConfig = {
   success: {
     message: "Login Success!",
     description: "You're in! Start exploring now.",
-    btnMessage: "close",
+    btnMessage: "Close",
   },
   error: {
     message: "Login Faild",
     description: null,
-    btnMessage: "close",
+    btnMessage: "Close",
   }
 }
 

@@ -6,8 +6,9 @@
 }
 
 .icon {
+  background: none;
   display: block;
-  height: 4.3rem;
+  height: 3rem;
 }
 .checkBox{
   display: none;
@@ -31,7 +32,7 @@
   display: none;
 }
 .label {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-right: 1rem;
 }
 /**************************/
@@ -70,7 +71,9 @@
   margin-bottom: 3rem;
 }
 .closeBtn {
+  background: none;
   position: absolute;
+  border: 0.1rem solid #000;
   top: 1rem;
   right: 1rem;
 }
@@ -86,7 +89,9 @@
   display: flex;
   justify-content: center;
 }
-
+/* .h2{
+  
+} */
 .btn {
   display: inline-flex;
   background-color: #e67e22;
@@ -131,7 +136,7 @@
   .option {
     align-items: center;
   }
-  .h2 {
+  .h3 {
     display: none;
   }
   .label {
@@ -140,9 +145,8 @@
   }
   .box {
     border: 0.13rem solid #000;
-    width: 3rem;
-    height: 3rem;
-    /* width: 80%; */
+    width: 2rem;
+    height: 2rem;
   }
   .optionContents {
     display: flex;
@@ -177,6 +181,10 @@
   }
   .optionContents {
     gap: 5rem;
+  }
+  .box {
+    width: 3rem;
+    height: 3rem;
   }
 }
 /**************************/
