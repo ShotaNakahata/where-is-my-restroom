@@ -18,11 +18,6 @@ function page() {
           </div>
         </div>
         <div className={styles.form}>
-          {/* <div className={styles.imgBox}>
-            <div className={styles.imageWrapper}>
-              <Image src="/addToilet/addToiletImg.webp" className={styles.addImg} alt='contact img'  width="300" height="400" />
-            </div>
-          </div> */}
           <ToiletForm />
         </div>
       </div>

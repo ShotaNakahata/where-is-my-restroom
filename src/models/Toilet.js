@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const ToiletSchema = new mongoose.Schema({
   name: { type: String, required: true }, 
   address: { type: String, required: true }, 
-  country: { type: String, required: true, enum: ["Japan", "Taiwan", "USA", "Other"] },
+  country: { type: String, required: true, enum: ["Japan", "Taiwan", "United States", "Other"] },
   ratings: { type: [Number], required: true, default: [] },
   averageRating: { type: Number, required: true, default: 0 },
   comments: { type: [String], default: [] },

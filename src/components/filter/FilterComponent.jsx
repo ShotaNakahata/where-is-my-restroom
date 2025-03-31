@@ -79,7 +79,7 @@ function FilterComponent({ filters, onFilterChange }) {
                   <option value="">Select Country</option>
                   <option value="Japan">Japan</option>
                   <option value="Taiwan">Taiwan</option>
-                  <option value="USA">USA</option>
+                  <option value="United States">United States</option>
                 </select>
               </div>
             </div>

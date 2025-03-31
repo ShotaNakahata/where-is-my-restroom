@@ -9,7 +9,7 @@ import Modal from "@/components/common/Modal";
 import LoginModal from "@/components/common/LoginModal";
 import StarRating from './rating/StarRating';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToilet } from "@/redux/slices/toiletsSlice";
+import { addSingleToilet } from "@/redux/slices/toiletsSlice";
 
 const modalConfig = {
   success: {
@@ -35,12 +35,13 @@ function ToiletForm() {
 
   const onSubmit = async (data) => {
     console.log("ToiletForm :data", data)
-    console.log("ToiletForm :comment", data.comment)
+    // console.log("ToiletForm :comment", data.comment)
     try {
       if (!isAuthenticated) {
         return setIsLoginOpen(true);
       } else {
         const formData = new FormData();
+        // console.log(data.name,data.address,data.rating,data.comment?.trim() || "No comment provided.",data.isUniversal === "true")
         formData.append("name", data.name);
         formData.append("address", data.address);
         formData.append("rating", data.rating);
@@ -64,8 +65,8 @@ function ToiletForm() {
         console.log("🟢 [INFO] Response JSON:", result);
 
         if (response.ok) {
-          console.log("response ok and start dispatch(addToilet(formData));", result.toilet)
-          dispatch(addToilet(result.toilet));
+          console.log("response ok and start dispatch(addSingleToilet(formData));", result.toilet)
+          dispatch(addSingleToilet(result.toilet));
           setModalData(modalConfig.success);
           reset();
         } else {
