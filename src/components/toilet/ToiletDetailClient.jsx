@@ -16,7 +16,7 @@ function ToiletDetailClient({ initialToilet }) {
     modalData,
     setIsLoginOpen,
     setIsModalOpen,
-    addFavorite
+    toggleFavorite
   } = useFavoriteAction();
 
   function handleRatingUpdate(newRating, newComment) {
@@ -55,7 +55,7 @@ function ToiletDetailClient({ initialToilet }) {
         </ul>
         <div className={`${styles.favoriteBtn}`}>
           <button className={`btnLg ${styles.favoriteBtn}`}
-            onClick={() => addFavorite(toilet)}>
+            onClick={() => toggleFavorite(toilet)}>
             Add Favorite
           </button>
         </div>

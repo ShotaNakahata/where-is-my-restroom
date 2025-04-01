@@ -5,7 +5,6 @@
 .btnBox{
   display: flex;
   justify-content: center;
-  background-color: antiquewhite;
   margin: 0 auto;
 }
 .link {
