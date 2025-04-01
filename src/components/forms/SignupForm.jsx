@@ -15,7 +15,7 @@ const modalConfig = {
     btnMessage: "close",
   },
   error: {
-    message: "Login Faild",
+    message: "Singup Faild",
     description: null,
     btnMessage: "close",
   }
@@ -23,7 +23,6 @@ const modalConfig = {
 function SignupForm({ setIsSingUp, alert = null, isModal = false, onCloseIsModal }) {
   const { register, handleSubmit, watch, reset, formState: { errors, isSubmitting } } = useForm({ mode: 'onBlur' })
   const dispatch = useDispatch();
-  // const [errorMessage, setErrorMessage] = useState("");
   const [isModalOpen, setisModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
@@ -38,31 +37,43 @@ function SignupForm({ setIsSingUp, alert = null, isModal = false, onCloseIsModal
           password: data.password
         })
       });
+  
       if (response.ok) {
         const result = await response.json();
         console.log("result: ", result);
         dispatch(signup(result.user));
         localStorage.setItem("user", JSON.stringify(result.user));
         setModalData(modalConfig.success);
-        reset()
-        setIsSingUp(false)
+        reset();
+        setisModalOpen(true);
+        // setIsSingUp(false);
       } else {
-        const result = await result.json().catch(() => ({ error: "Something went wrong" }));
-        setModalData({ ...modalConfig.error, description: result.error || "Login failed" });
+        const errorResponse = await response.json().catch(() => ({ error: "Something went wrong" }));
+        setModalData({
+          ...modalConfig.error,
+          description: errorResponse.error || "Signup failed",
+        });
       }
     } catch (error) {
-      setModalData({ ...modalConfig.error, description: result.error || "Login failed" });
+      setModalData({
+        ...modalConfig.error,
+        description: error.message || "Signup failed",
+      });
     }
+  
     setisModalOpen(true);
-  }
+  };
+  
   const handleIsSingUp = () => {
     setIsSingUp(false)
   }
   const allModalClose = () => {
     if(isModal){
       setisModalOpen(false);
+      setIsSingUp(false);
       onCloseIsModal()
     }else{
+      setIsSingUp(false);
       setisModalOpen(false);
     }
   }

@@ -59,13 +59,15 @@ function LoginForm({ setIsSingUp, alert = null, isModal = false ,onCloseIsModal}
     setIsSingUp(true)
   }
   const allModalClose = () => {
-    if(isModal){
+    if (isModal) {
       setisModalOpen(false);
-      onCloseIsModal()
-    }else{
+      onCloseIsModal();
+    } else {
       setisModalOpen(false);
+      setIsSingUp(false); 
     }
-  }
+  };
+  
 
   return (
     <div className={formStyles.formContainer}>
