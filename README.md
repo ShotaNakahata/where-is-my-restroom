@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🧻 Where Is My Restroom
 
-## Getting Started
+### 🔗 Live Site  
+[https://where-is-my-restroom.vercel.app](https://where-is-my-restroom.vercel.app)
 
-First, run the development server:
+### 👤 Test User  
+To try out the app, you can log in with the following test account:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Name**: TestUser  
+- **Email**: TestUser@test  
+- **Password**: TestUser
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📖 Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Where Is My Restroom** is a web application that helps users efficiently search for nearby toilets and view detailed information. Users can also rate restrooms, leave comments, and add favorites.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Infinite scroll toilet list
+- Filter restrooms by accessibility, country, and rating
+- Search for restrooms using a map (Google Maps)
+- Change map design based on restroom type
+- View detailed information of selected restrooms
+- Rate, comment on, and favorite restrooms
+- User registration and login
+- View your favorited restrooms
+- Contact form to reach the developer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ⚙️ Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Frontend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js (App Router)**: Routing and page structure
+- **React**: Building user interfaces
+- **Redux Toolkit**: Global state management
+- **React Query**: Data fetching and caching
+- **CSS Modules**: Styling (`.module.css`)
+- **Google Maps API**: Map rendering and geolocation
+- **FormData API**: Image upload and form handling
+
+### Backend
+
+- **Node.js / Express**: API routing
+- **MongoDB / Mongoose**: Database management
+- **Bcrypt**: Password hashing
+- **Nodemailer**: Sending emails from the contact form
+- **Marker Clusterer**: Clustering markers on the map
+
+---
+
+## 🌏 Our Mission
+
+### Accessible Toilet
+
+We aim to create a better restroom environment so that everyone can go out with peace of mind.
+
+This website is especially designed for those who need special facilities, such as:
+
+- People using wheelchairs  
+- Ostomates (those with a stoma)  
+- Parents with small children
+
+By making it easier to find restrooms with appropriate facilities, we hope to reduce the anxiety of finding a restroom during outings.  
+Your comments and new restroom information are always welcome.  
+**Let’s build a more comfortable restroom environment together.**
