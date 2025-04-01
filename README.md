@@ -7,7 +7,7 @@
 To try out the app, you can log in with the following test account:
 
 - **Name**: TestUser  
-- **Email**: TestUser@test  
+- **Email**: TestUser@test.com
 - **Password**: TestUser
 
 ---
