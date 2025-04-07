@@ -3,7 +3,8 @@ import { HydrationBoundary } from "@tanstack/react-query";
 import ListPageClient from "@/components/toilet/ListPageClient";
 import { fetchToilets } from "@/lib/fetchToilets";
 
-const LIMIT = 12;
+const LIMIT = 8;
+// const LIMIT = 12;
 
 export default async function ToiletListPage() {
   const queryClient = new QueryClient();

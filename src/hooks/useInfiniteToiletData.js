@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToilet } from "@/redux/slices/toiletsSlice"; 
 import { fetchToilets } from "@/lib/fetchToilets";
 
-const LIMIT = 12;
+const LIMIT = 8;
 
 export function useInfiniteToiletData() {
   const dispatch = useDispatch();
