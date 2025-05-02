@@ -4,7 +4,6 @@ import ListPageClient from "@/components/toilet/ListPageClient";
 import { fetchToilets } from "@/lib/fetchToilets";
 
 const LIMIT = 8;
-// const LIMIT = 12;
 
 export default async function ToiletListPage() {
   const queryClient = new QueryClient();
@@ -17,8 +16,6 @@ export default async function ToiletListPage() {
       return lastPage.length < LIMIT ? undefined : nextOffset;
     },
   });
-
-  console.log("🟢 [Server] Prefetched Toilets:", queryClient.getQueryData(["toilets-list"]));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

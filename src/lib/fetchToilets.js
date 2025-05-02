@@ -1,8 +1,10 @@
-
 //fetch用途 1,db全てを取得 2,個数を制限して取得 3該当dataを取得
-export async function fetchToilets({ id = null, limit = null, offset = null } = {}) {
+export async function fetchToilets({
+  id = null,
+  limit = null,
+  offset = null,
+} = {}) {
   let url = "";
-
   if (id) {
     url = `${process.env.NEXT_PUBLIC_API_URL}/api/toilets/${id}`;
   } else if (limit !== null && offset !== null) {
@@ -10,8 +12,6 @@ export async function fetchToilets({ id = null, limit = null, offset = null } = 
   } else {
     url = `${process.env.NEXT_PUBLIC_API_URL}/api/toilets`;
   }
-
-  console.log("🔍 Fetching from:", url);
 
   const res = await fetch(url, { cache: "no-store" });
 

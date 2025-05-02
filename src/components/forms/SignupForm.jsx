@@ -46,7 +46,6 @@ function SignupForm({ setIsSingUp, alert = null, isModal = false, onCloseIsModal
         setModalData(modalConfig.success);
         reset();
         setisModalOpen(true);
-        // setIsSingUp(false);
       } else {
         const errorResponse = await response.json().catch(() => ({ error: "Something went wrong" }));
         setModalData({

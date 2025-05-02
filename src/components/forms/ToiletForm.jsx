@@ -183,11 +183,11 @@ function ToiletForm() {
 								{...register("comment")}
 								placeholder="Enter your comment here..."
 							/>
-							{errors.name ? (
+							{/* {errors.name ? (
 								<span className={formStyles.error}>{errors.name.message}</span>
 							) : (
 								<span className={formStyles.errorsDefo}>-</span>
-							)}
+							)} */}
 						</div>
 						{/* Universal Toilet */}
 						<div className={formStyles.formContent}>
@@ -219,11 +219,11 @@ function ToiletForm() {
 									{selectedImage ? selectedImage.name : "No file chosen"}
 								</span>
 							</div>
-							{errors.name ? (
+							{/* {errors.name ? (
 								<span className={formStyles.error}>{errors.name.message}</span>
 							) : (
 								<span className={formStyles.errorsDefo}>-</span>
-							)}
+							)} */}
 						</div>
 						{/* Submit BUTTON */}
 						<button type="submit" className={`btnLg ${formStyles.formBtn}`}>

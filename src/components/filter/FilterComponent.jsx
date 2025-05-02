@@ -91,4 +91,3 @@ function FilterComponent({ filters, onFilterChange }) {
 }
 
 export default FilterComponent;
-

@@ -17,7 +17,7 @@ export default function MapPageUI() {
           <h2 className={`h2 ${styles.h2}`}>Find Restrooms Using the Map</h2>
           <p className={`${styles.description} pageDescription`}>
             Use the interactive map to easily locate nearby restrooms. Click on a marker to see details about each facility.
-          </p>
+          </p>z
         </div>
         <MapComponent />
       </div>
